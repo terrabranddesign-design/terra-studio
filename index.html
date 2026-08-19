@@ -205,8 +205,9 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   z-index:5;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  gap:clamp(4px, 1.4vw, 18px);
+  justify-content:flex-start;
+  padding-top:28vh;
+  gap:clamp(2px, 1vw, 14px);
   pointer-events:none;
 }
 
@@ -226,7 +227,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .marquee-track span{
   font-family:var(--font-display);
   font-weight:300;
-  font-size:clamp(38px, 7.4vw, 108px);
+  font-size:clamp(26px, 4.6vw, 72px);
   letter-spacing:-0.01em;
   line-height:1;
   padding-right:0.5em;
@@ -314,10 +315,12 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 }
 
 .hero-content{
-  position:relative;
+  position:absolute;
   z-index:30;
-  margin-top:auto;
-  padding:0 var(--edge) var(--space-xl);
+  left:0;
+  right:0;
+  bottom:8vh;
+  padding:0 var(--edge);
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
@@ -331,8 +334,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   max-width:620px;
   font-family:var(--font-display);
   font-weight:600;
-  font-size:clamp(30px, 4.4vw, 56px);
-  line-height:1.02;
+  font-size:clamp(28px, 3.6vw, 48px);
+  line-height:1.12;
   letter-spacing:-0.01em;
   color:var(--white);
 }
@@ -670,7 +673,7 @@ section.on-light{ background:var(--light); color:var(--black); }
   font-family:var(--font-display);
   font-weight:500;
   font-size:clamp(32px, 5vw, 62px);
-  line-height:1.02;
+  line-height:1.12;
   letter-spacing:-0.01em;
   margin-top:var(--space-sm);
 }
@@ -743,7 +746,7 @@ section.on-light{ background:var(--light); color:var(--black); }
   font-family:var(--font-display);
   font-weight:500;
   font-size:clamp(32px, 5vw, 62px);
-  line-height:1.02;
+  line-height:1.12;
   letter-spacing:-0.01em;
   margin-bottom:var(--space-xl);
 }
