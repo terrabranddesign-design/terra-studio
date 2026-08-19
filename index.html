@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TERRA Studio — Дизайн, который двигает бизнес вперёд</title>
+<title>TERRA Studio — Создаём дизайн, который усиливает бизнес</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -183,10 +183,15 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .nav-links a:hover::after{ width:100%; }
 
 .nav-cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:42px;
   font-size:11px;
   letter-spacing:0.14em;
-  padding:12px 20px;
+  padding:0 28px;
   border:1px solid var(--grey-line);
+  white-space:nowrap;
   transition:border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
 }
 .nav-cta:hover{ border-color:transparent; background:var(--grad-terra); }
@@ -322,6 +327,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .hero-content > *{ pointer-events:auto; }
 
 .hero-headline{
+  max-width:720px;
   font-family:var(--font-display);
   font-weight:600;
   font-size:clamp(30px, 4.4vw, 56px);
@@ -955,31 +961,31 @@ section.on-light{ background:var(--light); color:var(--black); }
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="#services">SERVICES</a>
-      <a href="#work">PORTFOLIO</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-      <a href="#contact" class="nav-cta">DISCUSS A PROJECT</a>
+      <a href="#services">УСЛУГИ</a>
+      <a href="#work">ПРОЕКТЫ</a>
+      <a href="#about">О НАС</a>
+      <a href="#contact">КОНТАКТЫ</a>
+      <a href="#contact" class="nav-cta">ОБСУДИТЬ ПРОЕКТ</a>
     </div>
   </nav>
 
   <div class="marquee-layer" aria-hidden="true">
     <div class="marquee-row marquee-row--1">
       <div class="marquee-track">
-        <span>BRANDING <span class="spark">✦</span> IDENTITY <span class="spark">✦</span> BRANDING <span class="spark">✦</span> IDENTITY <span class="spark">✦</span></span>
-        <span>BRANDING <span class="spark">✦</span> IDENTITY <span class="spark">✦</span> BRANDING <span class="spark">✦</span> IDENTITY <span class="spark">✦</span></span>
+        <span>БРЕНДИНГ <span class="spark">✦</span> АЙДЕНТИКА <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span> АЙДЕНТИКА <span class="spark">✦</span></span>
+        <span>БРЕНДИНГ <span class="spark">✦</span> АЙДЕНТИКА <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span> АЙДЕНТИКА <span class="spark">✦</span></span>
       </div>
     </div>
     <div class="marquee-row marquee-row--2">
       <div class="marquee-track">
-        <span>DESIGN SUPPORT <span class="spark">✦</span> PRINT <span class="spark">✦</span> DESIGN SUPPORT <span class="spark">✦</span> PRINT <span class="spark">✦</span></span>
-        <span>DESIGN SUPPORT <span class="spark">✦</span> PRINT <span class="spark">✦</span> DESIGN SUPPORT <span class="spark">✦</span> PRINT <span class="spark">✦</span></span>
+        <span>ДИЗАЙН-ПОДДЕРЖКА <span class="spark">✦</span> ПЕЧАТНЫЕ МАТЕРИАЛЫ <span class="spark">✦</span> ДИЗАЙН-ПОДДЕРЖКА <span class="spark">✦</span> ПЕЧАТНЫЕ МАТЕРИАЛЫ <span class="spark">✦</span></span>
+        <span>ДИЗАЙН-ПОДДЕРЖКА <span class="spark">✦</span> ПЕЧАТНЫЕ МАТЕРИАЛЫ <span class="spark">✦</span> ДИЗАЙН-ПОДДЕРЖКА <span class="spark">✦</span> ПЕЧАТНЫЕ МАТЕРИАЛЫ <span class="spark">✦</span></span>
       </div>
     </div>
     <div class="marquee-row marquee-row--3">
       <div class="marquee-track">
-        <span>PRESENTATIONS <span class="spark">✦</span> BRANDING <span class="spark">✦</span> PRESENTATIONS <span class="spark">✦</span> BRANDING <span class="spark">✦</span></span>
-        <span>PRESENTATIONS <span class="spark">✦</span> BRANDING <span class="spark">✦</span> PRESENTATIONS <span class="spark">✦</span> BRANDING <span class="spark">✦</span></span>
+        <span>ПРЕЗЕНТАЦИИ <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span> ПРЕЗЕНТАЦИИ <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span></span>
+        <span>ПРЕЗЕНТАЦИИ <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span> ПРЕЗЕНТАЦИИ <span class="spark">✦</span> БРЕНДИНГ <span class="spark">✦</span></span>
       </div>
     </div>
   </div>
@@ -996,7 +1002,7 @@ section.on-light{ background:var(--light); color:var(--black); }
   <div class="hero-content">
     <div>
       <div class="hero-tag">TERRA STUDIO</div>
-      <h1 class="hero-headline">Дизайн, который<br><span class="thin">двигает бизнес вперёд</span></h1>
+      <h1 class="hero-headline">СОЗДАЁМ ДИЗАЙН,<br><span class="thin">КОТОРЫЙ УСИЛИВАЕТ БИЗНЕС</span></h1>
     </div>
     <div class="hero-side">
       <p class="hero-copy">Брендинг, айдентика, презентации и дизайн-поддержка для роста и масштабирования.</p>
@@ -1007,7 +1013,7 @@ section.on-light{ background:var(--light); color:var(--black); }
     </div>
   </div>
 
-  <div class="scroll-hint"><span>Scroll</span><span class="line"></span></div>
+  <div class="scroll-hint"><span>ВНИЗ</span><span class="line"></span></div>
 </header>
 
 <!-- ================= 02 — WHAT WE DO ================= -->
