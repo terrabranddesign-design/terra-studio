@@ -452,6 +452,12 @@ section.on-light{ background:var(--light); color:var(--black); }
    02 — WHAT WE DO
    ========================================================================== */
 .whatwedo{ border-top:1px solid var(--grey-line-soft); }
+   .whatwedo-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
 .wwd-head{
   max-width:none;
   margin-bottom:0;
@@ -475,7 +481,7 @@ section.on-light{ background:var(--light); color:var(--black); }
 .wwd-row{
   position:relative;
   display:grid;
-  grid-template-columns:80px 1fr auto;
+ grid-template-columns:60px 1fr;
   align-items:center;
   gap:var(--space-md);
   padding:clamp(24px, 3.2vw, 44px) 4px;
