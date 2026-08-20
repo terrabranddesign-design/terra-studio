@@ -453,8 +453,8 @@ section.on-light{ background:var(--light); color:var(--black); }
    ========================================================================== */
 .whatwedo{ border-top:1px solid var(--grey-line-soft); }
 .wwd-head{
-  max-width:900px;
-  margin-bottom:var(--space-xl);
+  max-width:none;
+  margin-bottom:0;
 }
 .wwd-title{
   font-family:var(--font-display);
@@ -467,7 +467,10 @@ section.on-light{ background:var(--light); color:var(--black); }
 .wwd-copy{
   font-size:16px; line-height:1.7; color:var(--grey-mid); max-width:46ch;
 }
-
+.wwd-head,
+.wwd-list{
+  width:100%;
+}
 .wwd-list{ border-top:1px solid var(--grey-line); }
 .wwd-row{
   position:relative;
@@ -1022,7 +1025,7 @@ section.on-light{ background:var(--light); color:var(--black); }
 
 <!-- ================= 02 — WHAT WE DO ================= -->
 <section class="whatwedo" id="services">
-  <div class="section-inner">
+ <div class="section-inner whatwedo-grid">
     <div class="wwd-head reveal">
       <p class="eyebrow">01 — Что мы делаем</p>
       <h2 class="wwd-title">СОЗДАЁМ <span class="grad-text">СИСТЕМУ</span>,<br>А НЕ ПРОСТО ДИЗАЙН</h2>
