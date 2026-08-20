@@ -277,112 +277,171 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   to{ transform:translateX(0); }
 }
 
-/* ==========================================================================
-   CODED 3D SPHERE — TERRA
-   ========================================================================== */
-
+/* Sphere stage — video placeholder, sits above marquee */
 .sphere-stage{
   position:relative;
   z-index:20;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  padding-top:clamp(10px, 2vh, 30px);
-
+  padding-top:clamp(20px, 4vh, 60px);
   pointer-events:none;
 }
 
-
-/* Размер всей области сферы */
+/*
+  ============================================================
+  REPLACE-ME: SPHERE VIDEO
+  Drop your finished animated sphere loop into the <video> tag
+  below (replace the empty <source src="">). Requirements:
+  - autoplay, muted, loop, playsinline are already set
+  - object-fit: contain keeps your sphere's own glow/edges intact
+  - No CSS filters or blend modes are applied on top of the video,
+    so the video's own color grade is preserved exactly.
+  - .sphere-frame controls only size/position, not appearance.
+  ============================================================
+*/
 .sphere-frame{
   position:relative;
-
-  width:clamp(270px, 31vw, 490px);
-  aspect-ratio:1 / 1;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  isolation:isolate;
+  width:clamp(280px, 40vw, 640px);
+  aspect-ratio:1/1;
 }
-
-
-/* МЯГКОЕ СВЕЧЕНИЕ ПОЗАДИ */
-.sphere-glow{
-  position:absolute;
-
-  left:50%;
-  top:50%;
-
-  width:175%;
-  height:175%;
-
-  transform:translate(-50%, -50%);
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      ellipse at 38% 50%,
-      rgba(39,62,255,0.42) 0%,
-      rgba(39,62,255,0.24) 18%,
-      rgba(39,62,255,0.10) 35%,
-      rgba(39,62,255,0.035) 50%,
-      transparent 72%
-    ),
-
-    radial-gradient(
-      ellipse at 64% 48%,
-      rgba(210,38,232,0.34) 0%,
-      rgba(140,45,255,0.18) 20%,
-      rgba(140,45,255,0.07) 38%,
-      rgba(210,38,232,0.025) 52%,
-      transparent 74%
-    );
-
-  filter:blur(72px);
-
-  opacity:0.82;
-
-  z-index:-1;
-
-  pointer-events:none;
-
-  animation:terraGlowPulse 7s ease-in-out infinite alternate;
-}
-
-
-/* Canvas абсолютно прозрачный */
-#terraSphere{
-  position:absolute;
-  inset:0;
-
+.sphere-video{
   width:100%;
   height:100%;
-
+  object-fit:contain;
   display:block;
-
-  background:transparent;
-
-  z-index:2;
+}
+/* Fallback visible only if no video source is provided, for prototype legibility */
+.sphere-frame[data-empty="true"]::after{
+  content:'SPHERE VIDEO PLACEHOLDER — 1:1 · autoplay / muted / loop';
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:20px;
+  font-family:var(--font-body);
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--grey-mid);
+  border:1px dashed var(--grey-line);
+  border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, rgba(101,54,255,0.28), transparent 60%);
 }
 
+.hero-content{
+  position:absolute;
+  z-index:30;
+  left:0;
+  right:0;
+  bottom:8vh;
+  padding:0 var(--edge);
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:var(--space-lg);
+  pointer-events:none;
+}
+.hero-content > *{ pointer-events:auto; }
 
-@keyframes terraGlowPulse{
+.hero-headline{
+  line-height:1.18;
+  max-width:620px;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(28px, 3.6vw, 48px);
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  color:var(--white);
+}
+.hero-headline .thin{ font-weight:200; color:var(--grey-mid); }
+.hero-tag{
+  font-family:var(--font-display);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--grey-mid);
+  margin-bottom:var(--space-sm);
+}
 
-  from{
-    transform:translate(-50%, -50%) scale(0.96);
-    opacity:0.72;
-  }
+.hero-side{
+  max-width:340px;
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-md);
+}
+.hero-copy{
+  font-size:14px;
+  line-height:1.65;
+  color:var(--grey-mid);
+}
+.hero-btns{ display:flex; gap:14px; flex-wrap:wrap; }
 
-  to{
-    transform:translate(-50%, -50%) scale(1.04);
-    opacity:0.88;
-  }
+.btn-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:16px 26px;
+  border:1px solid var(--grey-line);
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.4s var(--ease-soft), color 0.4s var(--ease-soft);
+}
+.btn-cta span{ position:relative; z-index:2; }
+.btn-cta::before{
+  content:'';
+  position:absolute; inset:0;
+  background:var(--grad-terra);
+  transform:translateX(-101%);
+  transition:transform 0.5s var(--ease-out);
+  z-index:1;
+}
+.btn-cta:hover{ border-color:transparent; color:var(--white); }
+.btn-cta:hover::before{ transform:translateX(0); }
 
+.btn-ghost{
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:16px 8px;
+  color:var(--grey-mid);
+  border-bottom:1px solid var(--grey-line);
+  transition:color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft);
+}
+.btn-ghost:hover{ color:var(--white); border-color:var(--magenta); }
+
+.btn-cta.on-light{ border-color:var(--grey-line-dark); color:var(--black); }
+.btn-cta.on-light:hover{ color:var(--white); }
+
+.scroll-hint{
+  position:absolute;
+  bottom:var(--space-lg);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:30;
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--grey-mid);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+.scroll-hint .line{
+  width:1px; height:34px;
+  background:linear-gradient(var(--grey-mid), transparent);
+  animation:scroll-run 2.2s ease-in-out infinite;
+}
+@keyframes scroll-run{
+  0%{ transform:scaleY(0); transform-origin:top; opacity:0; }
+  40%{ transform:scaleY(1); transform-origin:top; opacity:1; }
+  60%{ transform:scaleY(1); transform-origin:bottom; opacity:1; }
+  100%{ transform:scaleY(0); transform-origin:bottom; opacity:0; }
 }
 
 /* ==========================================================================
@@ -965,15 +1024,14 @@ section.on-light{ background:var(--light); color:var(--black); }
     </div>
   </div>
 
-<div class="sphere-stage" aria-hidden="true">
-  <div class="sphere-frame">
-
-    <div class="sphere-glow"></div>
-
-    <canvas id="terraSphere"></canvas>
-
+  <div class="sphere-stage" aria-hidden="true">
+    <div class="sphere-frame" data-empty="true">
+      <!-- REPLACE-ME: insert your finished sphere video source below -->
+      <video class="sphere-video" autoplay muted loop playsinline>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
   </div>
-</div>
 
   <div class="hero-content">
     <div>
@@ -1286,9 +1344,7 @@ section.on-light{ background:var(--light); color:var(--black); }
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-   <script>
+<script>
 (function(){
   // Mobile nav toggle
   var toggle = document.getElementById('navToggle');
@@ -1324,964 +1380,20 @@ section.on-light{ background:var(--light); color:var(--black); }
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-/* =========================================================
-   TERRA — DARK LIQUID 3D SPHERE
-   ========================================================= */
-
-var sphereCanvas = document.getElementById('terraSphere');
-
-if(sphereCanvas && window.THREE){
-
-  /* ---------------------------------------------------------
-     SCENE
-     --------------------------------------------------------- */
-
-  var scene = new THREE.Scene();
-
-
-  /* ---------------------------------------------------------
-     CAMERA
-     --------------------------------------------------------- */
-
-  var camera = new THREE.PerspectiveCamera(
-    34,
-    1,
-    0.1,
-    100
-  );
-
-  camera.position.z = 5.1;
-
-
-  /* ---------------------------------------------------------
-     RENDERER
-     --------------------------------------------------------- */
-
-  var renderer = new THREE.WebGLRenderer({
-    canvas: sphereCanvas,
-    alpha: true,
-    antialias: true,
-    powerPreference: 'high-performance'
-  });
-
-  renderer.setClearColor(0x000000, 0);
-
-  renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio || 1, 2)
-  );
-
-
-  /* ---------------------------------------------------------
-     GEOMETRY
-
-     Детализированная сфера.
-     Поверхность будет деформироваться шейдером.
-     --------------------------------------------------------- */
-
-  var geometry = new THREE.SphereGeometry(
-    1.36,
-    128,
-    128
-  );
-
-
-  /* ---------------------------------------------------------
-     MATERIAL
-     --------------------------------------------------------- */
-
-  var material = new THREE.ShaderMaterial({
-
-    transparent: true,
-
-    uniforms: {
-
-      uTime: {
-        value: 0
-      },
-
-      uBlue: {
-        value: new THREE.Color('#1538FF')
-      },
-
-      uDeepBlue: {
-        value: new THREE.Color('#071059')
-      },
-
-      uViolet: {
-        value: new THREE.Color('#5420D6')
-      },
-
-      uMagenta: {
-        value: new THREE.Color('#E326E8')
-      }
-
-    },
-
-
-    /* ========================================================
-       VERTEX SHADER
-       Делает поверхность жидкой и неровной
-       ======================================================== */
-
-    vertexShader: `
-
-      uniform float uTime;
-
-      varying vec3 vNormalW;
-      varying vec3 vPositionW;
-
-      varying float vNoise;
-      varying float vNoise2;
-
-
-      void main(){
-
-        vec3 p = position;
-
-        float t = uTime * 0.32;
-
-
-        /*
-          Несколько волн разного масштаба.
-          Именно они создают органические впадины,
-          а не просто покачивание шара.
-        */
-
-        float n1 =
-          sin(p.x * 5.2 + t * 1.3) *
-          sin(p.y * 4.8 - t * 0.8);
-
-
-        float n2 =
-          sin(p.z * 7.2 - t * 1.1) *
-          cos(p.x * 5.5 + t * 0.7);
-
-
-        float n3 =
-          sin(
-            p.x * 9.0 +
-            p.y * 6.0 +
-            p.z * 7.0 +
-            t
-          );
-
-
-        float n4 =
-          sin(
-            length(p.xy) * 13.0 -
-            t * 1.4
-          );
-
-
-        float deformation =
-            n1 * 0.050
-          + n2 * 0.034
-          + n3 * 0.020
-          + n4 * 0.012;
-
-
-        p += normal * deformation;
-
-
-        vec4 worldPosition =
-          modelMatrix *
-          vec4(p, 1.0);
-
-
-        vPositionW =
-          worldPosition.xyz;
-
-
-        vNormalW =
-          normalize(
-            mat3(modelMatrix) *
-            normal
-          );
-
-
-        vNoise =
-          n1 * 0.45 +
-          n2 * 0.35 +
-          n3 * 0.20;
-
-
-        vNoise2 =
-          n3 * 0.60 +
-          n4 * 0.40;
-
-
-        gl_Position =
-          projectionMatrix *
-          viewMatrix *
-          worldPosition;
-
-      }
-
-    `,
-
-
-    /* ========================================================
-       FRAGMENT SHADER
-       Цвет + металл + тёмный центр + яркие края
-       ======================================================== */
-
-    fragmentShader: `
-
-      precision highp float;
-
-
-      uniform float uTime;
-
-      uniform vec3 uBlue;
-      uniform vec3 uDeepBlue;
-      uniform vec3 uViolet;
-      uniform vec3 uMagenta;
-
-
-      varying vec3 vNormalW;
-      varying vec3 vPositionW;
-
-      varying float vNoise;
-      varying float vNoise2;
-
-
-      void main(){
-
-        vec3 normal =
-          normalize(vNormalW);
-
-
-        vec3 viewDir =
-          normalize(
-            cameraPosition -
-            vPositionW
-          );
-
-
-        /* ----------------------------------------------------
-           FRESNEL
-           Светящиеся края
-           ---------------------------------------------------- */
-
-        float facing =
-          max(
-            dot(
-              normal,
-              viewDir
-            ),
-            0.0
-          );
-
-
-        float fresnel =
-          pow(
-            1.0 - facing,
-            2.15
-          );
-
-
-        float thinRim =
-          pow(
-            1.0 - facing,
-            5.0
-          );
-
-
-        /* ----------------------------------------------------
-           Слева синий, справа magenta
-           ---------------------------------------------------- */
-
-        float side =
-          normal.x * 0.5 + 0.5;
-
-
-        vec3 sideColour =
-          mix(
-            uBlue,
-            uMagenta,
-            smoothstep(
-              0.12,
-              0.88,
-              side
-            )
-          );
-
-
-        /* ----------------------------------------------------
-           ОЧЕНЬ ТЁМНЫЙ основной материал
-           ---------------------------------------------------- */
-
-        vec3 colour =
-          vec3(
-            0.003,
-            0.004,
-            0.018
-          );
-
-
-        /*
-          Мягкое внутреннее синее освещение.
-        */
-
-        float leftLight =
-          max(
-            dot(
-              normal,
-              normalize(
-                vec3(
-                  -0.75,
-                   0.15,
-                   0.75
-                )
-              )
-            ),
-            0.0
-          );
-
-
-        colour +=
-          uDeepBlue *
-          leftLight *
-          0.72;
-
-
-        /*
-          Фиолетовое освещение справа.
-        */
-
-        float rightLight =
-          max(
-            dot(
-              normal,
-              normalize(
-                vec3(
-                   0.65,
-                   0.18,
-                   0.75
-                )
-              )
-            ),
-            0.0
-          );
-
-
-        colour +=
-          uViolet *
-          rightLight *
-          0.42;
-
-
-        /*
-          Жидкие переливы поверхности.
-        */
-
-        float flow =
-          vNoise * 0.5 + 0.5;
-
-
-        float flow2 =
-          vNoise2 * 0.5 + 0.5;
-
-
-        colour +=
-          sideColour *
-          flow *
-          0.11;
-
-
-        /*
-          Тёмные круглые/органические впадины.
-        */
-
-        float cavities =
-          smoothstep(
-            0.55,
-            0.92,
-            flow2
-          );
-
-
-        colour *=
-          mix(
-            1.0,
-            0.22,
-            cavities * 0.72
-          );
-
-
-        /* ----------------------------------------------------
-           ЯРКИЙ СИНИЙ / РОЗОВЫЙ ОБОДОК
-           ---------------------------------------------------- */
-
-        vec3 rimColour =
-          mix(
-            vec3(
-              0.05,
-              0.20,
-              1.0
-            ),
-            vec3(
-              1.0,
-              0.06,
-              0.92
-            ),
-            side
-          );
-
-
-        colour +=
-          rimColour *
-          fresnel *
-          1.20;
-
-
-        colour +=
-          rimColour *
-          thinRim *
-          1.85;
-
-
-        /* ----------------------------------------------------
-           БЕЛО-СИНИЙ БЛИК СЛЕВА СВЕРХУ
-           ---------------------------------------------------- */
-
-        float highlight =
-          pow(
-
-            max(
-
-              dot(
-
-                normal,
-
-                normalize(
-                  vec3(
-                    -0.48,
-                     0.72,
-                     0.55
-                  )
-                )
-
-              ),
-
-              0.0
-
-            ),
-
-            18.0
-
-          );
-
-
-        colour +=
-          vec3(
-            0.42,
-            0.55,
-            1.0
-          )
-          *
-          highlight
-          *
-          1.25;
-
-
-        /* ----------------------------------------------------
-           ФИОЛЕТОВЫЙ БЛИК СПРАВА
-           ---------------------------------------------------- */
-
-        float pinkHighlight =
-          pow(
-
-            max(
-
-              dot(
-
-                normal,
-
-                normalize(
-                  vec3(
-                    0.62,
-                    0.42,
-                    0.58
-                  )
-                )
-
-              ),
-
-              0.0
-
-            ),
-
-            16.0
-
-          );
-
-
-        colour +=
-          vec3(
-            0.95,
-            0.08,
-            0.88
-          )
-          *
-          pinkHighlight
-          *
-          0.72;
-
-
-        /*
-          Очень лёгкая тональная компрессия.
-          Не даёт шару становиться кислотным.
-        */
-
-        colour =
-          colour /
-          (
-            colour +
-            vec3(0.72)
-          );
-
-
-        gl_FragColor =
-          vec4(
-            colour,
-            1.0
-          );
-
-      }
-
-    `
-
-  });
-
-
-  /* ---------------------------------------------------------
-     SPHERE
-     --------------------------------------------------------- */
-
-  var sphere =
-    new THREE.Mesh(
-      geometry,
-      material
-    );
-
-
-  sphere.rotation.x = -0.12;
-  sphere.rotation.z = 0.06;
-
-
-  scene.add(sphere);
-
-
-
-  /* ---------------------------------------------------------
-     VERY SUBTLE OUTER RIM
-     Не тот большой круг, который был раньше.
-     Только тонкий свет возле самого объекта.
-     --------------------------------------------------------- */
-
-  var rimGeometry =
-    new THREE.SphereGeometry(
-      1.405,
-      96,
-      96
-    );
-
-
-  var rimMaterial =
-    new THREE.ShaderMaterial({
-
-      transparent: true,
-
-      side: THREE.BackSide,
-
-      depthWrite: false,
-
-      blending:
-        THREE.AdditiveBlending,
-
-
-      uniforms: {
-
-        uBlue: {
-          value:
-            new THREE.Color('#163AFF')
-        },
-
-        uMagenta: {
-          value:
-            new THREE.Color('#E326E8')
-        }
-
-      },
-
-
-      vertexShader: `
-
-        varying vec3 vNormalW;
-        varying vec3 vPositionW;
-
-
-        void main(){
-
-          vec4 wp =
-            modelMatrix *
-            vec4(
-              position,
-              1.0
-            );
-
-
-          vPositionW =
-            wp.xyz;
-
-
-          vNormalW =
-            normalize(
-              mat3(modelMatrix) *
-              normal
-            );
-
-
-          gl_Position =
-            projectionMatrix *
-            viewMatrix *
-            wp;
-
-        }
-
-      `,
-
-
-      fragmentShader: `
-
-        precision highp float;
-
-
-        uniform vec3 uBlue;
-        uniform vec3 uMagenta;
-
-
-        varying vec3 vNormalW;
-        varying vec3 vPositionW;
-
-
-        void main(){
-
-          vec3 normal =
-            normalize(vNormalW);
-
-
-          vec3 viewDir =
-            normalize(
-              cameraPosition -
-              vPositionW
-            );
-
-
-          float f =
-            pow(
-
-              1.0 -
-
-              max(
-                dot(
-                  normal,
-                  viewDir
-                ),
-                0.0
-              ),
-
-              4.0
-
-            );
-
-
-          float side =
-            normal.x *
-            0.5 +
-            0.5;
-
-
-          vec3 c =
-            mix(
-              uBlue,
-              uMagenta,
-              side
-            );
-
-
-          gl_FragColor =
-            vec4(
-              c,
-              f * 0.20
-            );
-
-        }
-
-      `
-
-    });
-
-
-  var rim =
-    new THREE.Mesh(
-      rimGeometry,
-      rimMaterial
-    );
-
-
-  scene.add(rim);
-
-
-
-  /* ---------------------------------------------------------
-     RESIZE
-     --------------------------------------------------------- */
-
-  function resizeTerraSphere(){
-
-    var frame =
-      sphereCanvas.parentElement;
-
-
-    if(!frame){
-      return;
+  // Sphere placeholder detection — if video has no valid source, keep the label
+  var sphereFrame = document.querySelector('.sphere-frame');
+  var sphereVideo = document.querySelector('.sphere-video');
+  if(sphereFrame && sphereVideo){
+    var src = sphereVideo.querySelector('source');
+    if(!src || !src.getAttribute('src')){
+      sphereFrame.setAttribute('data-empty', 'true');
+    } else {
+      sphereVideo.addEventListener('loadeddata', function(){
+        sphereFrame.setAttribute('data-empty', 'false');
+      });
     }
-
-
-    var width =
-      frame.clientWidth;
-
-
-    var height =
-      frame.clientHeight;
-
-
-    renderer.setSize(
-      width,
-      height,
-      false
-    );
-
-
-    camera.aspect =
-      width / height;
-
-
-    camera.updateProjectionMatrix();
-
   }
 
-
-  resizeTerraSphere();
-
-
-  window.addEventListener(
-    'resize',
-    resizeTerraSphere
-  );
-
-
-
-  /* ---------------------------------------------------------
-     ANIMATION
-     --------------------------------------------------------- */
-
-  var clock =
-    new THREE.Clock();
-
-
-  function animateTerraSphere(){
-
-    requestAnimationFrame(
-      animateTerraSphere
-    );
-
-
-    var t =
-      clock.getElapsedTime();
-
-
-    material.uniforms
-      .uTime.value = t;
-
-
-    /* медленное вращение */
-
-    sphere.rotation.y =
-      t * 0.105;
-
-
-    sphere.rotation.x =
-      -0.12 +
-      Math.sin(
-        t * 0.17
-      ) *
-      0.025;
-
-
-    sphere.rotation.z =
-      0.06 +
-      Math.sin(
-        t * 0.13
-      ) *
-      0.018;
-
-
-    rim.rotation.copy(
-      sphere.rotation
-    );
-
-
-    /*
-      Очень лёгкое дыхание,
-      практически незаметное.
-    */
-
-    var breathe =
-      1 +
-      Math.sin(
-        t * 0.65
-      ) *
-      0.006;
-
-
-    sphere.scale.setScalar(
-      breathe
-    );
-
-
-    rim.scale.setScalar(
-      breathe
-    );
-
-
-    renderer.render(
-      scene,
-      camera
-    );
-
-  }
-
-
-  animateTerraSphere();
-
-}
-
-  /* ---------- RESIZE ---------- */
-
-  function resizeTerraSphere(){
-
-    var frame =
-      sphereCanvas.parentElement;
-
-    if(!frame){
-      return;
-    }
-
-    var width =
-      frame.clientWidth;
-
-    var height =
-      frame.clientHeight;
-
-    renderer.setSize(
-      width,
-      height,
-      false
-    );
-
-    camera.aspect =
-      width / height;
-
-    camera.updateProjectionMatrix();
-  }
-
-  resizeTerraSphere();
-
-  window.addEventListener(
-    'resize',
-    resizeTerraSphere
-  );
-
-
-  /* ---------- ANIMATION ---------- */
-
-  var clock =
-    new THREE.Clock();
-
-  function animateTerraSphere(){
-
-    requestAnimationFrame(
-      animateTerraSphere
-    );
-
-    var elapsed =
-      clock.getElapsedTime();
-
-    sphereMaterial.uniforms
-      .uTime.value =
-      elapsed;
-
-    /*
-      Очень медленное вращение.
-    */
-
-    sphere.rotation.y =
-      elapsed * 0.14;
-
-    sphere.rotation.x =
-      -0.14 +
-      Math.sin(
-        elapsed * 0.20
-      ) * 0.035;
-
-    sphere.rotation.z =
-      0.08 +
-      Math.sin(
-        elapsed * 0.16
-      ) * 0.025;
-
-
-    glowSphere.rotation.y =
-      sphere.rotation.y;
-
-    glowSphere.rotation.x =
-      sphere.rotation.x;
-
-
-    /*
-      Лёгкое "дыхание".
-    */
-
-    var breathing =
-      1 +
-      Math.sin(
-        elapsed * 0.75
-      ) * 0.012;
-
-    sphere.scale.setScalar(
-      breathing
-    );
-
-    glowSphere.scale.setScalar(
-      1 +
-      Math.sin(
-        elapsed * 0.62
-      ) * 0.022
-    );
-
-
-    renderer.render(
-      scene,
-      camera
-    );
-  }
-
-  animateTerraSphere();
-
-}
   // Custom cursor dot (desktop hover-capable only)
   var dot = document.getElementById('cursorDot');
   if(dot && window.matchMedia('(hover: hover) and (pointer: fine)').matches){
