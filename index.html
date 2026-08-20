@@ -277,7 +277,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   to{ transform:translateX(0); }
 }
 
-/* Sphere stage — video placeholder, sits above marquee */
+/* Sphere stage — WebGL 3D sphere sits above marquee */
 .sphere-stage{
   position:relative;
   z-index:20;
@@ -288,45 +288,53 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   pointer-events:none;
 }
 
+/* Soft diffuse glow — sits between marquee and the sphere canvas, no hard edge */
+.sphere-glow{
+  position:absolute;
+  inset:-30% -10%;
+  z-index:12;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 60% at 42% 48%, rgba(39,62,255,0.32), transparent 70%),
+    radial-gradient(ellipse 55% 60% at 60% 54%, rgba(219,61,240,0.26), transparent 70%),
+    radial-gradient(ellipse 70% 75% at 50% 50%, rgba(101,54,255,0.15), transparent 75%);
+  filter: blur(70px);
+  mix-blend-mode:screen;
+}
+
 /*
   ============================================================
-  REPLACE-ME: SPHERE VIDEO
-  Drop your finished animated sphere loop into the <video> tag
-  below (replace the empty <source src="">). Requirements:
-  - autoplay, muted, loop, playsinline are already set
-  - object-fit: contain keeps your sphere's own glow/edges intact
-  - No CSS filters or blend modes are applied on top of the video,
-    so the video's own color grade is preserved exactly.
-  - .sphere-frame controls only size/position, not appearance.
+  3D SPHERE — Three.js / ShaderMaterial
+  Canvas рендерится в #sphereCanvas внутри .sphere-canvas-wrap.
+  Прозрачный фон рендера, поэтому бегущие строки видны сквозь него.
   ============================================================
 */
-.sphere-frame{
+.sphere-canvas-wrap{
   position:relative;
-  width:clamp(280px, 40vw, 640px);
+  width:clamp(260px, 34vw, 560px);
   aspect-ratio:1/1;
+  z-index:20;
 }
-.sphere-video{
+#sphereCanvas{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
   display:block;
 }
-/* Fallback visible only if no video source is provided, for prototype legibility */
-.sphere-frame[data-empty="true"]::after{
-  content:'SPHERE VIDEO PLACEHOLDER — 1:1 · autoplay / muted / loop';
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center;
-  padding:20px;
-  font-family:var(--font-body);
-  font-size:11px;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--grey-mid);
-  border:1px dashed var(--grey-line);
+/* Fallback shown only if WebGL init fails — keeps hero from breaking */
+.sphere-fallback{
+  display:none;
+  position:absolute;
+  inset:0;
   border-radius:50%;
-  background:radial-gradient(circle at 40% 35%, rgba(101,54,255,0.28), transparent 60%);
+  background:
+    radial-gradient(circle at 34% 30%, rgba(39,62,255,0.55), transparent 55%),
+    radial-gradient(circle at 66% 62%, rgba(219,61,240,0.4), transparent 55%),
+    #05060d;
 }
+.sphere-canvas-wrap[data-webgl="false"] .sphere-fallback{ display:block; }
+.sphere-canvas-wrap[data-webgl="false"] #sphereCanvas{ display:none; }
 
 .hero-content{
   position:absolute;
@@ -978,7 +986,7 @@ section.on-light{ background:var(--light); color:var(--black); }
 
   .pr-grid{ grid-template-columns:1fr; }
   .wwd-arrow{ display:none; }
-  .sphere-frame{ width:62vw; }
+  .sphere-canvas-wrap{ width:62vw; }
   .marquee-track span{ font-size:clamp(30px, 12vw, 60px); }
 }
 </style>
@@ -1025,11 +1033,10 @@ section.on-light{ background:var(--light); color:var(--black); }
   </div>
 
   <div class="sphere-stage" aria-hidden="true">
-    <div class="sphere-frame" data-empty="true">
-      <!-- REPLACE-ME: insert your finished sphere video source below -->
-      <video class="sphere-video" autoplay muted loop playsinline>
-        <source src="" type="video/mp4">
-      </video>
+    <div class="sphere-glow"></div>
+    <div class="sphere-canvas-wrap" id="sphereCanvasWrap">
+      <canvas id="sphereCanvas"></canvas>
+      <div class="sphere-fallback"></div>
     </div>
   </div>
 
@@ -1344,6 +1351,211 @@ section.on-light{ background:var(--light); color:var(--black); }
   </div>
 </footer>
 
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+<script>
+(function(){
+  try {
+    var wrap = document.getElementById('sphereCanvasWrap');
+    var canvasEl = document.getElementById('sphereCanvas');
+    if(!wrap || !canvasEl || typeof THREE === 'undefined') return;
+
+    var renderer = new THREE.WebGLRenderer({
+      canvas: canvasEl,
+      alpha: true,
+      antialias: true,
+      premultipliedAlpha: false
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 10);
+    camera.position.set(0, 0, 3.1);
+
+    // ===== ГЛАВНЫЕ ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ =====
+    var PARAMS = {
+      rotationSpeed: 0.045,                    // скорость вращения
+      noiseFreq: 1.6,                          // частота рельефа
+      noiseAmp: 0.085,                         // амплитуда органической деформации
+      colorDark:    new THREE.Color(0x03040d), // тёмность корпуса
+      colorBlue:    new THREE.Color(0x3d5cff), // яркость синего края
+      colorMagenta: new THREE.Color(0xdb3df0), // яркость magenta-края
+      fresnelPower: 2.2,
+      specPower: 28.0
+    };
+
+    var geometry = new THREE.SphereGeometry(1, 112, 112);
+
+    var material = new THREE.ShaderMaterial({
+      uniforms: {
+        uTime:         { value: 0 },
+        uFreq:         { value: PARAMS.noiseFreq },
+        uAmp:          { value: PARAMS.noiseAmp },
+        uColorDark:    { value: PARAMS.colorDark },
+        uColorBlue:    { value: PARAMS.colorBlue },
+        uColorMagenta: { value: PARAMS.colorMagenta },
+        uFresnelPower: { value: PARAMS.fresnelPower },
+        uSpecPower:    { value: PARAMS.specPower }
+      },
+      vertexShader: `
+        uniform float uTime;
+        uniform float uFreq;
+        uniform float uAmp;
+        varying vec3 vNormal;
+        varying vec3 vViewPos;
+        varying vec3 vWorldPos;
+
+        vec3 mod289(vec3 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
+        vec4 mod289(vec4 x){ return x - floor(x * (1.0/289.0)) * 289.0; }
+        vec4 permute(vec4 x){ return mod289(((x*34.0)+1.0)*x); }
+        vec4 taylorInvSqrt(vec4 r){ return 1.79284291400159 - 0.85373472095314 * r; }
+
+        float snoise(vec3 v){
+          const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+          const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+          vec3 i  = floor(v + dot(v, C.yyy));
+          vec3 x0 = v - i + dot(i, C.xxx);
+          vec3 g = step(x0.yzx, x0.xyz);
+          vec3 l = 1.0 - g;
+          vec3 i1 = min(g.xyz, l.zxy);
+          vec3 i2 = max(g.xyz, l.zxy);
+          vec3 x1 = x0 - i1 + C.xxx;
+          vec3 x2 = x0 - i2 + C.yyy;
+          vec3 x3 = x0 - D.yyy;
+          i = mod289(i);
+          vec4 p = permute( permute( permute(
+                     i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                   + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                   + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+          float n_ = 0.142857142857;
+          vec3 ns = n_ * D.wyz - D.xzx;
+          vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+          vec4 x_ = floor(j * ns.z);
+          vec4 y_ = floor(j - 7.0 * x_);
+          vec4 x = x_ * ns.x + ns.yyyy;
+          vec4 y = y_ * ns.x + ns.yyyy;
+          vec4 h = 1.0 - abs(x) - abs(y);
+          vec4 b0 = vec4(x.xy, y.xy);
+          vec4 b1 = vec4(x.zw, y.zw);
+          vec4 s0 = floor(b0)*2.0 + 1.0;
+          vec4 s1 = floor(b1)*2.0 + 1.0;
+          vec4 sh = -step(h, vec4(0.0));
+          vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+          vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+          vec3 p0 = vec3(a0.xy, h.x);
+          vec3 p1 = vec3(a0.zw, h.y);
+          vec3 p2 = vec3(a1.xy, h.z);
+          vec3 p3 = vec3(a1.zw, h.w);
+          vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
+          p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+          vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+          m = m * m;
+          return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+        }
+
+        float fbm(vec3 p){
+          float f = 0.0;
+          f += 0.5   * snoise(p);
+          f += 0.25  * snoise(p * 2.02);
+          f += 0.125 * snoise(p * 4.03);
+          return f;
+        }
+
+        void main(){
+          vec3 pos = position;
+          vec3 nrm = normalize(normal);
+
+          float disp = fbm(pos * uFreq + uTime);
+          vec3 displaced = pos + nrm * disp * uAmp;
+
+          float eps = 0.01;
+          vec3 tangent = normalize(cross(nrm, abs(nrm.y) < 0.99 ? vec3(0.0,1.0,0.0) : vec3(1.0,0.0,0.0)));
+          vec3 bitangent = normalize(cross(nrm, tangent));
+
+          vec3 posT = pos + tangent * eps;
+          float dispT = fbm(posT * uFreq + uTime);
+          vec3 displacedT = posT + normalize(posT) * dispT * uAmp;
+
+          vec3 posB = pos + bitangent * eps;
+          float dispB = fbm(posB * uFreq + uTime);
+          vec3 displacedB = posB + normalize(posB) * dispB * uAmp;
+
+          vec3 newNormal = normalize(cross(displacedT - displaced, displacedB - displaced));
+
+          vec4 worldPos = modelMatrix * vec4(displaced, 1.0);
+          vNormal = normalize(mat3(modelMatrix) * newNormal);
+          vWorldPos = worldPos.xyz;
+          vViewPos = (viewMatrix * worldPos).xyz;
+
+          gl_Position = projectionMatrix * viewMatrix * worldPos;
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uColorDark;
+        uniform vec3 uColorBlue;
+        uniform vec3 uColorMagenta;
+        uniform float uFresnelPower;
+        uniform float uSpecPower;
+        varying vec3 vNormal;
+        varying vec3 vViewPos;
+        varying vec3 vWorldPos;
+
+        void main(){
+          vec3 N = normalize(vNormal);
+          vec3 V = normalize(-vViewPos);
+
+          float fresnel = pow(1.0 - clamp(dot(N, V), 0.0, 1.0), uFresnelPower);
+
+          float side = clamp(vWorldPos.x * 1.6, -1.0, 1.0);
+          float t = side * 0.5 + 0.5;
+          vec3 rim = mix(uColorBlue, uColorMagenta, t);
+
+          vec3 lightDir = normalize(vec3(-0.4, 0.6, 0.8));
+          vec3 H = normalize(lightDir + V);
+          float spec = pow(max(dot(N, H), 0.0), uSpecPower);
+
+          vec3 color = uColorDark;
+          color += rim * fresnel * 1.05;
+          color += vec3(1.0) * spec * 0.5;
+
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `
+    });
+
+    var sphere = new THREE.Mesh(geometry, material);
+    scene.add(sphere);
+
+    function resize(){
+      var w = wrap.clientWidth;
+      var h = wrap.clientHeight;
+      if(w === 0 || h === 0) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var clock = new THREE.Clock();
+    function animate(){
+      requestAnimationFrame(animate);
+      var t = clock.getElapsedTime();
+      material.uniforms.uTime.value = t * 0.12;
+      sphere.rotation.y = t * PARAMS.rotationSpeed;
+      sphere.rotation.x = Math.sin(t * 0.08) * 0.06;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+  } catch (err) {
+    var wrapEl = document.getElementById('sphereCanvasWrap');
+    if(wrapEl) wrapEl.setAttribute('data-webgl', 'false');
+    console.warn('Sphere WebGL init failed, fallback shown:', err);
+  }
+})();
+</script>
+
 <script>
 (function(){
   // Mobile nav toggle
@@ -1378,20 +1590,6 @@ section.on-light{ background:var(--light); color:var(--black); }
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
-  }
-
-  // Sphere placeholder detection — if video has no valid source, keep the label
-  var sphereFrame = document.querySelector('.sphere-frame');
-  var sphereVideo = document.querySelector('.sphere-video');
-  if(sphereFrame && sphereVideo){
-    var src = sphereVideo.querySelector('source');
-    if(!src || !src.getAttribute('src')){
-      sphereFrame.setAttribute('data-empty', 'true');
-    } else {
-      sphereVideo.addEventListener('loadeddata', function(){
-        sphereFrame.setAttribute('data-empty', 'false');
-      });
-    }
   }
 
   // Custom cursor dot (desktop hover-capable only)
