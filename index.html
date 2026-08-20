@@ -169,6 +169,24 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   width:6px; height:6px; border-radius:50%;
   background:var(--grad-terra);
 }
+   .sphere-note{
+  position:absolute;
+  left:var(--edge);
+  top:72px;
+
+  font-family:var(--font-body);
+  font-size:14px;
+  font-weight:400;
+  line-height:1.55;
+
+  color:var(--grey-mid);
+
+  letter-spacing:0;
+  text-transform:none;
+
+  opacity:0.8;
+  pointer-events:none;
+}
 
 .nav-links{
   display:flex;
@@ -987,6 +1005,10 @@ section.on-light{ background:var(--light); color:var(--black); }
 <header class="hero" id="top">
   <nav class="hero-nav">
     <a href="#top" class="wordmark"><span class="dot"></span>СТУДИЯ ТЕРРА</a>
+     <div class="sphere-note">
+  *Сфера — это визуальная метафора бренда<br>
+  как живой системы
+</div>
     <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
