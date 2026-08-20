@@ -481,10 +481,10 @@ section.on-light{ background:var(--light); color:var(--black); }
 .wwd-row{
   position:relative;
   display:grid;
-  grid-template-columns:50px 1fr;
+  grid-template-columns:50px 1fr 40px;
   align-items:center;
   gap:20px;
-  padding:clamp(24px, 3.2vw, 44px) 0;
+  padding:38px 0;
   border-bottom:1px solid var(--grey-line);
   cursor:pointer;
   overflow:hidden;
@@ -513,11 +513,15 @@ section.on-light{ background:var(--light); color:var(--black); }
   color:transparent;
 }
 .wwd-arrow{
-  font-size:20px; color:var(--grey-mid);
-  opacity:0; transform:translateX(-10px) rotate(-45deg);
-  transition:opacity 0.4s var(--ease-soft), transform 0.4s var(--ease-soft), color 0.4s var(--ease-soft);
+  opacity:0;
+  transform:translateX(-10px);
+  transition:.3s ease;
+  justify-self:end;
 }
-.wwd-row:hover .wwd-arrow{ opacity:1; transform:translateX(0) rotate(0deg); color:var(--magenta); }
+.wwd-row:hover .wwd-arrow{
+  opacity:1;
+  transform:translateX(0);
+}
 
 /* ==========================================================================
    03 — PRINCIPLES
