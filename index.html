@@ -559,11 +559,20 @@ section.on-light{ background:var(--light); color:var(--black); }
    ========================================================================== */
 .principles{ border-top:1px solid var(--grey-line-soft); }
 .pr-heading{
-  display:grid;
-  grid-template-columns:0.9fr 1.1fr;
-  gap:60px;
-  align-items:start;
+  display:block;
+  width:100%;
   margin-bottom:var(--space-xl);
+}
+
+.pr-heading .eyebrow{
+  margin:0 0 var(--space-sm) 0;
+}
+
+.pr-heading .pr-title{
+  margin:0;
+  width:100%;
+  max-width:none;
+  white-space:nowrap;
 }
 
 .pr-heading .eyebrow{
