@@ -558,6 +558,22 @@ section.on-light{ background:var(--light); color:var(--black); }
    03 — PRINCIPLES
    ========================================================================== */
 .principles{ border-top:1px solid var(--grey-line-soft); }
+.pr-heading{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:60px;
+  align-items:start;
+  margin-bottom:var(--space-xl);
+}
+
+.pr-heading .eyebrow{
+  margin:0;
+}
+
+.pr-heading .pr-title{
+  margin:0;
+  white-space:nowrap;
+}
 .pr-inner{
   display:grid;
   grid-template-columns:1.1fr 0.9fr;
@@ -1104,11 +1120,16 @@ section.on-light{ background:var(--light); color:var(--black); }
 
 <!-- ================= 03 — PRINCIPLES ================= -->
 <section class="principles" id="about">
-  <div class="section-inner pr-inner">
-    <div>
-      <p class="eyebrow reveal" style="margin-bottom:var(--space-sm);">02 — Принципы</p>
-      <h2 class="pr-title reveal">ПРИНЦИПЫ<br>РАБОТЫ С НАМИ</h2>
-      <div class="pr-grid reveal">
+  <div class="section-inner">
+
+    <div class="pr-heading">
+      <p class="eyebrow reveal">02 — Принципы</p>
+      <h2 class="pr-title reveal">ПРИНЦИПЫ РАБОТЫ С НАМИ</h2>
+    </div>
+
+    <div class="pr-inner">
+      <div>
+        <div class="pr-grid reveal">
         <div class="pr-item">
           <div class="pr-name">Мастерство</div>
           <p class="pr-desc">Команда с актуальным подходом и продуманными визуальными решениями.</p>
