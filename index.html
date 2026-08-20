@@ -278,7 +278,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 }
 
 /* ==========================================================================
-   CODED 3D SPHERE
+   CODED 3D SPHERE — TERRA
    ========================================================================== */
 
 .sphere-stage{
@@ -289,16 +289,17 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   align-items:center;
   justify-content:center;
 
-  padding-top:clamp(20px, 4vh, 60px);
+  padding-top:clamp(10px, 2vh, 30px);
 
   pointer-events:none;
 }
 
-/* Контейнер всей сферы */
+
+/* Размер всей области сферы */
 .sphere-frame{
   position:relative;
 
-  width:clamp(300px, 42vw, 660px);
+  width:clamp(270px, 31vw, 490px);
   aspect-ratio:1 / 1;
 
   display:flex;
@@ -308,15 +309,16 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   isolation:isolate;
 }
 
-/* Большое мягкое свечение ПОЗАДИ сферы */
+
+/* МЯГКОЕ СВЕЧЕНИЕ ПОЗАДИ */
 .sphere-glow{
   position:absolute;
 
   left:50%;
   top:50%;
 
-  width:115%;
-  height:115%;
+  width:175%;
+  height:175%;
 
   transform:translate(-50%, -50%);
 
@@ -324,48 +326,36 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
   background:
     radial-gradient(
-      circle at 35% 50%,
+      ellipse at 38% 50%,
       rgba(39,62,255,0.42) 0%,
-      rgba(39,62,255,0.24) 24%,
-      transparent 58%
-    ),
-    radial-gradient(
-      circle at 68% 50%,
-      rgba(210,38,232,0.34) 0%,
-      rgba(140,45,255,0.20) 28%,
-      transparent 60%
-    );
-
-  filter:blur(48px);
-
-  opacity:0.88;
-
-  z-index:-2;
-
-  animation:terraGlowPulse 6s ease-in-out infinite alternate;
-}
-
-/* Второе, более компактное свечение */
-.sphere-glow::after{
-  content:'';
-
-  position:absolute;
-  inset:14%;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(101,54,255,0.26),
-      rgba(210,38,232,0.10) 42%,
+      rgba(39,62,255,0.24) 18%,
+      rgba(39,62,255,0.10) 35%,
+      rgba(39,62,255,0.035) 50%,
       transparent 72%
+    ),
+
+    radial-gradient(
+      ellipse at 64% 48%,
+      rgba(210,38,232,0.34) 0%,
+      rgba(140,45,255,0.18) 20%,
+      rgba(140,45,255,0.07) 38%,
+      rgba(210,38,232,0.025) 52%,
+      transparent 74%
     );
 
-  filter:blur(28px);
+  filter:blur(72px);
+
+  opacity:0.82;
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  animation:terraGlowPulse 7s ease-in-out infinite alternate;
 }
 
-/* Сам прозрачный WebGL canvas */
+
+/* Canvas абсолютно прозрачный */
 #terraSphere{
   position:absolute;
   inset:0;
@@ -375,137 +365,24 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
   display:block;
 
-  z-index:2;
-
   background:transparent;
+
+  z-index:2;
 }
 
-/* Очень лёгкое дыхание свечения */
+
 @keyframes terraGlowPulse{
-  0%{
-    transform:translate(-50%, -50%) scale(0.94);
+
+  from{
+    transform:translate(-50%, -50%) scale(0.96);
     opacity:0.72;
   }
 
-  100%{
-    transform:translate(-50%, -50%) scale(1.07);
-    opacity:0.96;
+  to{
+    transform:translate(-50%, -50%) scale(1.04);
+    opacity:0.88;
   }
-}
-.hero-content{
-  position:absolute;
-  z-index:30;
-  left:0;
-  right:0;
-  bottom:8vh;
-  padding:0 var(--edge);
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:var(--space-lg);
-  pointer-events:none;
-}
-.hero-content > *{ pointer-events:auto; }
 
-.hero-headline{
-  line-height:1.18;
-  max-width:620px;
-  font-family:var(--font-display);
-  font-weight:600;
-  font-size:clamp(28px, 3.6vw, 48px);
-  line-height:1.12;
-  letter-spacing:-0.01em;
-  color:var(--white);
-}
-.hero-headline .thin{ font-weight:200; color:var(--grey-mid); }
-.hero-tag{
-  font-family:var(--font-display);
-  font-size:12px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--grey-mid);
-  margin-bottom:var(--space-sm);
-}
-
-.hero-side{
-  max-width:340px;
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-md);
-}
-.hero-copy{
-  font-size:14px;
-  line-height:1.65;
-  color:var(--grey-mid);
-}
-.hero-btns{ display:flex; gap:14px; flex-wrap:wrap; }
-
-.btn-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  font-size:12px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  font-weight:600;
-  padding:16px 26px;
-  border:1px solid var(--grey-line);
-  position:relative;
-  overflow:hidden;
-  transition:border-color 0.4s var(--ease-soft), color 0.4s var(--ease-soft);
-}
-.btn-cta span{ position:relative; z-index:2; }
-.btn-cta::before{
-  content:'';
-  position:absolute; inset:0;
-  background:var(--grad-terra);
-  transform:translateX(-101%);
-  transition:transform 0.5s var(--ease-out);
-  z-index:1;
-}
-.btn-cta:hover{ border-color:transparent; color:var(--white); }
-.btn-cta:hover::before{ transform:translateX(0); }
-
-.btn-ghost{
-  font-size:12px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  font-weight:600;
-  padding:16px 8px;
-  color:var(--grey-mid);
-  border-bottom:1px solid var(--grey-line);
-  transition:color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft);
-}
-.btn-ghost:hover{ color:var(--white); border-color:var(--magenta); }
-
-.btn-cta.on-light{ border-color:var(--grey-line-dark); color:var(--black); }
-.btn-cta.on-light:hover{ color:var(--white); }
-
-.scroll-hint{
-  position:absolute;
-  bottom:var(--space-lg);
-  left:50%;
-  transform:translateX(-50%);
-  z-index:30;
-  font-size:10px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--grey-mid);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-}
-.scroll-hint .line{
-  width:1px; height:34px;
-  background:linear-gradient(var(--grey-mid), transparent);
-  animation:scroll-run 2.2s ease-in-out infinite;
-}
-@keyframes scroll-run{
-  0%{ transform:scaleY(0); transform-origin:top; opacity:0; }
-  40%{ transform:scaleY(1); transform-origin:top; opacity:1; }
-  60%{ transform:scaleY(1); transform-origin:bottom; opacity:1; }
-  100%{ transform:scaleY(0); transform-origin:bottom; opacity:0; }
 }
 
 /* ==========================================================================
@@ -1447,35 +1324,44 @@ section.on-light{ background:var(--light); color:var(--black); }
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
- /* =========================================================
-   TERRA — PROCEDURAL 3D SPHERE
+/* =========================================================
+   TERRA — DARK LIQUID 3D SPHERE
    ========================================================= */
 
 var sphereCanvas = document.getElementById('terraSphere');
 
 if(sphereCanvas && window.THREE){
 
-  /* ---------- SCENE ---------- */
+  /* ---------------------------------------------------------
+     SCENE
+     --------------------------------------------------------- */
 
   var scene = new THREE.Scene();
 
+
+  /* ---------------------------------------------------------
+     CAMERA
+     --------------------------------------------------------- */
+
   var camera = new THREE.PerspectiveCamera(
-    35,
+    34,
     1,
     0.1,
     100
   );
 
-  camera.position.z = 5.4;
+  camera.position.z = 5.1;
 
 
-  /* ---------- RENDERER ---------- */
+  /* ---------------------------------------------------------
+     RENDERER
+     --------------------------------------------------------- */
 
   var renderer = new THREE.WebGLRenderer({
-    canvas:sphereCanvas,
-    alpha:true,
-    antialias:true,
-    powerPreference:'high-performance'
+    canvas: sphereCanvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
   });
 
   renderer.setClearColor(0x000000, 0);
@@ -1485,359 +1371,570 @@ if(sphereCanvas && window.THREE){
   );
 
 
-  /* ---------- GEOMETRY ---------- */
+  /* ---------------------------------------------------------
+     GEOMETRY
+
+     Детализированная сфера.
+     Поверхность будет деформироваться шейдером.
+     --------------------------------------------------------- */
 
   var geometry = new THREE.SphereGeometry(
-    1.42,
+    1.36,
     128,
     128
   );
 
 
-  /* ---------- MAIN SPHERE SHADER ---------- */
+  /* ---------------------------------------------------------
+     MATERIAL
+     --------------------------------------------------------- */
 
-  var sphereMaterial = new THREE.ShaderMaterial({
+  var material = new THREE.ShaderMaterial({
 
-    transparent:true,
+    transparent: true,
 
-    uniforms:{
-      uTime:{
-        value:0
+    uniforms: {
+
+      uTime: {
+        value: 0
       },
 
-      uBlue:{
-        value:new THREE.Color('#273EFF')
+      uBlue: {
+        value: new THREE.Color('#1538FF')
       },
 
-      uViolet:{
-        value:new THREE.Color('#6536FF')
+      uDeepBlue: {
+        value: new THREE.Color('#071059')
       },
 
-      uPurple:{
-        value:new THREE.Color('#8C2DFF')
+      uViolet: {
+        value: new THREE.Color('#5420D6')
       },
 
-      uMagenta:{
-        value:new THREE.Color('#D226E8')
+      uMagenta: {
+        value: new THREE.Color('#E326E8')
       }
+
     },
 
-    vertexShader:`
+
+    /* ========================================================
+       VERTEX SHADER
+       Делает поверхность жидкой и неровной
+       ======================================================== */
+
+    vertexShader: `
 
       uniform float uTime;
 
       varying vec3 vNormalW;
       varying vec3 vPositionW;
-      varying float vWave;
 
-      /*
-        Неровность поверхности.
-        Несколько волн накладываются друг на друга,
-        поэтому шар не выглядит идеально пластиковым.
-      */
+      varying float vNoise;
+      varying float vNoise2;
+
 
       void main(){
 
         vec3 p = position;
 
-        float t = uTime * 0.42;
+        float t = uTime * 0.32;
 
-        float wave1 =
-          sin(p.y * 5.4 + t * 1.4) *
-          sin(p.x * 4.2 - t);
 
-        float wave2 =
-          sin(p.z * 7.0 - t * 1.3) *
-          cos(p.y * 3.6 + t * 0.8);
+        /*
+          Несколько волн разного масштаба.
+          Именно они создают органические впадины,
+          а не просто покачивание шара.
+        */
 
-        float wave3 =
+        float n1 =
+          sin(p.x * 5.2 + t * 1.3) *
+          sin(p.y * 4.8 - t * 0.8);
+
+
+        float n2 =
+          sin(p.z * 7.2 - t * 1.1) *
+          cos(p.x * 5.5 + t * 0.7);
+
+
+        float n3 =
           sin(
-            (p.x + p.y + p.z) * 6.5
-            + t * 1.7
+            p.x * 9.0 +
+            p.y * 6.0 +
+            p.z * 7.0 +
+            t
           );
 
-        float displacement =
-            wave1 * 0.045
-          + wave2 * 0.032
-          + wave3 * 0.022;
 
-        p += normal * displacement;
+        float n4 =
+          sin(
+            length(p.xy) * 13.0 -
+            t * 1.4
+          );
+
+
+        float deformation =
+            n1 * 0.050
+          + n2 * 0.034
+          + n3 * 0.020
+          + n4 * 0.012;
+
+
+        p += normal * deformation;
+
 
         vec4 worldPosition =
-          modelMatrix * vec4(p, 1.0);
+          modelMatrix *
+          vec4(p, 1.0);
 
-        vPositionW = worldPosition.xyz;
 
-        vNormalW = normalize(
-          mat3(modelMatrix) * normal
-        );
+        vPositionW =
+          worldPosition.xyz;
 
-        vWave =
-          wave1 * 0.50
-          + wave2 * 0.30
-          + wave3 * 0.20;
+
+        vNormalW =
+          normalize(
+            mat3(modelMatrix) *
+            normal
+          );
+
+
+        vNoise =
+          n1 * 0.45 +
+          n2 * 0.35 +
+          n3 * 0.20;
+
+
+        vNoise2 =
+          n3 * 0.60 +
+          n4 * 0.40;
+
 
         gl_Position =
           projectionMatrix *
           viewMatrix *
           worldPosition;
+
       }
+
     `,
 
-    fragmentShader:`
+
+    /* ========================================================
+       FRAGMENT SHADER
+       Цвет + металл + тёмный центр + яркие края
+       ======================================================== */
+
+    fragmentShader: `
 
       precision highp float;
+
 
       uniform float uTime;
 
       uniform vec3 uBlue;
+      uniform vec3 uDeepBlue;
       uniform vec3 uViolet;
-      uniform vec3 uPurple;
       uniform vec3 uMagenta;
+
 
       varying vec3 vNormalW;
       varying vec3 vPositionW;
-      varying float vWave;
+
+      varying float vNoise;
+      varying float vNoise2;
+
 
       void main(){
 
         vec3 normal =
           normalize(vNormalW);
 
+
         vec3 viewDir =
           normalize(
-            cameraPosition - vPositionW
+            cameraPosition -
+            vPositionW
           );
 
-        /*
-          Fresnel отвечает за яркие края.
-        */
+
+        /* ----------------------------------------------------
+           FRESNEL
+           Светящиеся края
+           ---------------------------------------------------- */
+
+        float facing =
+          max(
+            dot(
+              normal,
+              viewDir
+            ),
+            0.0
+          );
+
 
         float fresnel =
           pow(
-            1.0 -
-            max(
-              dot(normal, viewDir),
-              0.0
-            ),
-            2.25
+            1.0 - facing,
+            2.15
           );
 
-        /*
-          Направленный цвет:
-          слева больше синего,
-          справа больше розово-фиолетового.
-        */
+
+        float thinRim =
+          pow(
+            1.0 - facing,
+            5.0
+          );
+
+
+        /* ----------------------------------------------------
+           Слева синий, справа magenta
+           ---------------------------------------------------- */
 
         float side =
           normal.x * 0.5 + 0.5;
 
-        vec3 sideColor =
+
+        vec3 sideColour =
           mix(
             uBlue,
             uMagenta,
             smoothstep(
-              0.08,
-              0.92,
+              0.12,
+              0.88,
               side
             )
           );
 
-        /*
-          Дополнительные живые переливы.
-        */
 
-        float flow =
-          sin(
-            vPositionW.y * 5.5 +
-            vPositionW.x * 3.0 +
-            uTime * 0.65
-          );
+        /* ----------------------------------------------------
+           ОЧЕНЬ ТЁМНЫЙ основной материал
+           ---------------------------------------------------- */
 
-        flow =
-          flow * 0.5 + 0.5;
-
-        vec3 flowColor =
-          mix(
-            uViolet,
-            uPurple,
-            flow
-          );
-
-        /*
-          Центр намеренно очень тёмный,
-          как у твоего исходного шара.
-        */
-
-        vec3 darkBase =
+        vec3 colour =
           vec3(
-            0.008,
-            0.008,
-            0.025
+            0.003,
+            0.004,
+            0.018
           );
 
-        float bodyLight =
-          0.23 +
+
+        /*
+          Мягкое внутреннее синее освещение.
+        */
+
+        float leftLight =
           max(
             dot(
               normal,
               normalize(
                 vec3(
-                  -0.5,
-                   0.7,
-                   0.8
+                  -0.75,
+                   0.15,
+                   0.75
                 )
               )
             ),
             0.0
-          ) * 0.52;
+          );
 
-        vec3 colour =
-          darkBase;
 
         colour +=
-          sideColor *
-          bodyLight *
-          0.58;
+          uDeepBlue *
+          leftLight *
+          0.72;
 
-        colour +=
-          flowColor *
-          (vWave * 0.10 + 0.09);
 
         /*
-          Электрический край.
+          Фиолетовое освещение справа.
         */
 
+        float rightLight =
+          max(
+            dot(
+              normal,
+              normalize(
+                vec3(
+                   0.65,
+                   0.18,
+                   0.75
+                )
+              )
+            ),
+            0.0
+          );
+
+
         colour +=
-          sideColor *
-          fresnel *
-          1.65;
+          uViolet *
+          rightLight *
+          0.42;
+
 
         /*
-          Очень яркий тонкий rim.
+          Жидкие переливы поверхности.
         */
 
-        float rim =
-          pow(fresnel, 2.3);
+        float flow =
+          vNoise * 0.5 + 0.5;
+
+
+        float flow2 =
+          vNoise2 * 0.5 + 0.5;
+
 
         colour +=
+          sideColour *
+          flow *
+          0.11;
+
+
+        /*
+          Тёмные круглые/органические впадины.
+        */
+
+        float cavities =
+          smoothstep(
+            0.55,
+            0.92,
+            flow2
+          );
+
+
+        colour *=
+          mix(
+            1.0,
+            0.22,
+            cavities * 0.72
+          );
+
+
+        /* ----------------------------------------------------
+           ЯРКИЙ СИНИЙ / РОЗОВЫЙ ОБОДОК
+           ---------------------------------------------------- */
+
+        vec3 rimColour =
           mix(
             vec3(
-              0.12,
-              0.28,
+              0.05,
+              0.20,
               1.0
             ),
             vec3(
               1.0,
-              0.12,
+              0.06,
               0.92
             ),
             side
-          )
-          * rim
-          * 1.15;
+          );
 
-        /*
-          Верхний холодный блик.
-        */
+
+        colour +=
+          rimColour *
+          fresnel *
+          1.20;
+
+
+        colour +=
+          rimColour *
+          thinRim *
+          1.85;
+
+
+        /* ----------------------------------------------------
+           БЕЛО-СИНИЙ БЛИК СЛЕВА СВЕРХУ
+           ---------------------------------------------------- */
 
         float highlight =
           pow(
+
             max(
+
               dot(
+
                 normal,
+
                 normalize(
                   vec3(
-                    -0.35,
-                     0.8,
+                    -0.48,
+                     0.72,
                      0.55
                   )
                 )
+
               ),
+
               0.0
+
             ),
-            8.0
+
+            18.0
+
           );
+
 
         colour +=
           vec3(
-            0.35,
             0.42,
+            0.55,
             1.0
           )
-          * highlight
-          * 0.90;
+          *
+          highlight
+          *
+          1.25;
+
+
+        /* ----------------------------------------------------
+           ФИОЛЕТОВЫЙ БЛИК СПРАВА
+           ---------------------------------------------------- */
+
+        float pinkHighlight =
+          pow(
+
+            max(
+
+              dot(
+
+                normal,
+
+                normalize(
+                  vec3(
+                    0.62,
+                    0.42,
+                    0.58
+                  )
+                )
+
+              ),
+
+              0.0
+
+            ),
+
+            16.0
+
+          );
+
+
+        colour +=
+          vec3(
+            0.95,
+            0.08,
+            0.88
+          )
+          *
+          pinkHighlight
+          *
+          0.72;
+
+
+        /*
+          Очень лёгкая тональная компрессия.
+          Не даёт шару становиться кислотным.
+        */
+
+        colour =
+          colour /
+          (
+            colour +
+            vec3(0.72)
+          );
+
 
         gl_FragColor =
           vec4(
             colour,
             1.0
           );
+
       }
+
     `
 
   });
 
 
-  /* ---------- MAIN SPHERE ---------- */
+  /* ---------------------------------------------------------
+     SPHERE
+     --------------------------------------------------------- */
 
-  var sphere = new THREE.Mesh(
-    geometry,
-    sphereMaterial
-  );
+  var sphere =
+    new THREE.Mesh(
+      geometry,
+      material
+    );
 
-  sphere.rotation.x = -0.14;
-  sphere.rotation.z = 0.08;
+
+  sphere.rotation.x = -0.12;
+  sphere.rotation.z = 0.06;
+
 
   scene.add(sphere);
 
 
-  /* ---------- OUTER WEBGL GLOW ---------- */
 
-  var glowGeometry =
+  /* ---------------------------------------------------------
+     VERY SUBTLE OUTER RIM
+     Не тот большой круг, который был раньше.
+     Только тонкий свет возле самого объекта.
+     --------------------------------------------------------- */
+
+  var rimGeometry =
     new THREE.SphereGeometry(
-      1.53,
+      1.405,
       96,
       96
     );
 
-  var glowMaterial =
+
+  var rimMaterial =
     new THREE.ShaderMaterial({
 
-      transparent:true,
+      transparent: true,
 
-      side:THREE.BackSide,
+      side: THREE.BackSide,
 
-      depthWrite:false,
+      depthWrite: false,
 
-      blending:THREE.AdditiveBlending,
+      blending:
+        THREE.AdditiveBlending,
 
-      uniforms:{
-        uBlue:{
-          value:new THREE.Color('#273EFF')
+
+      uniforms: {
+
+        uBlue: {
+          value:
+            new THREE.Color('#163AFF')
         },
 
-        uMagenta:{
-          value:new THREE.Color('#D226E8')
+        uMagenta: {
+          value:
+            new THREE.Color('#E326E8')
         }
+
       },
 
-      vertexShader:`
+
+      vertexShader: `
 
         varying vec3 vNormalW;
         varying vec3 vPositionW;
 
+
         void main(){
 
-          vec4 worldPosition =
+          vec4 wp =
             modelMatrix *
             vec4(
               position,
               1.0
             );
 
+
           vPositionW =
-            worldPosition.xyz;
+            wp.xyz;
+
 
           vNormalW =
             normalize(
@@ -1845,28 +1942,35 @@ if(sphereCanvas && window.THREE){
               normal
             );
 
+
           gl_Position =
             projectionMatrix *
             viewMatrix *
-            worldPosition;
+            wp;
+
         }
 
       `,
 
-      fragmentShader:`
+
+      fragmentShader: `
 
         precision highp float;
+
 
         uniform vec3 uBlue;
         uniform vec3 uMagenta;
 
+
         varying vec3 vNormalW;
         varying vec3 vPositionW;
+
 
         void main(){
 
           vec3 normal =
             normalize(vNormalW);
+
 
           vec3 viewDir =
             normalize(
@@ -1874,9 +1978,12 @@ if(sphereCanvas && window.THREE){
               vPositionW
             );
 
-          float fresnel =
+
+          float f =
             pow(
+
               1.0 -
+
               max(
                 dot(
                   normal,
@@ -1884,44 +1991,183 @@ if(sphereCanvas && window.THREE){
                 ),
                 0.0
               ),
-              2.0
+
+              4.0
+
             );
+
 
           float side =
             normal.x *
             0.5 +
             0.5;
 
-          vec3 glowColour =
+
+          vec3 c =
             mix(
               uBlue,
               uMagenta,
               side
             );
 
-          float alpha =
-            fresnel *
-            0.20;
 
           gl_FragColor =
             vec4(
-              glowColour,
-              alpha
+              c,
+              f * 0.20
             );
+
         }
 
       `
 
     });
 
-  var glowSphere =
+
+  var rim =
     new THREE.Mesh(
-      glowGeometry,
-      glowMaterial
+      rimGeometry,
+      rimMaterial
     );
 
-  scene.add(glowSphere);
 
+  scene.add(rim);
+
+
+
+  /* ---------------------------------------------------------
+     RESIZE
+     --------------------------------------------------------- */
+
+  function resizeTerraSphere(){
+
+    var frame =
+      sphereCanvas.parentElement;
+
+
+    if(!frame){
+      return;
+    }
+
+
+    var width =
+      frame.clientWidth;
+
+
+    var height =
+      frame.clientHeight;
+
+
+    renderer.setSize(
+      width,
+      height,
+      false
+    );
+
+
+    camera.aspect =
+      width / height;
+
+
+    camera.updateProjectionMatrix();
+
+  }
+
+
+  resizeTerraSphere();
+
+
+  window.addEventListener(
+    'resize',
+    resizeTerraSphere
+  );
+
+
+
+  /* ---------------------------------------------------------
+     ANIMATION
+     --------------------------------------------------------- */
+
+  var clock =
+    new THREE.Clock();
+
+
+  function animateTerraSphere(){
+
+    requestAnimationFrame(
+      animateTerraSphere
+    );
+
+
+    var t =
+      clock.getElapsedTime();
+
+
+    material.uniforms
+      .uTime.value = t;
+
+
+    /* медленное вращение */
+
+    sphere.rotation.y =
+      t * 0.105;
+
+
+    sphere.rotation.x =
+      -0.12 +
+      Math.sin(
+        t * 0.17
+      ) *
+      0.025;
+
+
+    sphere.rotation.z =
+      0.06 +
+      Math.sin(
+        t * 0.13
+      ) *
+      0.018;
+
+
+    rim.rotation.copy(
+      sphere.rotation
+    );
+
+
+    /*
+      Очень лёгкое дыхание,
+      практически незаметное.
+    */
+
+    var breathe =
+      1 +
+      Math.sin(
+        t * 0.65
+      ) *
+      0.006;
+
+
+    sphere.scale.setScalar(
+      breathe
+    );
+
+
+    rim.scale.setScalar(
+      breathe
+    );
+
+
+    renderer.render(
+      scene,
+      camera
+    );
+
+  }
+
+
+  animateTerraSphere();
+
+}
 
   /* ---------- RESIZE ---------- */
 
