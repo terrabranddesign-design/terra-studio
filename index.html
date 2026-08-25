@@ -915,8 +915,35 @@ section.on-light{ background:var(--light); color:var(--black); }
   align-self:flex-start;
   margin-top:var(--space-sm);
 }
-.lf-privacy{ font-size:11px; color:var(--grey-mid); margin-top:var(--space-sm); line-height:1.6; max-width:44ch; }
+.lf-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--grey-mid);
+  cursor: pointer;
+}
 
+.lf-consent input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+  accent-color: #6c3cff;
+  cursor: pointer;
+}
+
+.lf-consent a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.lf-consent a:hover {
+  color: #fff;
+}
 /* ==========================================================================
    08 — FOOTER
    ========================================================================== */
@@ -1344,7 +1371,15 @@ section.on-light{ background:var(--light); color:var(--black); }
       </div>
 
       <button type="submit" class="btn-cta lf-submit"><span>Отправить заявку</span></button>
-      <p class="lf-privacy">Отправляя форму, вы соглашаетесь на обработку персональных данных. Мы не передаём данные третьим лицам.</p>
+      <label class="lf-consent">
+  <input type="checkbox" name="consent" required>
+  <span>
+    Я даю согласие на
+    <a href="/consent.html" target="_blank">обработку персональных данных</a>
+    и ознакомлен(а) с
+    <a href="/privacy.html" target="_blank">Политикой обработки персональных данных</a>
+  </span>
+</label>
     </form>
   </div>
 </section>
