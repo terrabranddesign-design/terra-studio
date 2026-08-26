@@ -1692,19 +1692,81 @@ section.on-light{ background:var(--light); color:var(--black); }
     });
   }
 
-  // Lead form — prevent actual submit in prototype, show simple confirmation
-  var form = document.getElementById('leadForm');
-  if(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var btn = form.querySelector('.lf-submit span');
+ // Lead form → Trello
+var form = document.getElementById('leadForm');
+
+if(form){
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    var btn = form.querySelector('.lf-submit span');
+
+    var originalText = btn ? btn.textContent : 'Отправить заявку';
+
+    var scopes = Array.from(
+      form.querySelectorAll('input[name="scope"]:checked')
+    )
+    .map(function(item){
+      return item.parentElement.textContent.trim();
+    })
+    .join(', ');
+
+    var data = {
+      name: document.getElementById('lfName').value.trim(),
+      company: document.getElementById('lfCompany').value.trim(),
+      contact: document.getElementById('lfPhone').value.trim(),
+      email: document.getElementById('lfEmail').value.trim(),
+      scope: scopes,
+      description: document.getElementById('lfDesc').value.trim()
+    };
+
+    try {
+
       if(btn){
-        var original = btn.textContent;
-        btn.textContent = 'Заявка отправлена';
-        setTimeout(function(){ btn.textContent = original; form.reset(); }, 2200);
+        btn.textContent = 'Отправляем...';
       }
-    });
-  }
+
+      var response = await fetch('/api/trello', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if(!response.ok){
+        throw new Error('Ошибка отправки');
+      }
+
+      if(btn){
+        btn.textContent = 'Заявка отправлена';
+      }
+
+      form.reset();
+
+      setTimeout(function(){
+        if(btn){
+          btn.textContent = originalText;
+        }
+      }, 2500);
+
+    } catch(error){
+
+      console.error(error);
+
+      if(btn){
+        btn.textContent = 'Ошибка. Попробуйте ещё раз';
+      }
+
+      setTimeout(function(){
+        if(btn){
+          btn.textContent = originalText;
+        }
+      }, 3000);
+    }
+
+  });
+}
 })();
 </script>
 
