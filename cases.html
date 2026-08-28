@@ -59,7 +59,14 @@ button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
 .hero-copy{font-family:var(--font-display);font-size:clamp(16px,1.75vw,26px);font-weight:400;line-height:1.35;letter-spacing:-.02em;padding-bottom:3px}
 .hero-copy .muted{color:var(--grey-mid)}
 .hero-index{position:absolute;right:var(--edge);top:112px;color:var(--grey-mid);font-size:11px;letter-spacing:.16em;writing-mode:vertical-rl}
-.hero-rule{position:absolute;left:var(--edge);right:var(--edge);top:118px;height:1px;background:var(--grey-line-soft)}
+.hero-rule{
+  position:absolute;
+  left:var(--edge);
+  right:var(--edge);
+  top:118px;
+  height:1px;
+  background:var(--grey-line-soft)
+}
 .hero-orbit{position:absolute;left:51%;top:46%;width:clamp(190px,27vw,420px);aspect-ratio:1;border:1px solid rgba(140,45,255,.22);border-radius:50%;transform:translate(-50%,-50%);animation:orbit 18s linear infinite}
 .hero-orbit::before{content:'✦';position:absolute;left:50%;top:-8px;color:var(--magenta);font-size:14px}
 @keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg)}}
@@ -161,7 +168,7 @@ button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
      <a href="/#contact" class="nav-cta">ОБСУДИТЬ ПРОЕКТ</a>
     </div>
   </nav>
-  <div class="hero-rule" aria-hidden="true"></div><div class="hero-index" aria-hidden="true">TERRA / SELECTED WORK</div><div class="hero-orbit" aria-hidden="true"></div>
+<div class="hero-index" aria-hidden="true">TERRA / SELECTED WORK</div><div class="hero-orbit" aria-hidden="true"></div>
   <div class="hero-stage">
     <div class="hero-grid">
       <div><p class="eyebrow hero-kicker">Портфолио студии</p><h1 class="hero-title">КЕЙСЫ</h1></div>
