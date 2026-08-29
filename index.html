@@ -1018,6 +1018,10 @@ section.on-light{ background:var(--light); color:var(--black); }
 }
 
 @media (max-width:640px){
+   .whatwedo-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
   .nav-links{
     position:fixed; inset:0; z-index:100;
     background:rgba(5,5,7,0.98);
@@ -1075,6 +1079,9 @@ section.on-light{ background:var(--light); color:var(--black); }
   .scroll-hint{
     bottom:14px;
   }
+   .whatwedo .section-inner{
+  padding-top:60px;
+}
 }
 </style>
 </head>
