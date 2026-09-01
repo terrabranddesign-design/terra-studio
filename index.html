@@ -1021,6 +1021,15 @@ section.on-light{ background:var(--light); color:var(--black); }
   .proj-grid{ grid-template-columns:1fr; }
   .cursor-dot{ display:none; }
 }
+      @media (hover:none){
+  .btn-cta::before{
+    transition:none;
+  }
+
+  .btn-cta:hover::before{
+    transform:translateX(-101%);
+  }
+}
 
 @media (max-width:640px){
    .whatwedo-grid{
