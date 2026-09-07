@@ -19,7 +19,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="До Корки — Ремесло в форме / Студия ТЕРРА">
   <meta property="og:description" content="Брендинг ремесленной пекарни: авторский логотип, тактильная система, упаковка и digital.">
-  <meta property="og:image" content="https://terra-brand.ru/images/do-korki/hero.png">
+  <meta property="og:image" content="https://terra-brand.ru/images/do-korki/hero.jpg">
   <meta property="og:url" content="https://terra-brand.ru/cases/do-korki">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -132,64 +132,146 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 }
 
 /* ==========================================================================
-   NAV — адаптация навигации ТЕРРА под светлый фон кейса
+   TERRA HEADER
+   Структура и поведение перенесены из cases.html (.hero-nav / .nav-links /
+   .nav-cta / .nav-toggle) без изменений логики. Цвета адаптированы под
+   светлый / молочный фон страницы «До Корки» — без тёмной плашки.
    ========================================================================== */
-.dk-nav{
+.terra-header{
   position:relative;
-  z-index:60;
+  z-index:80;
+  background:var(--dk-milk);
+}
+
+.terra-nav{
+  position:relative;
+  z-index:80;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:28px var(--dk-edge);
+  padding:var(--terra-space-md, 32px) var(--dk-edge) 0;
 }
 
-.dk-wordmark{
+.terra-wordmark{
   font-family:var(--terra-font-display);
   font-weight:500;
-  font-size:14px;
+  font-size:15px;
   letter-spacing:0.06em;
   color:var(--dk-umbra);
   display:flex;
   align-items:center;
   gap:8px;
+  white-space:nowrap;
 }
-.dk-wordmark .dot{
+.terra-wordmark .dot{
   width:6px;
   height:6px;
   border-radius:50%;
   background:var(--terra-grad);
 }
 
-.dk-nav-links{
+.terra-nav-links{
   display:flex;
   align-items:center;
-  gap:clamp(16px, 2.4vw, 34px);
+  gap:clamp(20px, 3vw, 40px);
   font-size:12px;
-  letter-spacing:0.08em;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
   font-weight:500;
+}
+.terra-nav-links a{
+  position:relative;
+  padding-bottom:4px;
   color:var(--dk-umbra);
-}
-.dk-nav-links a{
   opacity:0.72;
-  transition:opacity 0.3s var(--dk-ease-soft);
+  transition:opacity 0.3s var(--dk-ease-soft), color 0.3s var(--dk-ease-soft);
 }
-.dk-nav-links a:hover{ opacity:1; color:var(--dk-terracotta); }
+.terra-nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:1px;
+  background:var(--dk-terracotta);
+  transition:width 0.35s var(--dk-ease-out);
+}
+.terra-nav-links a:hover{
+  opacity:1;
+  color:var(--dk-terracotta);
+}
+.terra-nav-links a:hover::after,
+.terra-nav-links a[aria-current="page"]::after{
+  width:100%;
+}
+.terra-nav-links a[aria-current="page"]{
+  opacity:1;
+  color:var(--dk-terracotta);
+}
 
-.dk-nav-toggle{ display:none; }
+.terra-nav-cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:42px;
+  padding:0 28px !important;
+  border:1px solid rgba(56,39,31,0.35);
+  color:var(--dk-umbra);
+  white-space:nowrap;
+  opacity:1 !important;
+  transition:border-color 0.3s var(--dk-ease-soft), color 0.3s var(--dk-ease-soft);
+}
+.terra-nav-cta::after{ display:none; }
+.terra-nav-cta:hover{
+  border-color:var(--dk-terracotta);
+  color:var(--dk-terracotta);
+}
 
-@media (max-width:860px){
-  .dk-nav-links{ display:none; }
-  .dk-nav-toggle{
+.terra-nav-toggle{ display:none; }
+
+@media (max-width:640px){
+
+  .terra-nav{ padding-top:24px; }
+
+  .terra-nav-links{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:var(--dk-milk);
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:var(--space-lg, 64px);
+    font-size:16px;
+    transform:translateY(-100%);
+    transition:transform 0.5s var(--dk-ease-out);
+  }
+  .terra-nav-links.is-open{ transform:none; }
+
+  .terra-nav-toggle{
     display:flex;
     flex-direction:column;
     gap:5px;
+    z-index:110;
+    position:relative;
     padding:6px;
   }
-  .dk-nav-toggle span{
+  .terra-nav-toggle span{
     width:20px;
     height:1px;
     background:var(--dk-umbra);
+    transition:transform 0.3s, opacity 0.3s;
   }
+  .terra-nav-toggle.is-open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+  .terra-nav-toggle.is-open span:nth-child(2){ opacity:0; }
+  .terra-nav-toggle.is-open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+  .terra-nav-cta{ display:none; }
+  .terra-nav-links .terra-nav-cta{
+    display:inline-flex;
+    border-color:rgba(56,39,31,0.35);
+  }
+
 }
 
 /* ==========================================================================
@@ -826,7 +908,127 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .dk-next-right:hover{ opacity:0.7; }
 
 /* ==========================================================================
-   FOOTER — ТЕРРА (адаптировано из index.html без изменения логики)
+   TERRA CTA — «ЕСТЬ ЗАДАЧА?»
+   Структура, типографика и поведение перенесены из cases.html (.cta /
+   .cta-title / .cta-bottom / .btn-cta) без изменений. Секция намеренно
+   тёмная и фирменная — здесь начинается возвращение к TERRA.
+   ========================================================================== */
+.terra-cta{
+  position:relative;
+  overflow:hidden;
+  background:var(--terra-black);
+  color:var(--terra-white);
+  border-top:1px solid var(--terra-grey-line);
+}
+.terra-cta::before{
+  content:'';
+  position:absolute;
+  width:75vw;
+  height:75vw;
+  right:-28vw;
+  top:-34vw;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(101,54,255,0.25), rgba(210,38,232,0.1) 35%, transparent 65%);
+  filter:blur(40px);
+  pointer-events:none;
+}
+.terra-cta-inner{
+  position:relative;
+  z-index:1;
+  max-width:var(--dk-container);
+  margin:0 auto;
+  padding:var(--dk-edge);
+  min-height:70svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.terra-cta-eyebrow{
+  font-family:var(--terra-font-body);
+  font-size:12px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--terra-grey-mid);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.terra-cta-eyebrow::before{
+  content:'';
+  width:26px;
+  height:1px;
+  background:var(--terra-grad);
+}
+.terra-cta-title{
+  font-family:var(--terra-font-display);
+  font-size:clamp(42px, 7.3vw, 104px);
+  font-weight:500;
+  line-height:1.06;
+  letter-spacing:-0.035em;
+  max-width:12ch;
+  margin-top:72px;
+}
+.terra-cta-title .grad-text{
+  background:var(--terra-grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.terra-cta-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  border-top:1px solid var(--terra-grey-line);
+  padding-top:30px;
+}
+.terra-cta-note{
+  font-family:var(--terra-font-body);
+  font-size:14px;
+  line-height:1.65;
+  color:var(--terra-grey-mid);
+  max-width:36ch;
+}
+.terra-btn-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-family:var(--terra-font-body);
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:16px 26px;
+  border:1px solid var(--terra-grey-line);
+  position:relative;
+  overflow:hidden;
+  white-space:nowrap;
+  transition:border-color 0.4s var(--dk-ease-soft), color 0.4s var(--dk-ease-soft);
+}
+.terra-btn-cta span{ position:relative; z-index:2; }
+.terra-btn-cta::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:var(--terra-grad);
+  transform:translateX(-101%);
+  transition:transform 0.5s var(--dk-ease-out);
+  z-index:1;
+}
+.terra-btn-cta:hover{ border-color:transparent; }
+.terra-btn-cta:hover::before{ transform:none; }
+
+@media (max-width:860px){
+  .terra-cta-inner{ min-height:60svh; }
+}
+@media (max-width:640px){
+  .terra-cta-inner{ min-height:auto; padding-top:80px; padding-bottom:80px; }
+  .terra-cta-title{ margin-top:28px; }
+  .terra-cta-bottom{ flex-direction:column; align-items:flex-start; margin-top:88px; }
+}
+
+/* ==========================================================================
+   TERRA FOOTER (перенесено из cases.html без изменения логики)
    ========================================================================== */
 .terra-footer{
   background:var(--terra-black);
@@ -859,7 +1061,13 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   width:6px; height:6px; border-radius:50%;
   background:var(--terra-grad);
 }
-.terra-footer .footer-tagline{ font-size:14px; line-height:1.6; color:var(--terra-grey-mid); }
+.terra-footer .footer-tagline{
+  font-family:var(--terra-font-display);
+  font-size:clamp(22px, 2.6vw, 30px);
+  line-height:1.2;
+  max-width:16ch;
+  color:var(--terra-white);
+}
 .terra-footer .footer-col-label{
   font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
   color:var(--terra-grey-mid); margin-bottom:16px;
@@ -904,28 +1112,58 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
-<header class="dk-nav-wrap">
-  <nav class="dk-nav">
+<!-- ================= TERRA HEADER ================= -->
+<header class="terra-header" id="top">
+  <nav class="terra-nav" aria-label="Основная навигация">
 
-    <a href="/" class="dk-wordmark">
+    <a href="/" class="terra-wordmark">
       <span class="dot"></span>
       СТУДИЯ ТЕРРА
     </a>
 
-    <button class="dk-nav-toggle" id="dkNavToggle" aria-label="Открыть меню">
+    <button
+      class="terra-nav-toggle"
+      id="navToggle"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+    >
+      <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <div class="dk-nav-links">
-      <a href="/cases">Все кейсы</a>
-      <a href="/#services">Услуги</a>
-      <a href="#contacts">Контакты</a>
+    <div class="terra-nav-links" id="navLinks">
+
+      <a href="/">
+        ГЛАВНАЯ
+      </a>
+
+      <a href="/cases" aria-current="page">
+        ПРОЕКТЫ
+      </a>
+
+      <a href="/#services">
+        УСЛУГИ
+      </a>
+
+      <a href="/#about">
+        О НАС
+      </a>
+
+      <a href="#contacts">
+        КОНТАКТЫ
+      </a>
+
+      <a href="/#contact" class="terra-nav-cta">
+        ОБСУДИТЬ ПРОЕКТ
+      </a>
+
     </div>
 
   </nav>
 </header>
+
+<!-- ================= DO KORKI CASE ================= -->
 
 <!-- ================= 01 — HERO ================= -->
 <section class="dk-hero">
@@ -1484,7 +1722,40 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   </div>
 </section>
 
-<!-- ================= 15 — FOOTER (ТЕРРА) ================= -->
+<!-- ================= TERRA CTA ================= -->
+<section class="terra-cta" id="contact">
+  <div class="terra-cta-inner">
+
+    <div>
+
+      <p class="terra-cta-eyebrow reveal">
+        Новый проект
+      </p>
+
+      <h2 class="terra-cta-title reveal">
+        ЕСТЬ ЗАДАЧА?<br>
+        <span class="grad-text">ДАВАЙТЕ ОБСУДИМ ПРОЕКТ</span>
+      </h2>
+
+    </div>
+
+    <div class="terra-cta-bottom reveal">
+
+      <p class="terra-cta-note">
+        Расскажите о задаче — предложим подходящий формат работы и соберём
+        сильное визуальное решение.
+      </p>
+
+      <a class="terra-btn-cta" href="/#contact">
+        <span>Обсудить проект ↗</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= TERRA FOOTER ================= -->
 <footer class="terra-footer" id="contacts">
   <div class="section-inner">
 
@@ -1496,8 +1767,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
           СТУДИЯ ТЕРРА
         </a>
         <p class="footer-tagline">
-          +7 (993) 771-77-51<br>
-          hello@terra-brand.ru
+          Дизайн, который<br>
+          усиливает бизнес.
         </p>
       </div>
 
@@ -1507,6 +1778,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
           <a href="/">Главная</a>
           <a href="/cases">Кейсы</a>
           <a href="/#services">Услуги</a>
+          <a href="/#about">О нас</a>
           <a href="#contacts">Контакты</a>
         </div>
       </div>
@@ -1569,21 +1841,23 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
     }, { passive:true });
   }
 
-  // Мобильное меню
-  var toggle = document.getElementById('dkNavToggle');
-  var links = document.querySelector('.dk-nav-links');
+  // Мобильное меню (burger) — логика перенесена из cases.html без изменений
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
   if(toggle && links){
     toggle.addEventListener('click', function(){
-      var open = links.style.display === 'flex';
-      links.style.display = open ? '' : 'flex';
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '100%';
-      links.style.left = '0';
-      links.style.right = '0';
-      links.style.background = 'var(--dk-milk)';
-      links.style.padding = '20px var(--dk-edge)';
-      links.style.borderTop = '1px solid var(--dk-oat)';
+      var open = links.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        links.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
     });
   }
 
