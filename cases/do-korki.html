@@ -834,15 +834,18 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
    ========================================================================== */
 .dk-final{
   position:relative;
-  min-height:88vh;
+  height:88vh;
+  min-height:650px;
   display:flex;
   align-items:flex-end;
   overflow:hidden;
   background:var(--dk-umbra);
 }
+
 .dk-final-media{
   position:absolute;
   inset:0;
+  height:100%;
 }
 .dk-final-media img{
   width:100%;
@@ -938,7 +941,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   max-width:var(--dk-container);
   margin:0 auto;
   padding:var(--dk-edge);
-  min-height:70svh;
+  min-height:60svh;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -1759,7 +1762,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 <footer class="terra-footer" id="contacts">
   <div class="section-inner">
 
-    <div class="footer-top reveal">
+    <div class="footer-top">
 
       <div>
         <a href="/" class="wordmark">
@@ -1785,7 +1788,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
       <div>
         <div class="footer-col-label">Связаться</div>
-        <div class="footer-links">
+        <div class="footer-links">  
           <a href="https://t.me/terra_brand" target="_blank" rel="noopener">Telegram</a>
           <a href="https://wa.me/79937717751" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo" target="_blank" rel="noopener">Max</a>
@@ -1795,7 +1798,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
     </div>
 
-    <div class="footer-giant reveal">ТЕРРА</div>
+  <div class="footer-giant">ТЕРРА</div>
 
     <div class="footer-meta">
       <span>DESIGN STUDIO — WORLDWIDE</span>
@@ -1835,8 +1838,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   var jest = document.querySelector('.dk-hero-jest');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(jest && !reduceMotion && window.matchMedia('(min-width: 900px)').matches){
-    window.addEventListener('scroll', function(){
-      var y = window.scrollY;
+   window.addEventListener('scroll', function(){
+     var y = window.scrollY;
       jest.style.transform = 'translateY(' + Math.min(y * 0.15, 80) + 'px)';
     }, { passive:true });
   }
