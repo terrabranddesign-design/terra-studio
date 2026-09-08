@@ -558,21 +558,24 @@
         background: var(--dk-oat);
       }
 
-     .dk-logo-variant {
+   .dk-logo-variant {
     aspect-ratio: 4/3;
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 34px;
-    padding: 32px 24px 26px;
+    padding: 24px;
 }
-      .dk-logo-variant span {
-        font-size: 12px;
-        letter-spacing: 0.06em;
-        color: var(--dk-olive);
-      }
-
+     .dk-logo-variant span {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 28px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--dk-olive);
+}
       .dk-logo-variant.positive {
         background: var(--dk-milk);
       }
