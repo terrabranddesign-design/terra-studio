@@ -611,8 +611,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:28px;
+  max-height:520px;
 }
-
 .dk-gesture-step{
   display:flex;
   flex-direction:column;
@@ -624,7 +624,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   opacity:0.72;
 }
 .dk-gesture-step .stage-media{
-  aspect-ratio:1/1;
+  height:220px;
+  aspect-ratio:auto;
   background:rgba(250,245,236,0.08);
   border:1px solid rgba(250,245,236,0.25);
   display:flex;
@@ -642,12 +643,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .dk-gesture-bg-jest{
   position:absolute;
   left:-6%;
-  bottom:-18%;
-  width:min(60vw, 700px);
-  opacity:0.14;
-  pointer-events:none;
-}
-
+  bottom:-120px;
+  width:min(60vw, 500px);
 @media (max-width:900px){
   .dk-gesture-steps{ grid-template-columns:repeat(2, 1fr); }
 }
