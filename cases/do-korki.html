@@ -276,6 +276,9 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
 /* ==========================================================================
    01 — HERO
+   Editorial / minimal / premium: логотип — единственный смысловой центр
+   экрана. Декоративная волна и слоган намеренно убраны в пользу пустого
+   пространства.
    ========================================================================== */
 .dk-hero{
   position:relative;
@@ -286,66 +289,102 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   overflow:hidden;
 }
 
-.dk-hero-jest{
-  position:absolute;
-  right:-8%;
-  top:8%;
-  width:min(58vw, 780px);
-  opacity:0.14;
-  z-index:1;
-  pointer-events:none;
-}
-.dk-hero-jest svg{ width:100%; height:auto; display:block; }
-
 .dk-hero-body{
   position:relative;
   z-index:5;
   flex:1;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  padding:0 var(--dk-edge) 8vh;
+  padding:clamp(28px, 5vh, 56px) var(--dk-edge) clamp(64px, 10vh, 96px);
 }
 
 .dk-hero-meta{
   display:flex;
+  align-items:baseline;
+  justify-content:center;
   flex-wrap:wrap;
-  gap:clamp(20px, 3vw, 48px);
-  font-size:12px;
-  letter-spacing:0.08em;
-  color:var(--dk-olive);
-  margin-bottom:clamp(32px, 6vw, 64px);
+  gap:clamp(18px, 3vw, 40px);
+  font-size:11px;
+  letter-spacing:0.1em;
   text-transform:uppercase;
+  color:var(--dk-olive);
+}
+.dk-hero-meta span{
+  display:inline-flex;
+  align-items:baseline;
+  gap:7px;
+  white-space:nowrap;
 }
 .dk-hero-meta span b{
-  display:block;
   font-family:var(--dk-font-serif);
   font-style:normal;
-  font-size:15px;
+  font-weight:400;
+  font-size:13px;
   letter-spacing:0;
   text-transform:none;
   color:var(--dk-umbra);
-  margin-top:4px;
+}
+
+.dk-hero-center{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(40px, 8vh, 90px) 0;
 }
 
 .dk-hero-logo{
-  max-width:min(78vw, 640px);
-  margin-bottom:28px;
+  width:clamp(280px, 36vw, 560px);
 }
-.dk-hero-logo img{ width:100%; height:auto; }
+.dk-hero-logo img{ width:100%; height:auto; display:block; }
 
-.dk-hero-line{
-  font-family:var(--dk-font-serif);
-  font-weight:400;
-  font-style:italic;
-  font-size:clamp(24px, 3vw, 34px);
-  color:var(--dk-terracotta);
-  max-width:20ch;
+/* Спокойный scroll-индикатор ТЕРРА, перенесён с главной страницы,
+   цвет адаптирован под светлый фон кейса */
+.dk-scroll-hint{
+  position:absolute;
+  bottom:clamp(24px, 4vh, 48px);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:30;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  font-family:var(--dk-font-sans);
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--dk-umbra);
+  opacity:0.72;
+}
+.dk-scroll-hint .line{
+  width:1px;
+  height:34px;
+  background:linear-gradient(rgba(56,39,31,0.55), transparent);
+  animation:dk-scroll-run 2.2s ease-in-out infinite;
+}
+@keyframes dk-scroll-run{
+  0%{ transform:scaleY(0); transform-origin:top; opacity:0; }
+  40%{ transform:scaleY(1); transform-origin:top; opacity:1; }
+  60%{ transform:scaleY(1); transform-origin:bottom; opacity:1; }
+  100%{ transform:scaleY(0); transform-origin:bottom; opacity:0; }
 }
 
 @media (max-width:720px){
-  .dk-hero-jest{ opacity:0.1; top:2%; }
+
   .dk-hero-body{ padding-bottom:64px; }
+
+  .dk-hero-meta{
+    gap:14px 22px;
+    font-size:10px;
+  }
+
+  .dk-hero-logo{
+    width:clamp(230px, 72vw, 420px);
+  }
+
+  .dk-scroll-hint{ bottom:20px; }
+
 }
 
 /* ==========================================================================
@@ -587,66 +626,25 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 }
 
 /* ==========================================================================
-   07 — ГРАФИЧЕСКИЙ ЖЕСТ
+   07 — ВИЗУАЛИЗАЦИИ
    ========================================================================== */
-.dk-gesture{
-  position:relative;
-  background:var(--dk-terracotta);
-  color:var(--dk-milk);
-  overflow:hidden;
+.dk-visuals{
+  background:var(--dk-milk);
 }
-.dk-gesture .eyebrow-dk{ color:var(--dk-milk); opacity:0.8; }
-.dk-gesture .eyebrow-dk::before{ background:var(--dk-milk); }
-
-.dk-gesture-title{
-  font-family:var(--dk-font-serif);
-  font-weight:400;
-  font-size:clamp(30px, 4.4vw, 56px);
-  line-height:1.1;
-  max-width:14ch;
-  margin-bottom:60px;
-}
-
-.dk-gesture-steps{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:28px;
-  max-height:520px;
-}
-.dk-gesture-step{
+.dk-visuals-stack{
+  margin-top:56px;
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:32px;
 }
-.dk-gesture-step .stage-label{
-  font-size:11px;
-  letter-spacing:0.1em;
-  opacity:0.72;
+.dk-visual-item{
+  width:100%;
+  overflow:hidden;
 }
-.dk-gesture-step .stage-media{
-  height:220px;
-  aspect-ratio:auto;
-  background:rgba(250,245,236,0.08);
-  border:1px solid rgba(250,245,236,0.25);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18%;
-}
-.dk-gesture-step .stage-media svg{ width:100%; height:100%; }
-.dk-gesture-step p{
-  font-size:13px;
-  line-height:1.6;
-  opacity:0.85;
-}
-
-.dk-gesture-bg-jest{
-  position:absolute;
-  left:-6%;
-  bottom:-120px;
-  width:min(60vw, 500px);
-@media (max-width:900px){
-  .dk-gesture-steps{ grid-template-columns:repeat(2, 1fr); }
+.dk-visual-item img{
+  width:100%;
+  height:auto;
+  display:block;
 }
 
 /* ==========================================================================
@@ -831,25 +829,20 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
    ========================================================================== */
 .dk-final{
   position:relative;
-  height:88vh;
-  max-height:900px;
-  overflow:hidden;
+  min-height:88vh;
   display:flex;
   align-items:flex-end;
+  overflow:hidden;
   background:var(--dk-umbra);
 }
-
 .dk-final-media{
   position:absolute;
   inset:0;
-  height:100%;
-  width:100%;
 }
 .dk-final-media img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
   opacity:0.82;
 }
 .dk-final-media::after{
@@ -878,18 +871,16 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .dk-next{
   background:var(--terra-black);
   color:var(--terra-white);
-  height:220px;
-  overflow:hidden;
 }
 .dk-next-inner{
   max-width:var(--dk-container);
-  height:100%;
   margin:0 auto;
-  padding:0 var(--dk-edge);
+  padding:100px var(--dk-edge);
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:24px;
+  flex-wrap:wrap;
 }
 .dk-next-left a{
   font-size:12px;
@@ -903,10 +894,11 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 .dk-next-right{
   font-family:var(--terra-font-display);
   font-weight:500;
-  font-size:clamp(22px, 3vw, 36px);
+  font-size:clamp(28px, 4vw, 48px);
   display:flex;
   align-items:center;
   gap:18px;
+  transition:opacity 0.3s;
 }
 .dk-next-right:hover{ opacity:0.7; }
 
@@ -941,7 +933,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   max-width:var(--dk-container);
   margin:0 auto;
   padding:var(--dk-edge);
-  min-height:60svh;
+  min-height:70svh;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -1436,70 +1428,50 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   </div>
 </section>
 
-<!-- ================= 07 — ГРАФИЧЕСКИЙ ЖЕСТ ================= -->
-<section class="dk-gesture">
+<!-- ================= 07 — ВИЗУАЛИЗАЦИИ ================= -->
+<section class="dk-visuals">
+  <div class="dk-inner">
 
-  <div class="dk-gesture-bg-jest" aria-hidden="true">
-    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M20 190 C 90 190, 90 90, 160 90 C 210 90, 210 150, 260 150 C 300 150, 300 90, 340 90"
-        fill="none"
-        stroke="#FAF5EC"
-        stroke-width="46"
-        stroke-linecap="round"
-      />
-    </svg>
-  </div>
+    <div class="eyebrow-dk reveal">
+      Визуализации
+    </div>
 
-  <div class="dk-inner" style="position:relative; z-index:2;">
-
-    <div class="eyebrow-dk reveal">Графический жест</div>
-
-    <h2 class="dk-gesture-title reveal">
-      Из знака —
-      в самостоятельный жест.
+    <h2 class="dk-intro-title reveal">
+      Бренд в реальной среде.
     </h2>
 
-    <div class="dk-gesture-steps">
+    <div class="dk-visuals-stack">
 
-      <div class="dk-gesture-step reveal">
-        <span class="stage-label">01 / SOURCE</span>
-        <div class="stage-media">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 70 C 40 70, 45 30, 65 30 C 78 30, 78 50, 92 50" fill="none" stroke="#FAF5EC" stroke-width="14" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <p>Верхний символ содержит широкий наплыв и сужение.</p>
+      <div class="dk-visual-item reveal">
+        <img
+          src="/images/do-korki/mockup-01.jpg"
+          alt="Визуализация бренда До Корки"
+          loading="lazy"
+        >
       </div>
 
-      <div class="dk-gesture-step reveal">
-        <span class="stage-label">02 / EXTRACTION</span>
-        <div class="stage-media">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 70 C 35 70, 40 25, 62 25 C 80 25, 80 55, 105 55" fill="none" stroke="#FAF5EC" stroke-width="16" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <p>Берём характер верхней доли и возвращающийся просвет.</p>
+      <div class="dk-visual-item reveal">
+        <img
+          src="/images/do-korki/mockup-02.jpg"
+          alt="Визуализация упаковки До Корки"
+          loading="lazy"
+        >
       </div>
 
-      <div class="dk-gesture-step reveal">
-        <span class="stage-label">03 / TRANSFORMATION</span>
-        <div class="stage-media">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 75 C 30 75, 35 20, 60 20 C 85 20, 85 60, 120 60" fill="none" stroke="#FAF5EC" stroke-width="18" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <p>Удлиняем движение и раскрываем конец. Новая графика, не версия знака.</p>
+      <div class="dk-visual-item reveal">
+        <img
+          src="/images/do-korki/mockup-03.jpg"
+          alt="Визуализация носителей бренда До Корки"
+          loading="lazy"
+        >
       </div>
 
-      <div class="dk-gesture-step reveal">
-        <span class="stage-label">04 / BRAND ASSET</span>
-        <div class="stage-media">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-10 80 C 25 80, 30 15, 58 15 C 88 15, 88 65, 130 65" fill="none" stroke="#FAF5EC" stroke-width="20" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <p>Кадрируем с края формата. Слово и графика получают разные зоны.</p>
+      <div class="dk-visual-item reveal">
+        <img
+          src="/images/do-korki/mockup-04.jpg"
+          alt="Визуализация среды До Корки"
+          loading="lazy"
+        >
       </div>
 
     </div>
@@ -1710,11 +1682,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 </section>
 
 <!-- ================= 14 — NEXT PROJECT ================= -->
-.dk-next{
-  position:relative;
-  z-index:2;
-}
-  <section class="dk-next">
+<section class="dk-next">
   <div class="dk-next-inner">
 
     <div class="dk-next-left">
@@ -1766,7 +1734,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 <footer class="terra-footer" id="contacts">
   <div class="section-inner">
 
-    <div class="footer-top">
+    <div class="footer-top reveal">
 
       <div>
         <a href="/" class="wordmark">
@@ -1792,7 +1760,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
       <div>
         <div class="footer-col-label">Связаться</div>
-        <div class="footer-links">  
+        <div class="footer-links">
           <a href="https://t.me/terra_brand" target="_blank" rel="noopener">Telegram</a>
           <a href="https://wa.me/79937717751" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo" target="_blank" rel="noopener">Max</a>
@@ -1802,7 +1770,7 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
 
     </div>
 
-  <div class="footer-giant">ТЕРРА</div>
+    <div class="footer-giant reveal">ТЕРРА</div>
 
     <div class="footer-meta">
       <span>DESIGN STUDIO — WORLDWIDE</span>
@@ -1842,8 +1810,8 @@ button{ font-family:inherit; background:none; border:none; color:inherit; cursor
   var jest = document.querySelector('.dk-hero-jest');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(jest && !reduceMotion && window.matchMedia('(min-width: 900px)').matches){
-   window.addEventListener('scroll', function(){
-     var y = window.scrollY;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
       jest.style.transform = 'translateY(' + Math.min(y * 0.15, 80) + 'px)';
     }, { passive:true });
   }
