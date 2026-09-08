@@ -367,12 +367,18 @@
         background: rgba(250, 245, 236, 0.12);
       }
 
-      .dk-hero-bg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
+      .dk-hero-bg picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.dk-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
       .dk-hero-body {
         position: relative;
@@ -967,9 +973,15 @@
 
     <!-- ================= 01 — HERO ================= -->
     <section class="dk-hero">
-      <div class="dk-hero-bg">
+     <div class="dk-hero-bg">
+    <picture>
+        <source
+            media="(max-width: 720px)"
+            srcset="/images/do-korki/hero-mobile.jpg"
+        />
         <img src="/images/do-korki/hero.jpg" alt="" />
-      </div>
+    </picture>
+</div>
 
       <div class="dk-hero-body edge">
         <div class="dk-hero-meta reveal">
