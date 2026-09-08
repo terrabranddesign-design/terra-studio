@@ -1,1843 +1,1668 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>До Корки — брендинг ремесленной пекарни / Студия ТЕРРА</title>
 
-  <title>
-    До Корки — брендинг ремесленной пекарни / Студия ТЕРРА
-  </title>
+    <meta
+      name="description"
+      content="Брендинг и айдентика ремесленной пекарни «До Корки»: логотип, графический язык, упаковка и digital. Кейс студии ТЕРРА."
+    />
 
-  <meta
-    name="description"
-    content="Брендинг и айдентика ремесленной пекарни «До Корки»: логотип, графический язык, упаковка и digital. Кейс студии ТЕРРА."
-  >
+    <link rel="canonical" href="https://terra-brand.ru/cases/do-korki" />
 
-  <link rel="canonical" href="https://terra-brand.ru/cases/do-korki">
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="До Корки — Ремесло в форме / Студия ТЕРРА"
+    />
+    <meta
+      property="og:description"
+      content="Брендинг ремесленной пекарни: авторский логотип, тактильная система, упаковка и digital."
+    />
+    <meta
+      property="og:image"
+      content="https://terra-brand.ru/images/do-korki/hero.jpg"
+    />
+    <meta property="og:url" content="https://terra-brand.ru/cases/do-korki" />
 
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="До Корки — Ремесло в форме / Студия ТЕРРА">
-  <meta property="og:description" content="Брендинг ремесленной пекарни: авторский логотип, тактильная система, упаковка и digital.">
-  <meta property="og:image" content="https://terra-brand.ru/images/do-korki/hero.jpg">
-  <meta property="og:url" content="https://terra-brand.ru/cases/do-korki">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Rubik:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Rubik:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-/* ==========================================================================
+    <style>
+      /* ==========================================================================
    TOKENS — «ДО КОРКИ»
    Отдельная палитра/сетка для кейса. Шапка и футер ниже используют
    токены студии ТЕРРА (--terra-*), сохранённые как есть.
    ========================================================================== */
-:root{
+      :root {
+        /* --- бренд «До Корки» --- */
+        --dk-terracotta: #ac4b2e;
+        --dk-terracotta-d: #8f3d24;
+        --dk-milk: #faf5ec;
+        --dk-milk-soft: #f3ebdc;
+        --dk-umbra: #38271f;
+        --dk-oat: #d9c5a6;
+        --dk-olive: #73735a;
 
-  /* --- бренд «До Корки» --- */
-  --dk-terracotta:   #AC4B2E;
-  --dk-terracotta-d: #8F3D24;
-  --dk-milk:         #FAF5EC;
-  --dk-milk-soft:    #F3EBDC;
-  --dk-umbra:        #38271F;
-  --dk-oat:          #D9C5A6;
-  --dk-olive:        #73735A;
+        --dk-font-serif: "Noto Serif", serif;
+        --dk-font-sans: "Rubik", sans-serif;
 
-  --dk-font-serif: 'Noto Serif', serif;
-  --dk-font-sans:  'Rubik', sans-serif;
+        --dk-container: 1440px;
+        --dk-edge: clamp(24px, 5vw, 72px);
 
-  --dk-container: 1440px;
-  --dk-edge: clamp(24px, 5vw, 72px);
+        --dk-ease-out: cubic-bezier(0.16, 0.84, 0.44, 1);
+        --dk-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 
-  --dk-ease-out: cubic-bezier(.16,.84,.44,1);
-  --dk-ease-soft: cubic-bezier(.4,0,.2,1);
+        /* --- студия ТЕРРА (для шапки/футера) --- */
+        --terra-black: #050507;
+        --terra-white: #f5f5f3;
+        --terra-grey-mid: #8b8b90;
+        --terra-grey-line: rgba(245, 245, 243, 0.14);
+        --terra-grad: linear-gradient(
+          90deg,
+          #273eff 0%,
+          #6536ff 35%,
+          #a02cf1 68%,
+          #d226e8 100%
+        );
+        --terra-font-display: "Unbounded", sans-serif;
+        --terra-font-body: "Manrope", sans-serif;
+      }
 
-  /* --- студия ТЕРРА (для шапки/футера) --- */
-  --terra-black:      #050507;
-  --terra-white:      #F5F5F3;
-  --terra-grey-mid:   #8b8b90;
-  --terra-grey-line:  rgba(245,245,243,0.14);
-  --terra-grad: linear-gradient(90deg, #273EFF 0%, #6536FF 35%, #A02CF1 68%, #D226E8 100%);
-  --terra-font-display: 'Unbounded', sans-serif;
-  --terra-font-body: 'Manrope', sans-serif;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-*{ margin:0; padding:0; box-sizing:border-box; }
+      html {
+        scroll-behavior: smooth;
+        background: var(--dk-milk);
+      }
 
-html{ scroll-behavior:smooth; background:var(--dk-milk); }
+      body {
+        background: var(--dk-milk);
+        color: var(--dk-umbra);
+        font-family: var(--dk-font-sans);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-body{
-  background:var(--dk-milk);
-  color:var(--dk-umbra);
-  font-family:var(--dk-font-sans);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font-family: inherit;
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+      }
+      ::selection {
+        background: var(--dk-terracotta);
+        color: var(--dk-milk);
+      }
 
-img{ max-width:100%; display:block; }
-a{ color:inherit; text-decoration:none; }
-button{ font-family:inherit; background:none; border:none; color:inherit; cursor:pointer; }
-::selection{ background:var(--dk-terracotta); color:var(--dk-milk); }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001s !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001s !important;
+          scroll-behavior: auto !important;
+        }
+      }
 
-@media (prefers-reduced-motion: reduce){
-  *{
-    animation-duration:0.001s !important;
-    animation-iteration-count:1 !important;
-    transition-duration:0.001s !important;
-    scroll-behavior:auto !important;
-  }
-}
+      :focus-visible {
+        outline: 2px solid var(--dk-terracotta);
+        outline-offset: 4px;
+      }
 
-:focus-visible{ outline:2px solid var(--dk-terracotta); outline-offset:4px; }
+      .edge {
+        padding-left: var(--dk-edge);
+        padding-right: var(--dk-edge);
+      }
 
-.edge{ padding-left:var(--dk-edge); padding-right:var(--dk-edge); }
+      .dk-inner {
+        max-width: var(--dk-container);
+        margin: 0 auto;
+        padding: 120px var(--dk-edge);
+      }
 
-.dk-inner{
-  max-width:var(--dk-container);
-  margin:0 auto;
-  padding:120px var(--dk-edge);
-}
+      @media (max-width: 720px) {
+        .dk-inner {
+          padding: 80px var(--dk-edge);
+        }
+      }
 
-@media (max-width:720px){
-  .dk-inner{ padding:80px var(--dk-edge); }
-}
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.9s var(--dk-ease-out),
+          transform 0.9s var(--dk-ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.9s var(--dk-ease-out), transform 0.9s var(--dk-ease-out);
-}
-.reveal.is-visible{ opacity:1; transform:translateY(0); }
+      .eyebrow-dk {
+        font-family: var(--dk-font-sans);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--dk-terracotta);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .eyebrow-dk::before {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--dk-terracotta);
+      }
 
-.eyebrow-dk{
-  font-family:var(--dk-font-sans);
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:0.08em;
-  color:var(--dk-terracotta);
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:20px;
-}
-.eyebrow-dk::before{
-  content:'';
-  width:20px;
-  height:1px;
-  background:var(--dk-terracotta);
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    TERRA HEADER
    Структура и поведение перенесены из cases.html (.hero-nav / .nav-links /
    .nav-cta / .nav-toggle) без изменений логики. Цвета адаптированы под
    светлый / молочный фон страницы «До Корки» — без тёмной плашки.
    ========================================================================== */
-.terra-header{
-  position:relative;
-  z-index:80;
-  background:var(--dk-milk);
-}
+      .terra-header {
+        position: relative;
+        z-index: 80;
+        background: var(--dk-milk);
+      }
 
-.terra-nav{
-  position:relative;
-  z-index:80;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:var(--terra-space-md, 32px) var(--dk-edge) 0;
-}
+      .terra-nav {
+        position: relative;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--terra-space-md, 32px) var(--dk-edge) 0;
+      }
 
-.terra-wordmark{
-  font-family:var(--terra-font-display);
-  font-weight:500;
-  font-size:15px;
-  letter-spacing:0.06em;
-  color:var(--dk-umbra);
-  display:flex;
-  align-items:center;
-  gap:8px;
-  white-space:nowrap;
-}
-.terra-wordmark .dot{
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--terra-grad);
-}
+      .terra-wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        color: var(--dk-umbra);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .terra-wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
 
-.terra-nav-links{
-  display:flex;
-  align-items:center;
-  gap:clamp(20px, 3vw, 40px);
-  font-size:12px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  font-weight:500;
-}
-.terra-nav-links a{
-  position:relative;
-  padding-bottom:4px;
-  color:var(--dk-umbra);
-  opacity:0.72;
-  transition:opacity 0.3s var(--dk-ease-soft), color 0.3s var(--dk-ease-soft);
-}
-.terra-nav-links a::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:0;
-  height:1px;
-  background:var(--dk-terracotta);
-  transition:width 0.35s var(--dk-ease-out);
-}
-.terra-nav-links a:hover{
-  opacity:1;
-  color:var(--dk-terracotta);
-}
-.terra-nav-links a:hover::after,
-.terra-nav-links a[aria-current="page"]::after{
-  width:100%;
-}
-.terra-nav-links a[aria-current="page"]{
-  opacity:1;
-  color:var(--dk-terracotta);
-}
+      .terra-nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .terra-nav-links a {
+        position: relative;
+        padding-bottom: 4px;
+        color: var(--dk-umbra);
+        opacity: 0.72;
+        transition:
+          opacity 0.3s var(--dk-ease-soft),
+          color 0.3s var(--dk-ease-soft);
+      }
+      .terra-nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--dk-terracotta);
+        transition: width 0.35s var(--dk-ease-out);
+      }
+      .terra-nav-links a:hover {
+        opacity: 1;
+        color: var(--dk-terracotta);
+      }
+      .terra-nav-links a:hover::after,
+      .terra-nav-links a[aria-current="page"]::after {
+        width: 100%;
+      }
+      .terra-nav-links a[aria-current="page"] {
+        opacity: 1;
+        color: var(--dk-terracotta);
+      }
 
-.terra-nav-cta{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:42px;
-  padding:0 28px !important;
-  border:1px solid rgba(56,39,31,0.35);
-  color:var(--dk-umbra);
-  white-space:nowrap;
-  opacity:1 !important;
-  transition:border-color 0.3s var(--dk-ease-soft), color 0.3s var(--dk-ease-soft);
-}
-.terra-nav-cta::after{ display:none; }
-.terra-nav-cta:hover{
-  border-color:var(--dk-terracotta);
-  color:var(--dk-terracotta);
-}
+      .terra-nav-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 28px !important;
+        border: 1px solid rgba(56, 39, 31, 0.35);
+        color: var(--dk-umbra);
+        white-space: nowrap;
+        opacity: 1 !important;
+        transition:
+          border-color 0.3s var(--dk-ease-soft),
+          color 0.3s var(--dk-ease-soft);
+      }
+      .terra-nav-cta::after {
+        display: none;
+      }
+      .terra-nav-cta:hover {
+        border-color: var(--dk-terracotta);
+        color: var(--dk-terracotta);
+      }
 
-.terra-nav-toggle{ display:none; }
+      .terra-nav-toggle {
+        display: none;
+      }
 
-@media (max-width:640px){
+      @media (max-width: 900px) {
+        .terra-nav {
+          padding-top: 24px;
+        }
 
-  .terra-nav{ padding-top:24px; }
+        .terra-nav-links {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          background: var(--dk-milk);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: var(--space-lg, 64px);
+          font-size: 16px;
+          transform: translateY(-100%);
+          transition: transform 0.5s var(--dk-ease-out);
+        }
+        .terra-nav-links.is-open {
+          transform: none;
+        }
 
-  .terra-nav-links{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    background:var(--dk-milk);
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:var(--space-lg, 64px);
-    font-size:16px;
-    transform:translateY(-100%);
-    transition:transform 0.5s var(--dk-ease-out);
-  }
-  .terra-nav-links.is-open{ transform:none; }
+        .terra-nav-toggle {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          z-index: 110;
+          position: relative;
+          padding: 6px;
+        }
+        .terra-nav-toggle span {
+          width: 20px;
+          height: 1px;
+          background: var(--dk-umbra);
+          transition:
+            transform 0.3s,
+            opacity 0.3s;
+        }
+        .terra-nav-toggle.is-open span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+        .terra-nav-toggle.is-open span:nth-child(2) {
+          opacity: 0;
+        }
+        .terra-nav-toggle.is-open span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
 
-  .terra-nav-toggle{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    z-index:110;
-    position:relative;
-    padding:6px;
-  }
-  .terra-nav-toggle span{
-    width:20px;
-    height:1px;
-    background:var(--dk-umbra);
-    transition:transform 0.3s, opacity 0.3s;
-  }
-  .terra-nav-toggle.is-open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
-  .terra-nav-toggle.is-open span:nth-child(2){ opacity:0; }
-  .terra-nav-toggle.is-open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+        .terra-nav-cta {
+          display: none;
+        }
+        .terra-nav-links .terra-nav-cta {
+          display: inline-flex;
+          border-color: rgba(56, 39, 31, 0.35);
+        }
+      }
 
-  .terra-nav-cta{ display:none; }
-  .terra-nav-links .terra-nav-cta{
-    display:inline-flex;
-    border-color:rgba(56,39,31,0.35);
-  }
-
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    01 — HERO
-   Editorial / minimal / premium: логотип — единственный смысловой центр
-   экрана. Декоративная волна и слоган намеренно убраны в пользу пустого
-   пространства.
    ========================================================================== */
-.dk-hero{
-  position:relative;
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  background:var(--dk-milk);
-  overflow:hidden;
-}
+      .dk-hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
 
-.dk-hero-body{
-  position:relative;
-  z-index:5;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  padding:clamp(28px, 5vh, 56px) var(--dk-edge) clamp(64px, 10vh, 96px);
-}
+      .dk-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
 
-.dk-hero-meta{
-  display:flex;
-  align-items:baseline;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:clamp(18px, 3vw, 40px);
-  font-size:11px;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--dk-olive);
-}
-.dk-hero-meta span{
-  display:inline-flex;
-  align-items:baseline;
-  gap:7px;
-  white-space:nowrap;
-}
-.dk-hero-meta span b{
-  font-family:var(--dk-font-serif);
-  font-style:normal;
-  font-weight:400;
-  font-size:13px;
-  letter-spacing:0;
-  text-transform:none;
-  color:var(--dk-umbra);
-}
+      .dk-hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(250, 245, 236, 0.12);
+      }
 
-.dk-hero-center{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:clamp(40px, 8vh, 90px) 0;
-}
+      .dk-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-.dk-hero-logo{
-  width:clamp(280px, 36vw, 560px);
-}
-.dk-hero-logo img{ width:100%; height:auto; display:block; }
+      .dk-hero-body {
+        position: relative;
+        z-index: 5;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(28px, 5vh, 56px) var(--dk-edge) clamp(64px, 10vh, 96px);
+      }
 
-/* Спокойный scroll-индикатор ТЕРРА, перенесён с главной страницы,
+      .dk-hero-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: clamp(18px, 3vw, 40px);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dk-olive);
+      }
+      .dk-hero-meta span {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 7px;
+        white-space: nowrap;
+      }
+      .dk-hero-meta span b {
+        font-family: var(--dk-font-serif);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--dk-umbra);
+      }
+
+      .dk-hero-logo {
+        width: clamp(280px, 36vw, 560px);
+        margin: auto;
+      }
+      .dk-hero-logo img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .dk-hero-line {
+        align-self: center;
+        margin-bottom: 20px;
+        font-family: var(--dk-font-serif);
+        color: var(--dk-umbra);
+        text-shadow: 0 1px 18px rgba(250, 245, 236, 0.72);
+      }
+
+      /* Спокойный scroll-индикатор ТЕРРА, перенесён с главной страницы,
    цвет адаптирован под светлый фон кейса */
-.dk-scroll-hint{
-  position:absolute;
-  bottom:clamp(24px, 4vh, 48px);
-  left:50%;
-  transform:translateX(-50%);
-  z-index:30;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  font-family:var(--dk-font-sans);
-  font-size:10px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--dk-umbra);
-  opacity:0.72;
-}
-.dk-scroll-hint .line{
-  width:1px;
-  height:34px;
-  background:linear-gradient(rgba(56,39,31,0.55), transparent);
-  animation:dk-scroll-run 2.2s ease-in-out infinite;
-}
-@keyframes dk-scroll-run{
-  0%{ transform:scaleY(0); transform-origin:top; opacity:0; }
-  40%{ transform:scaleY(1); transform-origin:top; opacity:1; }
-  60%{ transform:scaleY(1); transform-origin:bottom; opacity:1; }
-  100%{ transform:scaleY(0); transform-origin:bottom; opacity:0; }
-}
+      .dk-scroll-hint {
+        position: absolute;
+        bottom: clamp(24px, 4vh, 48px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--dk-font-sans);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dk-umbra);
+        opacity: 0.72;
+      }
+      .dk-scroll-hint .line {
+        width: 1px;
+        height: 34px;
+        background: linear-gradient(rgba(56, 39, 31, 0.55), transparent);
+        animation: dk-scroll-run 2.2s ease-in-out infinite;
+      }
+      @keyframes dk-scroll-run {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+          opacity: 0;
+        }
+        40% {
+          transform: scaleY(1);
+          transform-origin: top;
+          opacity: 1;
+        }
+        60% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+          opacity: 1;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+          opacity: 0;
+        }
+      }
 
-@media (max-width:720px){
+      @media (max-width: 720px) {
+        .dk-hero-body {
+          padding-bottom: 64px;
+        }
 
-  .dk-hero-body{ padding-bottom:64px; }
+        .dk-hero-meta {
+          gap: 14px 22px;
+          font-size: 10px;
+        }
 
-  .dk-hero-meta{
-    gap:14px 22px;
-    font-size:10px;
-  }
+        .dk-hero-logo {
+          width: clamp(230px, 72vw, 420px);
+        }
 
-  .dk-hero-logo{
-    width:clamp(230px, 72vw, 420px);
-  }
+        .dk-scroll-hint {
+          bottom: 20px;
+        }
+      }
 
-  .dk-scroll-hint{ bottom:20px; }
+      /* Shared section title */
+      .dk-intro-title {
+        font-family: var(--dk-font-serif);
+        font-weight: 400;
+        font-size: clamp(32px, 4.4vw, 58px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        color: var(--dk-umbra);
+      }
 
-}
-
-/* ==========================================================================
-   02 — INTRO
-   ========================================================================== */
-.dk-intro{ border-top:1px solid var(--dk-oat); }
-
-.dk-intro-grid{
-  display:grid;
-  grid-template-columns:1.05fr 0.95fr;
-  gap:clamp(40px, 6vw, 96px);
-  align-items:start;
-}
-
-.dk-intro-title{
-  font-family:var(--dk-font-serif);
-  font-weight:400;
-  font-size:clamp(32px, 4.4vw, 58px);
-  line-height:1.08;
-  letter-spacing:-0.01em;
-  color:var(--dk-umbra);
-}
-
-.dk-intro-cols{
-  display:flex;
-  flex-direction:column;
-  gap:36px;
-}
-.dk-intro-col h3{
-  font-family:var(--dk-font-sans);
-  font-weight:600;
-  font-size:13px;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--dk-terracotta);
-  margin-bottom:10px;
-}
-.dk-intro-col p{
-  font-size:16px;
-  line-height:1.7;
-  color:var(--dk-umbra);
-  max-width:44ch;
-}
-
-@media (max-width:900px){
-  .dk-intro-grid{ grid-template-columns:1fr; }
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    03 — ВИЗУАЛЬНЫЙ АУДИТ
    ========================================================================== */
-.dk-audit{
-  background:var(--dk-umbra);
-  color:var(--dk-milk);
-}
+      .dk-audit {
+        background: var(--dk-umbra);
+        color: var(--dk-milk);
+      }
 
-.dk-audit .eyebrow-dk{ color:var(--dk-oat); }
-.dk-audit .eyebrow-dk::before{ background:var(--dk-oat); }
+      .dk-audit .eyebrow-dk {
+        color: var(--dk-oat);
+      }
+      .dk-audit .eyebrow-dk::before {
+        background: var(--dk-oat);
+      }
 
-.dk-audit-grid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:1px;
-  background:rgba(250,245,236,0.14);
-  border-top:1px solid rgba(250,245,236,0.14);
-  margin-top:56px;
-}
+      .dk-audit-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: rgba(250, 245, 236, 0.14);
+        border-top: 1px solid rgba(250, 245, 236, 0.14);
+        margin-top: 56px;
+      }
 
-.dk-audit-item{
-  background:var(--dk-umbra);
-  padding:44px clamp(20px, 3vw, 44px);
-}
+      .dk-audit-item {
+        background: var(--dk-umbra);
+        padding: 44px clamp(20px, 3vw, 44px);
+      }
 
-.dk-audit-item .num{
-  font-family:var(--dk-font-serif);
-  font-style:italic;
-  font-size:14px;
-  color:var(--dk-terracotta);
-  margin-bottom:18px;
-  display:block;
-}
+      .dk-audit-item .num {
+        font-family: var(--dk-font-serif);
+        font-style: italic;
+        font-size: 14px;
+        color: var(--dk-terracotta);
+        margin-bottom: 18px;
+        display: block;
+      }
 
-.dk-audit-item h4{
-  font-family:var(--dk-font-serif);
-  font-weight:400;
-  font-size:clamp(22px, 2.4vw, 30px);
-  margin-bottom:12px;
-  line-height:1.15;
-}
+      .dk-audit-item h4 {
+        font-family: var(--dk-font-serif);
+        font-weight: 400;
+        font-size: clamp(22px, 2.4vw, 30px);
+        margin-bottom: 12px;
+        line-height: 1.15;
+      }
 
-.dk-audit-item p{
-  font-size:14px;
-  line-height:1.7;
-  color:var(--dk-oat);
-  max-width:38ch;
-}
+      .dk-audit-item p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--dk-oat);
+        max-width: 38ch;
+      }
 
-@media (max-width:720px){
-  .dk-audit-grid{ grid-template-columns:1fr; }
-}
+      @media (max-width: 720px) {
+        .dk-audit-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    04 — ЛОГОТИП
    ========================================================================== */
-.dk-logo-section{ border-top:1px solid var(--dk-oat); }
+      .dk-logo-section {
+        border-top: 1px solid var(--dk-oat);
+      }
 
-.dk-logo-showcase{
-  margin-top:56px;
-  padding:clamp(48px, 8vw, 110px) clamp(20px, 4vw, 60px);
-  background:var(--dk-milk-soft);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.dk-logo-showcase img{
-  width:min(100%, 620px);
-}
+      .dk-logo-showcase {
+        margin-top: 56px;
+        padding: clamp(48px, 8vw, 110px) clamp(20px, 4vw, 60px);
+        background: var(--dk-milk-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .dk-logo-showcase img {
+        width: min(100%, 620px);
+      }
 
-.dk-logo-variants{
-  margin-top:1px;
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:1px;
-  background:var(--dk-oat);
-}
+      .dk-logo-variants {
+        margin-top: 1px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--dk-oat);
+      }
 
-.dk-logo-variant{
-  aspect-ratio:4/3;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  padding:24px;
-}
-.dk-logo-variant span{
-  font-size:12px;
-  letter-spacing:0.06em;
-  color:var(--dk-olive);
-}
+      .dk-logo-variant {
+        aspect-ratio: 4/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        padding: 24px;
+      }
+      .dk-logo-variant span {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--dk-olive);
+      }
 
-.dk-logo-variant.positive{ background:var(--dk-milk); }
-.dk-logo-variant.positive img{ width:60%; }
+      .dk-logo-variant.positive {
+        background: var(--dk-milk);
+      }
+      .dk-logo-variant.positive img {
+        width: 60%;
+      }
 
-.dk-logo-variant.negative{ background:var(--dk-terracotta); }
-.dk-logo-variant.negative span{ color:var(--dk-milk); opacity:0.75; }
-.dk-logo-variant.negative img{ width:60%; filter:brightness(0) invert(1); }
+      .dk-logo-variant.negative {
+        background: var(--dk-terracotta);
+      }
+      .dk-logo-variant.negative span {
+        color: var(--dk-milk);
+        opacity: 0.75;
+      }
+      .dk-logo-variant.negative img {
+        width: 60%;
+        filter: brightness(0) invert(1);
+      }
 
-.dk-logo-variant.dark{ background:var(--dk-umbra); }
-.dk-logo-variant.dark span{ color:var(--dk-oat); }
-.dk-logo-variant.dark img{ width:60%; filter:brightness(0) invert(1); }
+      .dk-logo-variant.dark {
+        background: var(--dk-umbra);
+      }
+      .dk-logo-variant.dark span {
+        color: var(--dk-oat);
+      }
+      .dk-logo-variant.dark img {
+        width: 60%;
+        filter: brightness(0) invert(1);
+      }
 
-@media (max-width:720px){
-  .dk-logo-variants{ grid-template-columns:1fr; }
-}
+      @media (max-width: 720px) {
+        .dk-logo-variants {
+          grid-template-columns: 1fr;
+        }
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    05 — ЦВЕТ
    ========================================================================== */
-.dk-color-field{
-  display:grid;
-  grid-template-columns:1.4fr 1fr 0.8fr 0.7fr 0.5fr;
-  gap:1px;
-  background:var(--dk-umbra);
-  margin-top:56px;
-  min-height:340px;
-}
+      .dk-color-field {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 0.8fr 0.7fr 0.5fr;
+        gap: 1px;
+        background: var(--dk-umbra);
+        margin-top: 56px;
+        min-height: 340px;
+      }
 
-.dk-swatch{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:26px;
-  min-height:200px;
-  transition:flex-grow 0.5s var(--dk-ease-soft);
-}
-.dk-swatch .name{
-  font-family:var(--dk-font-serif);
-  font-size:clamp(18px, 1.8vw, 24px);
-  margin-bottom:6px;
-}
-.dk-swatch .hex{
-  font-size:12px;
-  letter-spacing:0.04em;
-  opacity:0.75;
-}
+      .dk-swatch {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 26px;
+        min-height: 200px;
+        transition: flex-grow 0.5s var(--dk-ease-soft);
+      }
+      .dk-swatch .name {
+        font-family: var(--dk-font-serif);
+        font-size: clamp(18px, 1.8vw, 24px);
+        margin-bottom: 6px;
+      }
+      .dk-swatch .hex {
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        opacity: 0.75;
+      }
 
-.dk-swatch.terracotta{ background:var(--dk-terracotta); color:var(--dk-milk); }
-.dk-swatch.milk{ background:var(--dk-milk); color:var(--dk-umbra); }
-.dk-swatch.umbra{ background:var(--dk-umbra); color:var(--dk-milk); }
-.dk-swatch.oat{ background:var(--dk-oat); color:var(--dk-umbra); }
-.dk-swatch.olive{ background:var(--dk-olive); color:var(--dk-milk); }
+      .dk-swatch.terracotta {
+        background: var(--dk-terracotta);
+        color: var(--dk-milk);
+      }
+      .dk-swatch.milk {
+        background: var(--dk-milk);
+        color: var(--dk-umbra);
+      }
+      .dk-swatch.umbra {
+        background: var(--dk-umbra);
+        color: var(--dk-milk);
+      }
+      .dk-swatch.oat {
+        background: var(--dk-oat);
+        color: var(--dk-umbra);
+      }
+      .dk-swatch.olive {
+        background: var(--dk-olive);
+        color: var(--dk-milk);
+      }
 
-@media (max-width:900px){
-  .dk-color-field{ grid-template-columns:repeat(2, 1fr); }
-}
+      @media (max-width: 900px) {
+        .dk-color-field {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    06 — ТИПОГРАФИКА
    ========================================================================== */
-.dk-type-section{ background:var(--dk-milk-soft); }
+      .dk-type-section {
+        background: var(--dk-milk-soft);
+      }
 
-.dk-type-rows{
-  margin-top:56px;
-  border-top:1px solid var(--dk-oat);
-}
+      .dk-type-rows {
+        margin-top: 56px;
+        border-top: 1px solid var(--dk-oat);
+      }
 
-.dk-type-row{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  gap:24px;
-  align-items:baseline;
-  padding:34px 0;
-  border-bottom:1px solid var(--dk-oat);
-}
-.dk-type-row .label{
-  font-size:12px;
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  color:var(--dk-olive);
-}
-.dk-type-row .word{
-  font-family:var(--dk-font-serif);
-  font-weight:400;
-  font-size:clamp(30px, 6vw, 76px);
-  line-height:1.0;
-  letter-spacing:-0.01em;
-  color:var(--dk-umbra);
-}
-.dk-type-row.sans .word{
-  font-family:var(--dk-font-sans);
-  font-weight:500;
-  font-size:clamp(20px, 3.4vw, 38px);
-}
+      .dk-type-row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 24px;
+        align-items: baseline;
+        padding: 34px 0;
+        border-bottom: 1px solid var(--dk-oat);
+      }
+      .dk-type-row .label {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--dk-olive);
+      }
+      .dk-type-row .word {
+        font-family: var(--dk-font-serif);
+        font-weight: 400;
+        font-size: clamp(30px, 6vw, 76px);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--dk-umbra);
+      }
+      .dk-type-row.sans .word {
+        font-family: var(--dk-font-sans);
+        font-weight: 500;
+        font-size: clamp(20px, 3.4vw, 38px);
+      }
 
-@media (max-width:640px){
-  .dk-type-row{ grid-template-columns:1fr; gap:8px; }
-}
+      @media (max-width: 640px) {
+        .dk-type-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    07 — ВИЗУАЛИЗАЦИИ
    ========================================================================== */
-.dk-visuals{
-  background:var(--dk-milk);
-}
-.dk-visuals-stack{
-  margin-top:56px;
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-}
-.dk-visual-item{
-  width:100%;
-  overflow:hidden;
-}
-.dk-visual-item img{
-  width:100%;
-  height:auto;
-  display:block;
-}
+      .dk-visuals {
+        background: var(--dk-milk);
+      }
+      .dk-visuals-stack {
+        margin-top: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .dk-visual-item {
+        width: 100%;
+        overflow: hidden;
+      }
+      .dk-visual-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
 
-/* ==========================================================================
-   08 — ПАТТЕРН
-   ========================================================================== */
-.dk-pattern-section{ background:var(--dk-milk); }
-
-.dk-pattern-strip{
-  margin-top:56px;
-  height:clamp(220px, 30vw, 380px);
-  overflow:hidden;
-  position:relative;
-  background:var(--dk-oat);
-}
-
-.dk-pattern-track{
-  display:flex;
-  align-items:center;
-  height:100%;
-  width:max-content;
-  animation:dk-pattern-scroll 34s linear infinite;
-}
-.dk-pattern-track svg{
-  height:70%;
-  width:auto;
-  margin:0 4vw;
-  flex:0 0 auto;
-  opacity:0.9;
-}
-@keyframes dk-pattern-scroll{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-50%); }
-}
-
-.dk-pattern-caption{
-  margin-top:24px;
-  font-size:13px;
-  color:var(--dk-olive);
-  max-width:52ch;
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    09 — ФОТОГРАФИЯ
    ========================================================================== */
-.dk-photo-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:2px;
-  margin-top:0;
-}
+      .dk-photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        margin-top: 0;
+      }
 
-.dk-photo-item{
-  position:relative;
-  aspect-ratio:3/4.2;
-  overflow:hidden;
-  background:var(--dk-oat);
-}
-.dk-photo-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform 1.2s var(--dk-ease-out);
-}
-.dk-photo-item:hover img{ transform:scale(1.05); }
+      .dk-photo-item {
+        position: relative;
+        aspect-ratio: 3/4.2;
+        overflow: hidden;
+        background: var(--dk-oat);
+      }
+      .dk-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s var(--dk-ease-out);
+      }
+      .dk-photo-item:hover img {
+        transform: scale(1.05);
+      }
 
-.dk-photo-item .label{
-  position:absolute;
-  left:24px;
-  bottom:24px;
-  font-family:var(--dk-font-serif);
-  font-size:clamp(22px, 2.6vw, 34px);
-  color:var(--dk-milk);
-  text-shadow:0 2px 20px rgba(0,0,0,0.35);
-}
+      .dk-photo-item .label {
+        position: absolute;
+        left: 24px;
+        bottom: 24px;
+        font-family: var(--dk-font-serif);
+        font-size: clamp(22px, 2.6vw, 34px);
+        color: var(--dk-milk);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+      }
 
-@media (max-width:900px){
-  .dk-photo-grid{ grid-template-columns:1fr; }
-}
+      @media (max-width: 900px) {
+        .dk-photo-grid {
+          grid-template-columns: 1fr;
+        }
+      }
 
-/* ==========================================================================
-   10 — УПАКОВКА
-   ========================================================================== */
-.dk-pack-section{ background:var(--dk-milk-soft); }
-
-.dk-pack-grid{
-  margin-top:56px;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:28px;
-}
-.dk-pack-grid .tall{ grid-row:span 2; }
-
-.dk-pack-media{
-  position:relative;
-  overflow:hidden;
-  background:var(--dk-oat);
-}
-.dk-pack-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-.dk-pack-media.ratio-tall{ aspect-ratio:4/5; }
-.dk-pack-media.ratio-wide{ aspect-ratio:16/10; }
-
-.dk-pack-caption{
-  margin-top:12px;
-  font-size:12px;
-  letter-spacing:0.04em;
-  color:var(--dk-olive);
-}
-
-@media (max-width:900px){
-  .dk-pack-grid{ grid-template-columns:1fr; }
-  .dk-pack-grid .tall{ grid-row:auto; }
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    11 — СРЕДА
    ========================================================================== */
-.dk-env{ position:relative; }
+      .dk-env {
+        position: relative;
+      }
 
-.dk-env-media{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  overflow:hidden;
-  background:var(--dk-oat);
-}
-.dk-env-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.dk-env-media .tag{
-  position:absolute;
-  left:var(--dk-edge);
-  bottom:28px;
-  font-family:var(--dk-font-serif);
-  font-size:clamp(24px, 3.6vw, 44px);
-  color:var(--dk-milk);
-  text-shadow:0 2px 24px rgba(0,0,0,0.4);
-}
+      .dk-env-media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        background: var(--dk-oat);
+      }
+      .dk-env-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .dk-env-media .tag {
+        position: absolute;
+        left: var(--dk-edge);
+        bottom: 28px;
+        font-family: var(--dk-font-serif);
+        font-size: clamp(24px, 3.6vw, 44px);
+        color: var(--dk-milk);
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+      }
 
-/* ==========================================================================
-   12 — DIGITAL
-   ========================================================================== */
-.dk-digital-grid{
-  margin-top:56px;
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:20px;
-}
-
-.dk-digital-item{
-  aspect-ratio:9/16;
-  background:var(--dk-oat);
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.dk-digital-item.wide{ aspect-ratio:16/10; grid-column:span 2; }
-.dk-digital-item img{ width:100%; height:100%; object-fit:cover; }
-.dk-digital-item .placeholder-note{
-  font-size:11px;
-  letter-spacing:0.04em;
-  color:var(--dk-olive);
-  text-align:center;
-  padding:12px;
-}
-
-@media (max-width:900px){
-  .dk-digital-grid{ grid-template-columns:repeat(2, 1fr); }
-  .dk-digital-item.wide{ grid-column:span 2; }
-}
-
-/* ==========================================================================
+      /* ==========================================================================
    13 — FINAL VISUAL
    ========================================================================== */
-.dk-final{
-  position:relative;
-  min-height:88vh;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  background:var(--dk-umbra);
-}
-.dk-final-media{
-  position:absolute;
-  inset:0;
-}
-.dk-final-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0.82;
-}
-.dk-final-media::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(0deg, rgba(56,39,31,0.92) 0%, rgba(56,39,31,0.15) 55%, rgba(56,39,31,0.35) 100%);
-}
-.dk-final-content{
-  position:relative;
-  z-index:2;
-  padding:0 var(--dk-edge) 90px;
-  color:var(--dk-milk);
-}
-.dk-final-content .line{
-  font-family:var(--dk-font-serif);
-  font-style:italic;
-  font-size:clamp(28px, 4.4vw, 54px);
-  line-height:1.2;
-  max-width:16ch;
-}
+      .dk-final {
+        position: relative;
+        min-height: 88vh;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: var(--dk-umbra);
+      }
+      .dk-final-media {
+        position: absolute;
+        inset: 0;
+      }
+      .dk-final-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.82;
+      }
+      .dk-final-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(56, 39, 31, 0.92) 0%,
+          rgba(56, 39, 31, 0.15) 55%,
+          rgba(56, 39, 31, 0.35) 100%
+        );
+      }
+      .dk-final-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 var(--dk-edge) 90px;
+        color: var(--dk-milk);
+      }
+      .dk-final-content .line {
+        font-family: var(--dk-font-serif);
+        font-style: italic;
+        font-size: clamp(28px, 4.4vw, 54px);
+        line-height: 1.2;
+        max-width: 16ch;
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    14 — NEXT PROJECT
    ========================================================================== */
-.dk-next{
-  background:var(--terra-black);
-  color:var(--terra-white);
-}
-.dk-next-inner{
-  max-width:var(--dk-container);
-  margin:0 auto;
-  padding:100px var(--dk-edge);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:24px;
-  flex-wrap:wrap;
-}
-.dk-next-left a{
-  font-size:12px;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:var(--terra-grey-mid);
-  transition:color 0.3s;
-}
-.dk-next-left a:hover{ color:var(--terra-white); }
+      .dk-next {
+        background: var(--terra-black);
+        color: var(--terra-white);
+      }
+      .dk-next-inner {
+        max-width: var(--dk-container);
+        margin: 0 auto;
+        padding: 100px var(--dk-edge);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .dk-next-left a {
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        transition: color 0.3s;
+      }
+      .dk-next-left a:hover {
+        color: var(--terra-white);
+      }
 
-.dk-next-right{
-  font-family:var(--terra-font-display);
-  font-weight:500;
-  font-size:clamp(28px, 4vw, 48px);
-  display:flex;
-  align-items:center;
-  gap:18px;
-  transition:opacity 0.3s;
-}
-.dk-next-right:hover{ opacity:0.7; }
+      .dk-next-right {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: clamp(28px, 4vw, 48px);
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        transition: opacity 0.3s;
+      }
+      .dk-next-right:hover {
+        opacity: 0.7;
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    TERRA CTA — «ЕСТЬ ЗАДАЧА?»
    Структура, типографика и поведение перенесены из cases.html (.cta /
    .cta-title / .cta-bottom / .btn-cta) без изменений. Секция намеренно
    тёмная и фирменная — здесь начинается возвращение к TERRA.
    ========================================================================== */
-.terra-cta{
-  position:relative;
-  overflow:hidden;
-  background:var(--terra-black);
-  color:var(--terra-white);
-  border-top:1px solid var(--terra-grey-line);
-}
-.terra-cta::before{
-  content:'';
-  position:absolute;
-  width:75vw;
-  height:75vw;
-  right:-28vw;
-  top:-34vw;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(101,54,255,0.25), rgba(210,38,232,0.1) 35%, transparent 65%);
-  filter:blur(40px);
-  pointer-events:none;
-}
-.terra-cta-inner{
-  position:relative;
-  z-index:1;
-  max-width:var(--dk-container);
-  margin:0 auto;
-  padding:var(--dk-edge);
-  min-height:70svh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.terra-cta-eyebrow{
-  font-family:var(--terra-font-body);
-  font-size:12px;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color:var(--terra-grey-mid);
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.terra-cta-eyebrow::before{
-  content:'';
-  width:26px;
-  height:1px;
-  background:var(--terra-grad);
-}
-.terra-cta-title{
-  font-family:var(--terra-font-display);
-  font-size:clamp(42px, 7.3vw, 104px);
-  font-weight:500;
-  line-height:1.06;
-  letter-spacing:-0.035em;
-  max-width:12ch;
-  margin-top:72px;
-}
-.terra-cta-title .grad-text{
-  background:var(--terra-grad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.terra-cta-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:32px;
-  border-top:1px solid var(--terra-grey-line);
-  padding-top:30px;
-}
-.terra-cta-note{
-  font-family:var(--terra-font-body);
-  font-size:14px;
-  line-height:1.65;
-  color:var(--terra-grey-mid);
-  max-width:36ch;
-}
-.terra-btn-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  font-family:var(--terra-font-body);
-  font-size:12px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  font-weight:600;
-  padding:16px 26px;
-  border:1px solid var(--terra-grey-line);
-  position:relative;
-  overflow:hidden;
-  white-space:nowrap;
-  transition:border-color 0.4s var(--dk-ease-soft), color 0.4s var(--dk-ease-soft);
-}
-.terra-btn-cta span{ position:relative; z-index:2; }
-.terra-btn-cta::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:var(--terra-grad);
-  transform:translateX(-101%);
-  transition:transform 0.5s var(--dk-ease-out);
-  z-index:1;
-}
-.terra-btn-cta:hover{ border-color:transparent; }
-.terra-btn-cta:hover::before{ transform:none; }
+      .terra-cta {
+        position: relative;
+        overflow: hidden;
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+      }
+      .terra-cta::before {
+        content: "";
+        position: absolute;
+        width: 75vw;
+        height: 75vw;
+        right: -28vw;
+        top: -34vw;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(101, 54, 255, 0.25),
+          rgba(210, 38, 232, 0.1) 35%,
+          transparent 65%
+        );
+        filter: blur(40px);
+        pointer-events: none;
+      }
+      .terra-cta-inner {
+        position: relative;
+        z-index: 1;
+        max-width: var(--dk-container);
+        margin: 0 auto;
+        padding: var(--dk-edge);
+        min-height: 70svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .terra-cta-eyebrow {
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .terra-cta-eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--terra-grad);
+      }
+      .terra-cta-title {
+        font-family: var(--terra-font-display);
+        font-size: clamp(42px, 7.3vw, 104px);
+        font-weight: 500;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        max-width: 12ch;
+        margin-top: 72px;
+      }
+      .terra-cta-title .grad-text {
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .terra-cta-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        padding-top: 30px;
+      }
+      .terra-cta-note {
+        font-family: var(--terra-font-body);
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--terra-grey-mid);
+        max-width: 36ch;
+      }
+      .terra-btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 16px 26px;
+        border: 1px solid var(--terra-grey-line);
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        transition:
+          border-color 0.4s var(--dk-ease-soft),
+          color 0.4s var(--dk-ease-soft);
+      }
+      .terra-btn-cta span {
+        position: relative;
+        z-index: 2;
+      }
+      .terra-btn-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--terra-grad);
+        transform: translateX(-101%);
+        transition: transform 0.5s var(--dk-ease-out);
+        z-index: 1;
+      }
+      .terra-btn-cta:hover {
+        border-color: transparent;
+      }
+      .terra-btn-cta:hover::before {
+        transform: none;
+      }
 
-@media (max-width:860px){
-  .terra-cta-inner{ min-height:60svh; }
-}
-@media (max-width:640px){
-  .terra-cta-inner{ min-height:auto; padding-top:80px; padding-bottom:80px; }
-  .terra-cta-title{ margin-top:28px; }
-  .terra-cta-bottom{ flex-direction:column; align-items:flex-start; margin-top:88px; }
-}
+      @media (max-width: 860px) {
+        .terra-cta-inner {
+          min-height: 60svh;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-cta-inner {
+          min-height: auto;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+        .terra-cta-title {
+          margin-top: 28px;
+        }
+        .terra-cta-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 88px;
+        }
+      }
 
-/* ==========================================================================
+      /* ==========================================================================
    TERRA FOOTER (перенесено из cases.html без изменения логики)
    ========================================================================== */
-.terra-footer{
-  background:var(--terra-black);
-  color:var(--terra-white);
-  border-top:1px solid var(--terra-grey-line);
-  font-family:var(--terra-font-body);
-}
-.terra-footer .section-inner{
-  max-width:var(--dk-container);
-  margin:0 auto;
-  padding:80px var(--dk-edge);
-}
-.terra-footer .footer-top{
-  display:grid;
-  grid-template-columns:1.4fr 1fr 1fr;
-  gap:64px;
-  margin-bottom:80px;
-}
-.terra-footer .wordmark{
-  font-family:var(--terra-font-display);
-  font-weight:500;
-  font-size:15px;
-  letter-spacing:0.06em;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:32px;
-}
-.terra-footer .wordmark .dot{
-  width:6px; height:6px; border-radius:50%;
-  background:var(--terra-grad);
-}
-.terra-footer .footer-tagline{
-  font-family:var(--terra-font-display);
-  font-size:clamp(22px, 2.6vw, 30px);
-  line-height:1.2;
-  max-width:16ch;
-  color:var(--terra-white);
-}
-.terra-footer .footer-col-label{
-  font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--terra-grey-mid); margin-bottom:16px;
-}
-.terra-footer .footer-links{ display:flex; flex-direction:column; gap:10px; }
-.terra-footer .footer-links a{ font-size:14px; color:var(--terra-grey-mid); transition:color 0.3s; }
-.terra-footer .footer-links a:hover{ color:var(--terra-white); }
-.terra-footer .footer-giant{
-  font-family:var(--terra-font-display);
-  font-weight:700;
-  font-size:clamp(60px, 13vw, 200px);
-  line-height:0.82;
-  letter-spacing:-0.02em;
-  background:var(--terra-grad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  margin-bottom:32px;
-}
-.terra-footer .footer-meta{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-top:32px;
-  border-top:1px solid var(--terra-grey-line);
-  font-size:11px;
-  color:var(--terra-grey-mid);
-  letter-spacing:0.06em;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-@media (max-width:900px){
-  .terra-footer .footer-top{ grid-template-columns:1fr 1fr; }
-}
-@media (max-width:640px){
-  .terra-footer .footer-top{ grid-template-columns:1fr; gap:32px; }
-}
-
-  </style>
-
-</head>
-<body>
-
-<!-- ================= TERRA HEADER ================= -->
-<header class="terra-header" id="top">
-  <nav class="terra-nav" aria-label="Основная навигация">
-
-    <a href="/" class="terra-wordmark">
-      <span class="dot"></span>
-      СТУДИЯ ТЕРРА
-    </a>
-
-    <button
-      class="terra-nav-toggle"
-      id="navToggle"
-      aria-label="Открыть меню"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <div class="terra-nav-links" id="navLinks">
-
-      <a href="/">
-        ГЛАВНАЯ
-      </a>
-
-      <a href="/cases" aria-current="page">
-        ПРОЕКТЫ
-      </a>
-
-      <a href="/#services">
-        УСЛУГИ
-      </a>
-
-      <a href="/#about">
-        О НАС
-      </a>
-
-      <a href="#contacts">
-        КОНТАКТЫ
-      </a>
-
-      <a href="/#contact" class="terra-nav-cta">
-        ОБСУДИТЬ ПРОЕКТ
-      </a>
-
-    </div>
-
-  </nav>
-</header>
-
-<!-- ================= DO KORKI CASE ================= -->
-
-<!-- ================= 01 — HERO ================= -->
-<section class="dk-hero">
-
-  <div class="dk-hero-jest" aria-hidden="true">
-    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M20 190 C 90 190, 90 90, 160 90 C 210 90, 210 150, 260 150 C 300 150, 300 90, 340 90"
-        fill="none"
-        stroke="#AC4B2E"
-        stroke-width="46"
-        stroke-linecap="round"
-      />
-    </svg>
-  </div>
-
-  <div class="dk-hero-body edge">
-
-    <div class="dk-hero-meta reveal">
-      <span>
-        Категория
-        <b>Брендинг / Айдентика</b>
-      </span>
-      <span>
-        Проект
-        <b>Ремесленная пекарня</b>
-      </span>
-      <span>
-        Год
-        <b>2026</b>
-      </span>
-    </div>
-
-    <div class="dk-hero-logo reveal">
-      <img
-        src="/images/do-korki/logo-primary.png"
-        alt="До Корки — ремесленная пекарня, авторский логотип"
-      >
-    </div>
-
-    <p class="dk-hero-line reveal">
-      «Ремесло в форме.»
-    </p>
-
-  </div>
-
-</section>
-
-<!-- ================= 02 — ВВЕДЕНИЕ ================= -->
-<section class="dk-intro">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Введение</div>
-
-    <div class="dk-intro-grid">
-
-      <h2 class="dk-intro-title reveal">
-        Характер,
-        который уже есть.
-      </h2>
-
-      <div class="dk-intro-cols">
-
-        <div class="dk-intro-col reveal">
-          <h3>Задача</h3>
-          <p>
-            У «До Корки» уже был авторский логотип с сильной, живой пластикой.
-            Задачей было не заменить его, а собрать вокруг него рабочую
-            систему — так, чтобы форма логотипа звучала не только в вывеске,
-            но и в упаковке, среде и digital.
-          </p>
-        </div>
-
-        <div class="dk-intro-col reveal">
-          <h3>Подход</h3>
-          <p>
-            Мы извлекли из верхнего знака один пластический жест — мягкий
-            наплыв с открытым просветом — и превратили его в самостоятельный
-            графический модуль. Он стал вторым языком бренда рядом со
-            словом.
-          </p>
-        </div>
-
-        <div class="dk-intro-col reveal">
-          <h3>Идея</h3>
-          <p>
-            Тактильная сдержанность: тёплый молочный фон, один уверенный
-            терракотовый жест, спокойная типографика. Экспрессия — в одной
-            детали, а не в перегрузе.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 03 — ВИЗУАЛЬНЫЙ АУДИТ ================= -->
-<section class="dk-audit">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Визуальный аудит</div>
-
-    <h2 class="dk-intro-title reveal" style="color:var(--dk-milk); max-width:20ch;">
-      Пластика, которая уже
-      содержит всю систему.
-    </h2>
-
-    <div class="dk-audit-grid">
-
-      <div class="dk-audit-item reveal">
-        <span class="num">01</span>
-        <h4>Мягкая масса</h4>
-        <p>
-          Широкий пластичный штрих без острых углов — форма ощущается
-          вылепленной, а не начерченной.
-        </p>
-      </div>
-
-      <div class="dk-audit-item reveal">
-        <span class="num">02</span>
-        <h4>Точный просвет</h4>
-        <p>
-          Внутри наплыва остаётся открытое пространство — оно и стало
-          главным опознавательным признаком графики бренда.
-        </p>
-      </div>
-
-      <div class="dk-audit-item reveal">
-        <span class="num">03</span>
-        <h4>Повтор букв «К»</h4>
-        <p>
-          Две «К» задают внутренний ритм слова, овальные «О» держат
-          устойчивость всей строки.
-        </p>
-      </div>
-
-      <div class="dk-audit-item reveal">
-        <span class="num">04</span>
-        <h4>Композиция знака</h4>
-        <p>
-          Знак сверху, слово в центре, разреженный дескриптор снизу —
-          симметрия блока уравновешивает живое письмо.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 04 — ЛОГОТИП ================= -->
-<section class="dk-logo-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Логотип</div>
-
-    <h2 class="dk-intro-title reveal">
-      Авторская
-      композиция.
-    </h2>
-
-    <div class="dk-logo-showcase reveal">
-      <img
-        src="/images/do-korki/logo-primary.png"
-        alt="Основная версия логотипа До Корки"
-      >
-    </div>
-
-    <div class="dk-logo-variants">
-
-      <div class="dk-logo-variant positive reveal">
-        <img src="/images/do-korki/logo-primary.png" alt="Позитив">
-        <span>Позитив</span>
-      </div>
-
-      <div class="dk-logo-variant negative reveal">
-        <img src="/images/do-korki/logo-primary.png" alt="Негатив">
-        <span>Негатив</span>
-      </div>
-
-      <div class="dk-logo-variant dark reveal">
-        <img src="/images/do-korki/logo-primary.png" alt="На тёмной поверхности">
-        <span>Тёмная поверхность</span>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 05 — ЦВЕТ ================= -->
-<section class="dk-color-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Цвет</div>
-
-    <h2 class="dk-intro-title reveal">
-      Цвет
-      печёной корки.
-    </h2>
-
-    <div class="dk-color-field reveal">
-
-      <div class="dk-swatch milk">
-        <div class="name">Молочный</div>
-        <div class="hex">#FAF5EC</div>
-      </div>
-
-      <div class="dk-swatch terracotta">
-        <div class="name">Терракота</div>
-        <div class="hex">#AC4B2E</div>
-      </div>
-
-      <div class="dk-swatch umbra">
-        <div class="name">Умбра</div>
-        <div class="hex">#38271F</div>
-      </div>
-
-      <div class="dk-swatch oat">
-        <div class="name">Овсяный</div>
-        <div class="hex">#D9C5A6</div>
-      </div>
-
-      <div class="dk-swatch olive">
-        <div class="name">Оливковый</div>
-        <div class="hex">#73735A</div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 06 — ТИПОГРАФИКА ================= -->
-<section class="dk-type-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Типографика</div>
-
-    <h2 class="dk-intro-title reveal">
-      Живое слово.
-      Спокойный текст.
-    </h2>
-
-    <div class="dk-type-rows reveal">
-
-      <div class="dk-type-row">
-        <span class="label">Noto Serif</span>
-        <span class="word">Тепло формы</span>
-      </div>
-
-      <div class="dk-type-row">
-        <span class="label">Noto Serif</span>
-        <span class="word">Хлеб и выпечка</span>
-      </div>
-
-      <div class="dk-type-row sans">
-        <span class="label">Rubik</span>
-        <span class="word">Ремесленная пекарня — набор и интерфейс</span>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 07 — ВИЗУАЛИЗАЦИИ ================= -->
-<section class="dk-visuals">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">
-      Визуализации
-    </div>
-
-    <h2 class="dk-intro-title reveal">
-      Бренд в реальной среде.
-    </h2>
-
-    <div class="dk-visuals-stack">
-
-      <div class="dk-visual-item reveal">
-        <img
-          src="/images/do-korki/mockup-01.jpg"
-          alt="Визуализация бренда До Корки"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="dk-visual-item reveal">
-        <img
-          src="/images/do-korki/mockup-02.jpg"
-          alt="Визуализация упаковки До Корки"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="dk-visual-item reveal">
-        <img
-          src="/images/do-korki/mockup-03.jpg"
-          alt="Визуализация носителей бренда До Корки"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="dk-visual-item reveal">
-        <img
-          src="/images/do-korki/mockup-04.jpg"
-          alt="Визуализация среды До Корки"
-          loading="lazy"
-        >
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 08 — ПАТТЕРН ================= -->
-<section class="dk-pattern-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Паттерн</div>
-
-    <h2 class="dk-intro-title reveal">
-      Повторяется жест,
-      а не логотип.
-    </h2>
-
-    <div class="dk-pattern-strip reveal">
-      <div class="dk-pattern-track" id="dkPatternTrack">
-        <!-- набор SVG-модулей дублируется скриптом ниже для бесшовной прокрутки -->
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg"><path d="M10 70 C 25 70, 28 25, 45 25 C 60 25, 60 50, 78 50" fill="none" stroke="#AC4B2E" stroke-width="12" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-
-    <p class="dk-pattern-caption reveal">
-      Модуль применяется на обёрточной бумаге в плотном шаге и на внутренней
-      стороне упаковки — в свободном.
-    </p>
-
-  </div>
-</section>
-
-<!-- ================= 09 — ФОТОГРАФИЯ ================= -->
-<section class="dk-photo-section">
-
-  <div class="dk-inner" style="padding-bottom:0;">
-    <div class="eyebrow-dk reveal">Фотография</div>
-    <h2 class="dk-intro-title reveal">
-      Корка. Продукт. Жест.
-    </h2>
-  </div>
-
-  <div class="dk-photo-grid reveal">
-
-    <div class="dk-photo-item">
-      <!-- REPLACE WITH PROJECT MOCKUP -->
-      <img
-        src="/images/do-korki/bread-macro.jpg"
-        alt="Макро фактуры хлебной корки"
-        loading="lazy"
-      >
-      <span class="label">Корка</span>
-    </div>
-
-    <div class="dk-photo-item">
-      <!-- REPLACE WITH PROJECT MOCKUP -->
-      <img
-        src="/images/do-korki/bread-top.jpg"
-        alt="Хлеб, снятый сверху на льняной ткани"
-        loading="lazy"
-      >
-      <span class="label">Продукт</span>
-    </div>
-
-    <div class="dk-photo-item">
-      <!-- REPLACE WITH PROJECT MOCKUP -->
-      <img
-        src="/images/do-korki/hands-dough.jpg"
-        alt="Руки в процессе работы с тестом"
-        loading="lazy"
-      >
-      <span class="label">Жест</span>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= 10 — УПАКОВКА ================= -->
-<section class="dk-pack-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Упаковка</div>
-
-    <h2 class="dk-intro-title reveal">
-      Материал
-      как часть бренда.
-    </h2>
-
-    <div class="dk-pack-grid reveal">
-
-      <div>
-        <div class="dk-pack-media ratio-tall tall">
-          <img
-            src="/images/do-korki/package-bag.jpg"
-            alt="Крафтовый пакет с логотипом До Корки и свежим хлебом"
-            loading="lazy"
-          >
-        </div>
-        <div class="dk-pack-caption">Пакет / крафт, терракотовая печать</div>
-      </div>
-
-      <div>
-        <div class="dk-pack-media ratio-wide">
-          <img
-            src="/images/do-korki/package-box.jpg"
-            alt="Коробка До Корки с графическим жестом на крышке"
-            loading="lazy"
-          >
-        </div>
-        <div class="dk-pack-caption">Коробка / молочная бумага, терракотовый жест на крышке</div>
-      </div>
-
-      <div>
-        <div class="dk-pack-media ratio-wide">
-          <img
-            src="/images/do-korki/wrapping-paper.jpg"
-            alt="Обёрточная бумага с паттерном До Корки и круассаном"
-            loading="lazy"
-          >
-        </div>
-        <div class="dk-pack-caption">Обёрточная бумага / плотный паттерн-модуль</div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 11 — СРЕДА ================= -->
-<section class="dk-env">
-
-  <div class="dk-env-media reveal">
-    <!-- REPLACE WITH PROJECT MOCKUP -->
-    <img
-      src="/images/do-korki/signage.jpg"
-      alt="Вывеска и витрина пекарни До Корки"
-      loading="lazy"
-    >
-    <span class="tag">Форма встречает пространство</span>
-  </div>
-
-  <div class="dk-inner" style="padding-top:56px; padding-bottom:56px;">
-    <div class="eyebrow-dk reveal">Среда</div>
-    <p style="font-size:16px; line-height:1.7; max-width:56ch;" class="reveal">
-      Вывеска использует компактную версию названия без дескриптора.
-      Витрина и фартук сохраняют охранное поле вокруг знака — форма нигде
-      не зажата.
-    </p>
-  </div>
-
-</section>
-
-<!-- ================= 12 — DIGITAL ================= -->
-<section class="dk-digital-section">
-  <div class="dk-inner">
-
-    <div class="eyebrow-dk reveal">Digital</div>
-
-    <h2 class="dk-intro-title reveal">
-      Пост, история,
-      аватар.
-    </h2>
-
-    <div class="dk-digital-grid reveal">
-
-      <div class="dk-digital-item wide">
-        <!-- REPLACE WITH PROJECT MOCKUP -->
-        <img src="/images/do-korki/digital-post.jpg" alt="Пост До Корки для соцсетей" loading="lazy">
-      </div>
-
-      <div class="dk-digital-item">
-        <!-- REPLACE WITH PROJECT MOCKUP -->
-        <img src="/images/do-korki/digital-story.jpg" alt="Сторис До Корки" loading="lazy">
-      </div>
-
-      <div class="dk-digital-item" style="background:var(--dk-terracotta); display:flex; align-items:center; justify-content:center;">
-        <img
-          src="/images/do-korki/logo-primary.png"
-          alt="Аватар До Корки"
-          style="width:55%; filter:brightness(0) invert(1);"
-        >
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= 13 — FINAL VISUAL ================= -->
-<section class="dk-final">
-
-  <div class="dk-final-media">
-    <!-- REPLACE WITH PROJECT MOCKUP -->
-    <img src="/images/do-korki/final.jpg" alt="Финальная сцена: хлеб, бумага и логотип До Корки" loading="lazy">
-  </div>
-
-  <div class="dk-final-content reveal">
-    <p class="line">Ремесло становится системой.</p>
-  </div>
-
-</section>
-
-<!-- ================= 14 — NEXT PROJECT ================= -->
-<section class="dk-next">
-  <div class="dk-next-inner">
-
-    <div class="dk-next-left">
-      <a href="/cases">← Все кейсы</a>
-    </div>
-
-    <a href="/cases" class="dk-next-right">
-      <span>Следующий проект</span>
-      <span>→</span>
-    </a>
-
-  </div>
-</section>
-
-<!-- ================= TERRA CTA ================= -->
-<section class="terra-cta" id="contact">
-  <div class="terra-cta-inner">
-
-    <div>
-
-      <p class="terra-cta-eyebrow reveal">
-        Новый проект
-      </p>
-
-      <h2 class="terra-cta-title reveal">
-        ЕСТЬ ЗАДАЧА?<br>
-        <span class="grad-text">ДАВАЙТЕ ОБСУДИМ ПРОЕКТ</span>
-      </h2>
-
-    </div>
-
-    <div class="terra-cta-bottom reveal">
-
-      <p class="terra-cta-note">
-        Расскажите о задаче — предложим подходящий формат работы и соберём
-        сильное визуальное решение.
-      </p>
-
-      <a class="terra-btn-cta" href="/#contact">
-        <span>Обсудить проект ↗</span>
-      </a>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= TERRA FOOTER ================= -->
-<footer class="terra-footer" id="contacts">
-  <div class="section-inner">
-
-    <div class="footer-top reveal">
-
-      <div>
-        <a href="/" class="wordmark">
+      .terra-footer {
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+        font-family: var(--terra-font-body);
+      }
+      .terra-footer .section-inner {
+        max-width: var(--dk-container);
+        margin: 0 auto;
+        padding: 80px var(--dk-edge);
+      }
+      .terra-footer .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 64px;
+        margin-bottom: 80px;
+      }
+      .terra-footer .wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+      .terra-footer .wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
+      .terra-footer .footer-tagline {
+        font-family: var(--terra-font-display);
+        font-size: clamp(22px, 2.6vw, 30px);
+        line-height: 1.2;
+        max-width: 16ch;
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-col-label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        margin-bottom: 16px;
+      }
+      .terra-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .terra-footer .footer-links a {
+        font-size: 14px;
+        color: var(--terra-grey-mid);
+        transition: color 0.3s;
+      }
+      .terra-footer .footer-links a:hover {
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-giant {
+        font-family: var(--terra-font-display);
+        font-weight: 700;
+        font-size: clamp(60px, 13vw, 200px);
+        line-height: 0.82;
+        letter-spacing: -0.02em;
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 32px;
+      }
+      .terra-footer .footer-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        font-size: 11px;
+        color: var(--terra-grey-mid);
+        letter-spacing: 0.06em;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= TERRA HEADER ================= -->
+    <header class="terra-header" id="top">
+      <nav class="terra-nav" aria-label="Основная навигация">
+        <a href="/" class="terra-wordmark">
           <span class="dot"></span>
           СТУДИЯ ТЕРРА
         </a>
-        <p class="footer-tagline">
-          Дизайн, который<br>
-          усиливает бизнес.
+
+        <button
+          class="terra-nav-toggle"
+          id="navToggle"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="terra-nav-links" id="navLinks">
+          <a href="/"> ГЛАВНАЯ </a>
+
+          <a href="/cases" aria-current="page"> ПРОЕКТЫ </a>
+
+          <a href="/#services"> УСЛУГИ </a>
+
+          <a href="/#about"> О НАС </a>
+
+          <a href="#contacts"> КОНТАКТЫ </a>
+
+          <a href="/#contact" class="terra-nav-cta"> ОБСУДИТЬ ПРОЕКТ </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= DO KORKI CASE ================= -->
+
+    <!-- ================= 01 — HERO ================= -->
+    <section class="dk-hero">
+      <div class="dk-hero-bg">
+        <img src="/images/do-korki/hero.jpg" alt="" />
+      </div>
+
+      <div class="dk-hero-body edge">
+        <div class="dk-hero-meta reveal">
+          <span>
+            Категория
+            <b>Брендинг / Айдентика</b>
+          </span>
+          <span>
+            Проект
+            <b>Ремесленная пекарня</b>
+          </span>
+          <span>
+            Год
+            <b>2026</b>
+          </span>
+        </div>
+
+        <div class="dk-hero-logo reveal">
+          <img
+            src="/images/do-korki/logo-primary.png"
+            alt="До Корки — ремесленная пекарня, авторский логотип"
+          />
+        </div>
+
+        <p class="dk-hero-line reveal">«Ремесло в форме.»</p>
+      </div>
+
+      <div class="dk-scroll-hint" aria-hidden="true">
+        <span>Вниз</span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+    <!-- ================= 03 — ВИЗУАЛЬНЫЙ АУДИТ ================= -->
+    <section class="dk-audit">
+      <div class="dk-inner">
+        <div class="eyebrow-dk reveal">Визуальный аудит</div>
+
+        <h2
+          class="dk-intro-title reveal"
+          style="color: var(--dk-milk); max-width: 20ch"
+        >
+          Пластика, которая уже содержит всю систему.
+        </h2>
+
+        <div class="dk-audit-grid">
+          <div class="dk-audit-item reveal">
+            <span class="num">01</span>
+            <h4>Мягкая масса</h4>
+            <p>
+              Широкий пластичный штрих без острых углов — форма ощущается
+              вылепленной, а не начерченной.
+            </p>
+          </div>
+
+          <div class="dk-audit-item reveal">
+            <span class="num">02</span>
+            <h4>Точный просвет</h4>
+            <p>
+              Внутри наплыва остаётся открытое пространство — оно и стало
+              главным опознавательным признаком графики бренда.
+            </p>
+          </div>
+
+          <div class="dk-audit-item reveal">
+            <span class="num">03</span>
+            <h4>Повтор букв «К»</h4>
+            <p>
+              Две «К» задают внутренний ритм слова, овальные «О» держат
+              устойчивость всей строки.
+            </p>
+          </div>
+
+          <div class="dk-audit-item reveal">
+            <span class="num">04</span>
+            <h4>Композиция знака</h4>
+            <p>
+              Знак сверху, слово в центре, разреженный дескриптор снизу —
+              симметрия блока уравновешивает живое письмо.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 04 — ЛОГОТИП ================= -->
+    <section class="dk-logo-section">
+      <div class="dk-inner">
+        <div class="eyebrow-dk reveal">Логотип</div>
+
+        <h2 class="dk-intro-title reveal">Авторская композиция.</h2>
+
+        <div class="dk-logo-showcase reveal">
+          <img
+            src="/images/do-korki/logo-primary.png"
+            alt="Основная версия логотипа До Корки"
+          />
+        </div>
+
+        <div class="dk-logo-variants">
+          <div class="dk-logo-variant positive reveal">
+            <img src="/images/do-korki/logo-primary.png" alt="Позитив" />
+            <span>Позитив</span>
+          </div>
+
+          <div class="dk-logo-variant negative reveal">
+            <img src="/images/do-korki/logo-primary.png" alt="Негатив" />
+            <span>Негатив</span>
+          </div>
+
+          <div class="dk-logo-variant dark reveal">
+            <img
+              src="/images/do-korki/logo-primary.png"
+              alt="На тёмной поверхности"
+            />
+            <span>Тёмная поверхность</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 05 — ЦВЕТ ================= -->
+    <section class="dk-color-section">
+      <div class="dk-inner">
+        <div class="eyebrow-dk reveal">Цвет</div>
+
+        <h2 class="dk-intro-title reveal">Цвет печёной корки.</h2>
+
+        <div class="dk-color-field reveal">
+          <div class="dk-swatch milk">
+            <div class="name">Молочный</div>
+            <div class="hex">#FAF5EC</div>
+          </div>
+
+          <div class="dk-swatch terracotta">
+            <div class="name">Терракота</div>
+            <div class="hex">#AC4B2E</div>
+          </div>
+
+          <div class="dk-swatch umbra">
+            <div class="name">Умбра</div>
+            <div class="hex">#38271F</div>
+          </div>
+
+          <div class="dk-swatch oat">
+            <div class="name">Овсяный</div>
+            <div class="hex">#D9C5A6</div>
+          </div>
+
+          <div class="dk-swatch olive">
+            <div class="name">Оливковый</div>
+            <div class="hex">#73735A</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 06 — ТИПОГРАФИКА ================= -->
+    <section class="dk-type-section">
+      <div class="dk-inner">
+        <div class="eyebrow-dk reveal">Типографика</div>
+
+        <h2 class="dk-intro-title reveal">Живое слово. Спокойный текст.</h2>
+
+        <div class="dk-type-rows reveal">
+          <div class="dk-type-row">
+            <span class="label">Noto Serif</span>
+            <span class="word">Тепло формы</span>
+          </div>
+
+          <div class="dk-type-row">
+            <span class="label">Noto Serif</span>
+            <span class="word">Хлеб и выпечка</span>
+          </div>
+
+          <div class="dk-type-row sans">
+            <span class="label">Rubik</span>
+            <span class="word">Ремесленная пекарня — набор и интерфейс</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 07 — ВИЗУАЛИЗАЦИИ ================= -->
+    <section class="dk-visuals">
+      <div class="dk-inner">
+        <div class="eyebrow-dk reveal">Визуализации</div>
+
+        <h2 class="dk-intro-title reveal">Бренд в реальной среде.</h2>
+
+        <div class="dk-visuals-stack">
+          <div class="dk-visual-item reveal">
+            <img
+              src="/images/do-korki/mockup-01.jpg"
+              alt="Визуализация бренда До Корки"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="dk-visual-item reveal">
+            <img
+              src="/images/do-korki/mockup-02.jpg"
+              alt="Визуализация упаковки До Корки"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="dk-visual-item reveal">
+            <img
+              src="/images/do-korki/mockup-03.jpg"
+              alt="Визуализация носителей бренда До Корки"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="dk-visual-item reveal">
+            <img
+              src="/images/do-korki/mockup-04.jpg"
+              alt="Визуализация среды До Корки"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 09 — ФОТОГРАФИЯ ================= -->
+    <section class="dk-photo-section">
+      <div class="dk-inner" style="padding-bottom: 0">
+        <div class="eyebrow-dk reveal">Фотография</div>
+        <h2 class="dk-intro-title reveal">Корка. Продукт. Жест.</h2>
+      </div>
+
+      <div class="dk-photo-grid reveal">
+        <div class="dk-photo-item">
+          <!-- REPLACE WITH PROJECT MOCKUP -->
+          <img
+            src="/images/do-korki/bread-macro.jpg"
+            alt="Макро фактуры хлебной корки"
+            loading="lazy"
+          />
+          <span class="label">Корка</span>
+        </div>
+
+        <div class="dk-photo-item">
+          <!-- REPLACE WITH PROJECT MOCKUP -->
+          <img
+            src="/images/do-korki/bread-top.jpg"
+            alt="Хлеб, снятый сверху на льняной ткани"
+            loading="lazy"
+          />
+          <span class="label">Продукт</span>
+        </div>
+
+        <div class="dk-photo-item">
+          <!-- REPLACE WITH PROJECT MOCKUP -->
+          <img
+            src="/images/do-korki/hands-dough.jpg"
+            alt="Руки в процессе работы с тестом"
+            loading="lazy"
+          />
+          <span class="label">Жест</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 11 — СРЕДА ================= -->
+    <section class="dk-env">
+      <div class="dk-env-media reveal">
+        <!-- REPLACE WITH PROJECT MOCKUP -->
+        <img
+          src="/images/do-korki/signage.jpg"
+          alt="Вывеска и витрина пекарни До Корки"
+          loading="lazy"
+        />
+        <span class="tag">Форма встречает пространство</span>
+      </div>
+
+      <div class="dk-inner" style="padding-top: 56px; padding-bottom: 56px">
+        <div class="eyebrow-dk reveal">Среда</div>
+        <p
+          style="font-size: 16px; line-height: 1.7; max-width: 56ch"
+          class="reveal"
+        >
+          Вывеска использует компактную версию названия без дескриптора. Витрина
+          и фартук сохраняют охранное поле вокруг знака — форма нигде не зажата.
         </p>
       </div>
+    </section>
 
-      <div>
-        <div class="footer-col-label">Навигация</div>
-        <div class="footer-links">
-          <a href="/">Главная</a>
-          <a href="/cases">Кейсы</a>
-          <a href="/#services">Услуги</a>
-          <a href="/#about">О нас</a>
-          <a href="#contacts">Контакты</a>
-        </div>
+    <!-- ================= 13 — FINAL VISUAL ================= -->
+    <section class="dk-final">
+      <div class="dk-final-media">
+        <!-- REPLACE WITH PROJECT MOCKUP -->
+        <img
+          src="/images/do-korki/final.jpg"
+          alt="Финальная сцена: хлеб, бумага и логотип До Корки"
+          loading="lazy"
+        />
       </div>
 
-      <div>
-        <div class="footer-col-label">Связаться</div>
-        <div class="footer-links">
-          <a href="https://t.me/terra_brand" target="_blank" rel="noopener">Telegram</a>
-          <a href="https://wa.me/79937717751" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo" target="_blank" rel="noopener">Max</a>
-          <a href="mailto:hello@terra-brand.ru">Email</a>
+      <div class="dk-final-content reveal">
+        <p class="line">Ремесло становится системой.</p>
+      </div>
+    </section>
+
+    <!-- ================= 14 — NEXT PROJECT ================= -->
+    <section class="dk-next">
+      <div class="dk-next-inner">
+        <div class="dk-next-left">
+          <a href="/cases">← Все кейсы</a>
+        </div>
+
+        <a href="/cases" class="dk-next-right">
+          <span>Следующий проект</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= TERRA CTA ================= -->
+    <section class="terra-cta" id="contact">
+      <div class="terra-cta-inner">
+        <div>
+          <p class="terra-cta-eyebrow reveal">Новый проект</p>
+
+          <h2 class="terra-cta-title reveal">
+            ЕСТЬ ЗАДАЧА?<br />
+            <span class="grad-text">ДАВАЙТЕ ОБСУДИМ ПРОЕКТ</span>
+          </h2>
+        </div>
+
+        <div class="terra-cta-bottom reveal">
+          <p class="terra-cta-note">
+            Расскажите о задаче — предложим подходящий формат работы и соберём
+            сильное визуальное решение.
+          </p>
+
+          <a class="terra-btn-cta" href="/#contact">
+            <span>Обсудить проект ↗</span>
+          </a>
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ================= TERRA FOOTER ================= -->
+    <footer class="terra-footer" id="contacts">
+      <div class="section-inner">
+        <div class="footer-top reveal">
+          <div>
+            <a href="/" class="wordmark">
+              <span class="dot"></span>
+              СТУДИЯ ТЕРРА
+            </a>
+            <p class="footer-tagline">
+              Дизайн, который<br />
+              усиливает бизнес.
+            </p>
+          </div>
 
-    <div class="footer-giant reveal">ТЕРРА</div>
+          <div>
+            <div class="footer-col-label">Навигация</div>
+            <div class="footer-links">
+              <a href="/">Главная</a>
+              <a href="/cases">Кейсы</a>
+              <a href="/#services">Услуги</a>
+              <a href="/#about">О нас</a>
+              <a href="#contacts">Контакты</a>
+            </div>
+          </div>
 
-    <div class="footer-meta">
-      <span>DESIGN STUDIO — WORLDWIDE</span>
-      <span>ИП Тлехурай Сусанна Асланчериевна · ИНН 231217731235 · ОГРНИП 323237500327615</span>
-      <span>© 2026 TERRA Studio</span>
-    </div>
+          <div>
+            <div class="footer-col-label">Связаться</div>
+            <div class="footer-links">
+              <a href="https://t.me/terra_brand" target="_blank" rel="noopener"
+                >Telegram</a
+              >
+              <a href="https://wa.me/79937717751" target="_blank" rel="noopener"
+                >WhatsApp</a
+              >
+              <a
+                href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo"
+                target="_blank"
+                rel="noopener"
+                >Max</a
+              >
+              <a href="mailto:hello@terra-brand.ru">Email</a>
+            </div>
+          </div>
+        </div>
 
-  </div>
-</footer>
+        <div class="footer-giant reveal">ТЕРРА</div>
 
-<script>
-(function(){
+        <div class="footer-meta">
+          <span>DESIGN STUDIO — WORLDWIDE</span>
+          <span
+            >ИП Тлехурай Сусанна Асланчериевна · ИНН 231217731235 · ОГРНИП
+            323237500327615</span
+          >
+          <span>© 2026 TERRA Studio</span>
+        </div>
+      </div>
+    </footer>
 
-  // Scroll reveal
-  var revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
+    <script>
+      (function () {
+        // Scroll reveal
+        var revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+          );
+          revealEls.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          revealEls.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
         }
-      });
-    }, { threshold:0.12, rootMargin:'0px 0px -60px 0px' });
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
-  }
 
-  // Бесшовная прокрутка паттерна — дублируем набор модулей один раз
-  var track = document.getElementById('dkPatternTrack');
-  if(track){
-    track.innerHTML += track.innerHTML;
-  }
-
-  // Мягкий параллакс графического жеста на hero (desktop, не-reduced-motion)
-  var jest = document.querySelector('.dk-hero-jest');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(jest && !reduceMotion && window.matchMedia('(min-width: 900px)').matches){
-    window.addEventListener('scroll', function(){
-      var y = window.scrollY;
-      jest.style.transform = 'translateY(' + Math.min(y * 0.15, 80) + 'px)';
-    }, { passive:true });
-  }
-
-  // Мобильное меню (burger) — логика перенесена из cases.html без изменений
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  if(toggle && links){
-    toggle.addEventListener('click', function(){
-      var open = links.classList.toggle('is-open');
-      toggle.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    links.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        links.classList.remove('is-open');
-        toggle.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-})();
-</script>
-
-</body>
+        // Мобильное меню (burger) — логика перенесена из cases.html без изменений
+        var toggle = document.getElementById("navToggle");
+        var links = document.getElementById("navLinks");
+        if (toggle && links) {
+          toggle.addEventListener("click", function () {
+            var open = links.classList.toggle("is-open");
+            toggle.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            document.body.style.overflow = open ? "hidden" : "";
+          });
+          links.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              links.classList.remove("is-open");
+              toggle.classList.remove("is-open");
+              toggle.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
 </html>
