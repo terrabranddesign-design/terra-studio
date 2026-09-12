@@ -1,0 +1,1301 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FORMA Atelier — брендинг архитектурного бюро / Студия ТЕРРА</title>
+
+    <meta
+      name="description"
+      content="Брендинг и визуальная айдентика FORMA Atelier — архитектурного бюро. Логотип, фирменная система и носители. Кейс студии ТЕРРА."
+    />
+
+    <link rel="canonical" href="https://terra-brand.ru/cases/forma" />
+
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="FORMA Atelier — брендинг архитектурного бюро / Студия ТЕРРА"
+    />
+    <meta
+      property="og:description"
+      content="Брендинг и визуальная айдентика FORMA Atelier — архитектурного бюро. Логотип, фирменная система и носители."
+    />
+    <meta
+      property="og:image"
+      content="https://terra-brand.ru/images/forma/hero.jpg"
+    />
+    <meta property="og:url" content="https://terra-brand.ru/cases/forma" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==========================================================================
+   TOKENS — «FORMA»
+   Отдельная палитра/сетка для кейса. Шапка, CTA и футер ниже используют
+   токены студии ТЕРРА (--terra-*), сохранённые как есть.
+   Классы блоков унаследованы от исходного шаблона (vx-*) — структура кейса
+   сохранена буквально, изменены только значения токенов и стилей.
+   ========================================================================== */
+      :root {
+        /* --- бренд «FORMA» --- */
+        --fm-bg: #f7f6f2;
+        --fm-white: #ffffff;
+        --fm-ink: #111111;
+        --fm-graphite: #6a6964;
+        --fm-stone: #ecebe5;
+        --fm-line: rgba(17, 17, 17, 0.1);
+        --fm-accent: #8a7b63;
+
+        --fm-font-display: "Space Grotesk", "Manrope", sans-serif;
+        --fm-font-sans: "Manrope", sans-serif;
+
+        --fm-container: 1440px;
+        --fm-edge: clamp(24px, 5vw, 72px);
+
+        --fm-ease-out: cubic-bezier(0.16, 0.84, 0.44, 1);
+        --fm-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* --- студия ТЕРРА (для шапки/CTA/футера) --- */
+        --terra-black: #050507;
+        --terra-white: #f5f5f3;
+        --terra-grey-mid: #8b8b90;
+        --terra-grey-line: rgba(245, 245, 243, 0.14);
+        --terra-grad: linear-gradient(
+          90deg,
+          #273eff 0%,
+          #6536ff 35%,
+          #a02cf1 68%,
+          #d226e8 100%
+        );
+        --terra-font-display: "Unbounded", sans-serif;
+        --terra-font-body: "Manrope", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--fm-bg);
+      }
+
+      body {
+        background: var(--fm-bg);
+        color: var(--fm-ink);
+        font-family: var(--fm-font-sans);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font-family: inherit;
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+      }
+      ::selection {
+        background: var(--fm-accent);
+        color: var(--fm-white);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001s !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001s !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--fm-accent);
+        outline-offset: 4px;
+      }
+
+      .edge {
+        padding-left: var(--fm-edge);
+        padding-right: var(--fm-edge);
+      }
+
+      .vx-inner {
+        max-width: var(--fm-container);
+        margin: 0 auto;
+        padding: 120px var(--fm-edge);
+      }
+
+      @media (max-width: 720px) {
+        .vx-inner {
+          padding: 80px var(--fm-edge);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.9s var(--fm-ease-out),
+          transform 0.9s var(--fm-ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .eyebrow-vx {
+        font-family: var(--fm-font-display);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--fm-accent);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .eyebrow-vx::before {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--fm-accent);
+      }
+
+      /* ==========================================================================
+   TERRA HEADER
+   Структура и поведение сохранены без изменений. Цвет текста адаптирован
+   под светлый фон FORMA для контраста.
+   ========================================================================== */
+      .terra-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 80;
+        background: transparent;
+      }
+
+      .terra-nav {
+        position: relative;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--terra-space-md, 32px) var(--fm-edge) 0;
+      }
+
+      .terra-wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        color: var(--fm-ink);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .terra-wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
+
+      .terra-nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .terra-nav-links a {
+        position: relative;
+        padding-bottom: 4px;
+        color: var(--fm-ink);
+        opacity: 0.72;
+        transition:
+          opacity 0.3s var(--fm-ease-soft),
+          color 0.3s var(--fm-ease-soft);
+      }
+      .terra-nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--fm-accent);
+        transition: width 0.35s var(--fm-ease-out);
+      }
+      .terra-nav-links a:hover {
+        opacity: 1;
+        color: var(--fm-accent);
+      }
+      .terra-nav-links a:hover::after,
+      .terra-nav-links a[aria-current="page"]::after {
+        width: 100%;
+      }
+      .terra-nav-links a[aria-current="page"] {
+        opacity: 1;
+        color: var(--fm-accent);
+      }
+
+      .terra-nav-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 28px !important;
+        border: 1px solid rgba(17, 17, 17, 0.35);
+        color: var(--fm-ink);
+        white-space: nowrap;
+        opacity: 1 !important;
+        transition:
+          border-color 0.3s var(--fm-ease-soft),
+          color 0.3s var(--fm-ease-soft);
+      }
+      .terra-nav-cta::after {
+        display: none;
+      }
+      .terra-nav-cta:hover {
+        border-color: var(--fm-accent);
+        color: var(--fm-accent);
+      }
+
+      .terra-nav-toggle {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .terra-nav {
+          padding-top: 24px;
+        }
+
+        .terra-nav-links {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          background: var(--fm-white);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: var(--space-lg, 64px);
+          font-size: 16px;
+          transform: translateY(-100%);
+          transition: transform 0.5s var(--fm-ease-out);
+        }
+        .terra-nav-links.is-open {
+          transform: none;
+        }
+
+        .terra-nav-toggle {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          z-index: 110;
+          position: relative;
+          padding: 6px;
+        }
+        .terra-nav-toggle span {
+          width: 20px;
+          height: 1px;
+          background: var(--fm-ink);
+          transition:
+            transform 0.3s,
+            opacity 0.3s;
+        }
+        .terra-nav-toggle.is-open span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+        .terra-nav-toggle.is-open span:nth-child(2) {
+          opacity: 0;
+        }
+        .terra-nav-toggle.is-open span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .terra-nav-cta {
+          display: none;
+        }
+        .terra-nav-links .terra-nav-cta {
+          display: inline-flex;
+          border-color: rgba(17, 17, 17, 0.35);
+        }
+      }
+
+      /* ==========================================================================
+   01 — HERO
+   ========================================================================== */
+      .vx-hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: var(--fm-bg);
+      }
+
+      .vx-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .vx-hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 17, 17, 0.05);
+      }
+
+      .vx-hero-bg picture {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .vx-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .vx-hero-body {
+        position: relative;
+        z-index: 5;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(112px, 16vh, 156px) var(--fm-edge)
+          clamp(64px, 10vh, 96px);
+      }
+
+      .vx-hero-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: clamp(18px, 3vw, 40px);
+        font-family: var(--terra-font-body);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--fm-graphite);
+      }
+      .vx-hero-meta span {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 7px;
+        white-space: nowrap;
+      }
+      .vx-hero-meta span b {
+        font-family: var(--terra-font-body);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--fm-ink);
+      }
+
+      /* Спокойный scroll-индикатор ТЕРРА, цвет адаптирован под светлый фон кейса */
+      .vx-scroll-hint {
+        position: absolute;
+        bottom: clamp(24px, 4vh, 48px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--fm-font-sans);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--fm-ink);
+        opacity: 0.72;
+      }
+      .vx-scroll-hint .line {
+        width: 1px;
+        height: 34px;
+        background: linear-gradient(rgba(17, 17, 17, 0.45), transparent);
+        animation: vx-scroll-run 2.2s ease-in-out infinite;
+      }
+      @keyframes vx-scroll-run {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+          opacity: 0;
+        }
+        40% {
+          transform: scaleY(1);
+          transform-origin: top;
+          opacity: 1;
+        }
+        60% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+          opacity: 1;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .vx-hero-body {
+          padding-top: 76px;
+          padding-bottom: 64px;
+        }
+
+        .vx-hero-meta {
+          gap: 7px 22px;
+          font-size: 10px;
+        }
+
+        .vx-scroll-hint {
+          bottom: 20px;
+        }
+      }
+
+      /* Shared section title */
+      .vx-intro-title {
+        font-family: var(--fm-font-display);
+        font-weight: 600;
+        font-size: clamp(32px, 4.4vw, 58px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        color: var(--fm-ink);
+      }
+
+      /* ==========================================================================
+   02 — О ПРОЕКТЕ
+   ========================================================================== */
+      .vx-about {
+        background: var(--fm-bg);
+      }
+
+      .vx-about-title {
+        max-width: 22ch;
+      }
+
+      .vx-about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(40px, 7vw, 112px);
+        margin-top: clamp(56px, 7vw, 96px);
+      }
+
+      .vx-about-item h3 {
+        font-family: var(--fm-font-display);
+        margin-bottom: 16px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--fm-accent);
+      }
+
+      .vx-about-item p {
+        max-width: 54ch;
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--fm-graphite);
+      }
+
+      @media (max-width: 720px) {
+        .vx-about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ==========================================================================
+   03 — ЛОГОТИП
+   ========================================================================== */
+      .vx-logo-section {
+        background: var(--fm-bg);
+        border-top: 1px solid var(--fm-line);
+      }
+
+      .vx-logo-showcase {
+        margin-top: 56px;
+        padding: clamp(48px, 8vw, 110px) clamp(20px, 4vw, 60px);
+        background: var(--fm-white);
+        border: 1px solid var(--fm-line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vx-logo-showcase img {
+        width: min(100%, 620px);
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vx-logo-variants {
+        margin-top: 1px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--fm-line);
+      }
+
+      .vx-logo-variant {
+        aspect-ratio: 4/3;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .vx-logo-variant span {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 28px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--fm-graphite);
+      }
+      .vx-logo-variant.positive {
+        background: var(--fm-white);
+      }
+      .vx-logo-variant.positive img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vx-logo-variant.negative {
+        background: var(--fm-ink);
+      }
+      .vx-logo-variant.negative span {
+        color: var(--fm-white);
+        opacity: 0.75;
+      }
+      .vx-logo-variant.negative img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vx-logo-variant.dark {
+        background: var(--fm-stone);
+      }
+      .vx-logo-variant.dark span {
+        color: var(--fm-graphite);
+      }
+      .vx-logo-variant.dark img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 720px) {
+        .vx-logo-variants {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ==========================================================================
+   04 — ВИЗУАЛИЗАЦИИ
+   ========================================================================== */
+      .vx-visuals {
+        background: var(--fm-bg);
+      }
+      .vx-visuals-stack {
+        margin-top: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .vx-visual-item {
+        width: 100%;
+        overflow: hidden;
+      }
+      .vx-visual-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 720px) {
+        .vx-visuals .vx-inner {
+          padding-bottom: 24px;
+        }
+      }
+
+      /* ==========================================================================
+   05 — FINAL VISUAL
+   ========================================================================== */
+      .vx-final {
+        position: relative;
+        min-height: clamp(420px, 72svh, 720px);
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: var(--fm-ink);
+      }
+      .vx-final-media {
+        position: absolute;
+        inset: 0;
+      }
+      .vx-final-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.9;
+      }
+      .vx-final-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(17, 17, 17, 0.85) 0%,
+          rgba(17, 17, 17, 0.1) 55%,
+          rgba(17, 17, 17, 0.3) 100%
+        );
+      }
+      .vx-final-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 var(--fm-edge) 90px;
+        color: var(--fm-white);
+      }
+      @media (max-width: 720px) {
+        .vx-final-content {
+          padding-bottom: 45px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .vx-final-content {
+          transform: translateY(35px);
+        }
+      }
+      @media (max-width: 720px) {
+        .vx-final-media img {
+          object-position: 18% center;
+        }
+      }
+      .vx-final-content .line {
+        font-family: var(--fm-font-display);
+        font-weight: 600;
+        font-style: normal;
+        font-size: clamp(30px, 4.8vw, 58px);
+        line-height: 1.25;
+        max-width: 16ch;
+        color: var(--fm-white);
+      }
+
+      /* ==========================================================================
+   TERRA CTA — «ЕСТЬ ЗАДАЧА?»
+   Перенесено без изменений. Структура, типографика и поведение сохранены буквально.
+   ========================================================================== */
+      .terra-cta {
+        position: relative;
+        overflow: hidden;
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+      }
+      .terra-cta::before {
+        content: "";
+        position: absolute;
+        width: 75vw;
+        height: 75vw;
+        right: -28vw;
+        top: -34vw;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(101, 54, 255, 0.25),
+          rgba(210, 38, 232, 0.1) 35%,
+          transparent 65%
+        );
+        filter: blur(40px);
+        pointer-events: none;
+      }
+      .terra-cta-inner {
+        position: relative;
+        z-index: 1;
+        max-width: var(--fm-container);
+        margin: 0 auto;
+        padding: var(--fm-edge);
+        min-height: 70svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .terra-cta-eyebrow {
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .terra-cta-eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--terra-grad);
+      }
+      .terra-cta-title {
+        font-family: var(--terra-font-display);
+        font-size: clamp(42px, 7.3vw, 104px);
+        font-weight: 500;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        max-width: 12ch;
+        margin-top: 72px;
+      }
+      .terra-cta-title .grad-text {
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .terra-cta-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        padding-top: 30px;
+      }
+      .terra-cta-note {
+        font-family: var(--terra-font-body);
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--terra-grey-mid);
+        max-width: 36ch;
+      }
+      .terra-btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 16px 26px;
+        border: 1px solid var(--terra-grey-line);
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        transition:
+          border-color 0.4s var(--fm-ease-soft),
+          color 0.4s var(--fm-ease-soft);
+      }
+      .terra-btn-cta span {
+        position: relative;
+        z-index: 2;
+      }
+      .terra-btn-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--terra-grad);
+        transform: translateX(-101%);
+        transition: transform 0.5s var(--fm-ease-out);
+        z-index: 1;
+      }
+      .terra-btn-cta:hover {
+        border-color: transparent;
+      }
+      .terra-btn-cta:hover::before {
+        transform: none;
+      }
+
+      @media (max-width: 860px) {
+        .terra-cta-inner {
+          min-height: 60svh;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-cta-inner {
+          min-height: auto;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+        .terra-cta-title {
+          margin-top: 28px;
+        }
+        .terra-cta-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 88px;
+        }
+      }
+
+      /* ==========================================================================
+   TERRA FOOTER (перенесено без изменения логики)
+   ========================================================================== */
+      .terra-footer {
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+        font-family: var(--terra-font-body);
+      }
+      .terra-footer .section-inner {
+        max-width: var(--fm-container);
+        margin: 0 auto;
+        padding: 80px var(--fm-edge);
+      }
+      .terra-footer .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 64px;
+        margin-bottom: 80px;
+      }
+      .terra-footer .wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+      .terra-footer .wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
+      .terra-footer .footer-tagline {
+        font-family: var(--terra-font-display);
+        font-size: clamp(22px, 2.6vw, 30px);
+        line-height: 1.2;
+        max-width: 16ch;
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-col-label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        margin-bottom: 16px;
+      }
+      .terra-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .terra-footer .footer-links a {
+        font-size: 14px;
+        color: var(--terra-grey-mid);
+        transition: color 0.3s;
+      }
+      .terra-footer .footer-links a:hover {
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-giant {
+        font-family: var(--terra-font-display);
+        font-weight: 700;
+        font-size: clamp(60px, 13vw, 200px);
+        line-height: 0.82;
+        letter-spacing: -0.02em;
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 32px;
+      }
+      .terra-footer .footer-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        font-size: 11px;
+        color: var(--terra-grey-mid);
+        letter-spacing: 0.06em;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= TERRA HEADER ================= -->
+    <header class="terra-header" id="top">
+      <nav class="terra-nav" aria-label="Основная навигация">
+        <a href="/" class="terra-wordmark">
+          <span class="dot"></span>
+          СТУДИЯ ТЕРРА
+        </a>
+
+        <button
+          class="terra-nav-toggle"
+          id="navToggle"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="terra-nav-links" id="navLinks">
+          <a href="/"> ГЛАВНАЯ </a>
+
+          <a href="/cases" aria-current="page"> ПРОЕКТЫ </a>
+
+          <a href="/#services"> УСЛУГИ </a>
+
+          <a href="/#about"> О НАС </a>
+
+          <a href="#contacts"> КОНТАКТЫ </a>
+
+          <a href="/#contact" class="terra-nav-cta"> ОБСУДИТЬ ПРОЕКТ </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= FORMA CASE ================= -->
+
+    <!-- HERO -->
+    <section class="vx-hero">
+      <div class="vx-hero-bg">
+        <picture>
+          <source
+            media="(max-width: 720px)"
+            srcset="/images/forma/hero-mobile.jpg"
+          />
+          <img src="/images/forma/hero.jpg" alt="" />
+        </picture>
+      </div>
+
+      <div class="vx-hero-body edge">
+        <div class="vx-hero-meta reveal">
+          <span>
+            Категория
+            <b>Брендинг / Айдентика</b>
+          </span>
+          <span>
+            Проект
+            <b>Архитектурное бюро</b>
+          </span>
+          <span>
+            Год
+            <b>2026</b>
+          </span>
+        </div>
+      </div>
+
+      <div class="vx-scroll-hint" aria-hidden="true">
+        <span>Вниз</span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="vx-about">
+      <div class="vx-inner">
+        <h2 class="vx-intro-title vx-about-title reveal">
+          ПРОСТРАНСТВО.<br />
+          ФОРМА. ХАРАКТЕР.
+        </h2>
+
+        <div class="vx-about-grid">
+          <div class="vx-about-item reveal">
+            <h3>ЗАДАЧА</h3>
+            <p>
+              Разработать визуальную айдентику архитектурного бюро, которая
+              отражает точность работы с пространством, чистоту архитектурной
+              мысли и современный подход к проектированию. Важно было создать
+              образ профессионального, уверенного и эстетически зрелого
+              бренда без избыточной декоративности.
+            </p>
+          </div>
+
+          <div class="vx-about-item reveal">
+            <h3>РЕАЛИЗАЦИЯ</h3>
+            <p>
+              В основе системы — строгая геометрия, выразительный
+              архитектурный знак, большое количество воздуха и сдержанная
+              монохромная палитра. Айдентика строится на точных пропорциях и
+              контрасте графики с пространством, благодаря чему бренд
+              одинаково уверенно работает в digital-среде, печатных
+              материалах и архитектурных носителях.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO -->
+    <section class="vx-logo-section">
+      <div class="vx-inner">
+        <div class="eyebrow-vx reveal">ЛОГОТИП · ЦВЕТОВАЯ ПАЛИТРА</div>
+
+        <h2 class="vx-intro-title reveal">АРХИТЕКТУРА ФОРМЫ</h2>
+
+        <div class="vx-logo-showcase reveal">
+          <img
+            src="/images/forma/logo-primary.png"
+            alt="Основная версия логотипа FORMA Atelier"
+          />
+        </div>
+
+        <div class="vx-logo-variants">
+          <div class="vx-logo-variant positive reveal">
+            <img src="/images/forma/logo-positive.png" alt="Позитив" />
+            <span>Позитив</span>
+          </div>
+
+          <div class="vx-logo-variant negative reveal">
+            <img src="/images/forma/logo-negative.png" alt="Негатив" />
+            <span>Негатив</span>
+          </div>
+
+          <div class="vx-logo-variant dark reveal">
+            <img
+              src="/images/forma/logo-mark.png"
+              alt="Компактный знак на светлой поверхности"
+            />
+            <span>Компактный знак</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUALIZATIONS -->
+    <section class="vx-visuals">
+      <div class="vx-inner">
+        <div class="eyebrow-vx reveal">ВИЗУАЛИЗАЦИИ</div>
+
+        <h2 class="vx-intro-title reveal">БРЕНД В ПРОСТРАНСТВЕ</h2>
+
+        <div class="vx-visuals-stack">
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/forma/mockup-01.jpg"
+              alt="Визуализация бренда FORMA Atelier"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/forma/mockup-02.jpg"
+              alt="Визуализация фирменных носителей FORMA Atelier"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/forma/mockup-03.jpg"
+              alt="Визуализация среды FORMA Atelier"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/forma/mockup-04.jpg"
+              alt="Визуализация фирменного стиля FORMA Atelier"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL VISUAL -->
+    <section class="vx-final">
+      <div class="vx-final-media">
+        <!-- REPLACE WITH PROJECT MOCKUP -->
+        <img
+          src="/images/forma/final.jpg"
+          alt="Финальная сцена: архитектура, свет и знак FORMA Atelier"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="vx-final-content reveal">
+        <p class="line">ФОРМА<br>СОЗДАЁТ ПРОСТРАНСТВО.</p>
+      </div>
+    </section>
+
+    <!-- TERRA CTA -->
+    <section class="terra-cta" id="contact">
+      <div class="terra-cta-inner">
+        <div>
+          <p class="terra-cta-eyebrow reveal">Новый проект</p>
+
+          <h2 class="terra-cta-title reveal">
+            ЕСТЬ ЗАДАЧА?<br />
+            <span class="grad-text">ДАВАЙТЕ ОБСУДИМ ПРОЕКТ</span>
+          </h2>
+        </div>
+
+        <div class="terra-cta-bottom reveal">
+          <p class="terra-cta-note">
+            Расскажите о задаче — предложим подходящий формат работы и соберём
+            сильное визуальное решение.
+          </p>
+
+          <a class="terra-btn-cta" href="/#contact">
+          <span>Обсудить проект &#8599;&#xfe0e;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERRA FOOTER -->
+    <footer class="terra-footer" id="contacts">
+      <div class="section-inner">
+        <div class="footer-top reveal">
+          <div>
+            <a href="/" class="wordmark">
+              <span class="dot"></span>
+              СТУДИЯ ТЕРРА
+            </a>
+            <p class="footer-tagline">
+              Дизайн, который<br />
+              усиливает бизнес.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-label">Навигация</div>
+            <div class="footer-links">
+              <a href="/">Главная</a>
+              <a href="/cases">Кейсы</a>
+              <a href="/#services">Услуги</a>
+              <a href="/#about">О нас</a>
+              <a href="#contacts">Контакты</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-label">Связаться</div>
+            <div class="footer-links">
+              <a href="https://t.me/terra_brand" target="_blank" rel="noopener"
+                >Telegram</a
+              >
+              <a href="https://wa.me/79937717751" target="_blank" rel="noopener"
+                >WhatsApp</a
+              >
+              <a
+                href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo"
+                target="_blank"
+                rel="noopener"
+                >Max</a
+              >
+              <a href="mailto:hello@terra-brand.ru">Email</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-giant reveal">ТЕРРА</div>
+
+        <div class="footer-meta">
+          <span>DESIGN STUDIO — WORLDWIDE</span>
+          <span
+            >ИП Тлехурай Сусанна Асланчериевна · ИНН 231217731235 · ОГРНИП
+            323237500327615</span
+          >
+          <span>© 2026 TERRA Studio</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        // Scroll reveal
+        var revealEls = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+          );
+
+          revealEls.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          revealEls.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+
+        // Мобильное меню (burger) — логика сохранена без изменений
+        var toggle = document.getElementById("navToggle");
+        var links = document.getElementById("navLinks");
+
+        if (toggle && links) {
+          toggle.addEventListener("click", function () {
+            var open = links.classList.toggle("is-open");
+            toggle.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            document.body.style.overflow = open ? "hidden" : "";
+          });
+
+          links.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              links.classList.remove("is-open");
+              toggle.classList.remove("is-open");
+              toggle.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
