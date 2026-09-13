@@ -58,6 +58,13 @@
   font-style: normal;
   font-display: swap;
 }
+      @font-face {
+  font-family: "Petersburg";
+  src: url("/fonts/petersburg-cyrillic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
       :root {
         /* --- бренд «SIMBA» --- */
         --fm-bg: #f3f0e8;
@@ -68,7 +75,7 @@
         --fm-line: rgba(33, 30, 24, 0.1);
         --fm-accent: #7c8452;
 
-        --fm-font-display: "Benzin", sans-serif;
+       --fm-font-display: "Petersburg", serif;
         --fm-font-sans: "Manrope", sans-serif;
 
         --fm-container: 1440px;
@@ -538,7 +545,7 @@
       }
 
       .vx-about-item p {
-        font-family: "Times New Roman Custom", "Times New Roman", Times, serif;
+        font-family: "Petersburg", serif;
 font-weight: 400;
         max-width: 54ch;
         font-size: 16px;
