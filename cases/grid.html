@@ -42,10 +42,10 @@
    (в цвет фирменного синего GRID), чёрный текст. Шапка и футер ниже
    используют токены студии ТЕРРА (--terra-*), сохранённые как есть.
    ========================================================================== */
-     @font-face {
-  font-family: "Benzin";
-  src: url("/fonts/benzin-bold.woff2") format("woff2");
-  font-weight: 700;
+    @font-face {
+  font-family: "ALS Gorizont";
+  src: url("/fonts/alsgorizontvariable.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -58,7 +58,7 @@
         --vx-ivory: #f5f5f3;
         --vx-amber: #071bc8;
 
-        --vx-font-display: "Benzin", "Rubik", sans-serif;
+        --vx-font-display: "ALS Gorizont", sans-serif;
         --vx-font-sans: "Manrope", sans-serif;
         --vx-font-script: "Marck Script", cursive;
 
@@ -167,22 +167,22 @@
       }
 
       .eyebrow-vx {
-        font-family: "Benzin", sans-serif;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--vx-amber);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 20px;
-      }
+  font-family: "ALS Gorizont", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #101110;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
       .eyebrow-vx::before {
         content: "";
         width: 20px;
         height: 1px;
-        background: var(--vx-amber);
+        background: #101110;
       }
 
       /* ==========================================================================
@@ -521,13 +521,13 @@
       }
 
       .vx-about-item h3 {
-  font-family: "Benzin", sans-serif;
+  font-family: "ALS Gorizont", sans-serif;
   margin-bottom: 16px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vx-amber);
+  color: #101110;
 }
 
       .vx-about-item p {
@@ -716,7 +716,7 @@
         }
       }
       .vx-final-content .line {
-        font-family: "Benzin", sans-serif;
+        font-family: "ALS Gorizont", sans-serif;
         font-weight: 700;
         font-style: normal;
         font-size: clamp(30px, 4.8vw, 58px);
