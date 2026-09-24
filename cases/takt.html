@@ -259,14 +259,24 @@
       }
       .terra-nav-links a:hover {
   opacity: 1;
-  color: var(--vx-ivory);
+  color: #F3EFE7;
 }
 
 .terra-nav-links a[aria-current="page"] {
   opacity: 1;
-  color: var(--vx-ivory);
+  color: #F3EFE7;
+  background: transparent;
 }
 
+.terra-nav-links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -6px;
+  height: 1px;
+  background: #F3EFE7;
+}
 .terra-nav-links a[aria-current="page"]::after {
   content: "";
   position: absolute;
@@ -297,11 +307,11 @@
       .terra-nav-cta::after {
         display: none;
       }
-      .terra-nav-cta:hover {
-        border-color: var(--vx-ivory);
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
+     .terra-nav-cta:hover {
+  border-color: #F3EFE7;
+  color: #F3EFE7;
+  background: transparent;
+}
 
       .terra-nav-toggle {
         display: none;
