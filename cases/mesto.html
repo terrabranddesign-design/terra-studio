@@ -249,7 +249,7 @@
       .terra-nav-links a {
         position: relative;
         padding-bottom: 4px;
-        color: var(--fm-menu);
+        color: var(--fm-ink);
         opacity: 0.92;
         transition:
           opacity 0.3s var(--fm-ease-soft),
@@ -262,13 +262,13 @@
         bottom: 0;
         width: 0;
         height: 1px;
-        background: var(--fm-ink);
+        background: var(--fm-menu);
         transition: width 0.35s var(--fm-ease-out);
       }
       .terra-nav-links a:hover {
-        opacity: 1;
-        color: var(--fm-ink);
-      }
+  opacity: 1;
+  color: var(--fm-menu);
+}
       .terra-nav-links a:hover::after,
       .terra-nav-links a[aria-current="page"]::after {
         width: 100%;
@@ -296,11 +296,11 @@
       .terra-nav-cta::after {
         display: none;
       }
-      .terra-nav-cta:hover {
-        border-color: var(--fm-ink);
-        color: var(--fm-ink);
-        background-color: rgba(74, 28, 28, 0.08);
-      }
+     .terra-nav-cta:hover {
+  border-color: var(--fm-menu);
+  color: var(--fm-menu);
+  background-color: transparent;
+}
 
       .terra-nav-toggle {
         display: none;
