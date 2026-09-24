@@ -258,15 +258,24 @@
           background-color 0.3s var(--vx-ease-soft);
       }
       .terra-nav-links a:hover {
-        opacity: 1;
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
-      .terra-nav-links a[aria-current="page"] {
-        opacity: 1;
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
+  opacity: 1;
+  color: var(--vx-ivory);
+}
+
+.terra-nav-links a[aria-current="page"] {
+  opacity: 1;
+  color: var(--vx-ivory);
+}
+
+.terra-nav-links a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -6px;
+  height: 1px;
+  background: var(--vx-ivory);
+}
 
       .terra-nav-cta {
         display: flex;
