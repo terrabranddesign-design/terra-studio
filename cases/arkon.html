@@ -244,28 +244,45 @@
         font-weight: 500;
       }
       .terra-nav-links a {
-        position: relative;
-        padding: 4px 10px;
-        margin: -4px -10px;
-        border-radius: 2px;
-        color: var(--vx-ivory);
-        opacity: 0.82;
-        transition:
-          opacity 0.3s var(--vx-ease-soft),
-          color 0.3s var(--vx-ease-soft),
-          background-color 0.3s var(--vx-ease-soft);
-      }
-      .terra-nav-links a:hover {
-        opacity: 1;
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
-      .terra-nav-links a[aria-current="page"] {
-        opacity: 1;
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
+  position: relative;
+  padding: 4px 0;
+  color: var(--vx-ivory);
+  opacity: 0.82;
+  transition:
+    opacity 0.3s var(--vx-ease-soft),
+    color 0.3s var(--vx-ease-soft);
+}
 
+.terra-nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--vx-obsidian);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--vx-ease-soft);
+}
+
+.terra-nav-links a:hover {
+  opacity: 1;
+  color: var(--vx-obsidian);
+}
+
+.terra-nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.terra-nav-links a[aria-current="page"] {
+  opacity: 1;
+  color: var(--vx-obsidian);
+}
+
+.terra-nav-links a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
       .terra-nav-cta {
         display: flex;
         align-items: center;
@@ -287,11 +304,10 @@
         display: none;
       }
       .terra-nav-cta:hover {
-        border-color: var(--vx-ivory);
-        color: var(--vx-cream);
-        background: var(--vx-ivory);
-      }
-
+  border-color: var(--vx-obsidian);
+  color: var(--vx-obsidian);
+  background: transparent;
+}
       .terra-nav-toggle {
         display: none;
       }
@@ -1067,7 +1083,6 @@
       </div>
 
       <div class="vx-hero-body edge">
-        <h1 class="vx-hero-title reveal">КАПИТАЛ ДЛЯ УСТОЙЧИВОГО РОСТА.</h1>
 
         <div class="vx-hero-meta reveal">
           <span>
@@ -1084,9 +1099,7 @@
           </span>
         </div>
 
-        <a href="/#contact" class="vx-hero-cta reveal">ОСТАВИТЬ ЗАЯВКУ</a>
-      </div>
-
+      
       <div class="vx-scroll-hint" aria-hidden="true">
         <span>Вниз</span>
         <span class="line"></span>
