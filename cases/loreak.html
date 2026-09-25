@@ -46,10 +46,18 @@
    --vx-cream — молочный оттенок для контрастного текста на тёмно-зелёной заливке.
    Естественная, деликатная эстетика — под характер цветочного бренда «LOREÁK Flowers».
    ========================================================================== */
-     @font-face {
-  font-family: "Benzin";
-  src: url("/fonts/benzin-bold.woff2") format("woff2");
-  font-weight: 700;
+    @font-face {
+  font-family: "Bergamasco";
+  src: url("/fonts/Bergamasco.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Petersburg";
+  src: url("/fonts/petersburg-cyrillic.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -63,7 +71,7 @@
         --vx-amber: #33503e;
         --vx-cream: #faf6ea;
 
-        --vx-font-display: "Benzin", "Rubik", sans-serif;
+        --vx-font-display: "Bergamasco", sans-serif;
         --vx-font-sans: "Manrope", sans-serif;
         --vx-font-script: "Marck Script", cursive;
 
@@ -172,7 +180,7 @@
       }
 
       .eyebrow-vx {
-        font-family: "Benzin", sans-serif;
+        font-family: "Bergamasco", sans-serif;
         font-size: 12px;
         font-weight: 700;
         letter-spacing: 0.08em;
@@ -581,7 +589,7 @@
       }
 
       .vx-about-item h3 {
-  font-family: "Benzin", sans-serif;
+  font-family: "Bergamasco", sans-serif;
   margin-bottom: 16px;
   font-size: 13px;
   font-weight: 700;
@@ -591,12 +599,12 @@
 }
 
       .vx-about-item p {
-        max-width: 54ch;
-        font-size: 16px;
-        line-height: 1.75;
-        color: var(--vx-silver);
-      }
-
+  font-family: "Petersburg", serif;
+  max-width: 54ch;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--vx-silver);
+}
       @media (max-width: 720px) {
         .vx-about-grid {
           grid-template-columns: 1fr;
@@ -777,7 +785,7 @@
         }
       }
       .vx-final-content .line {
-        font-family: "Benzin", sans-serif;
+        font-family: "Bergamasco", sans-serif;
         font-weight: 700;
         font-style: normal;
         font-size: clamp(30px, 4.8vw, 58px);
