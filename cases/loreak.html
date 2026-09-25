@@ -1,0 +1,1390 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LOREÁK Flowers — брендинг цветочного бренда / Студия ТЕРРА</title>
+
+    <meta
+      name="description"
+      content="Брендинг и айдентика «LOREÁK Flowers» — цветочного бренда. Логотип, визуальная система и фирменные носители. Кейс студии ТЕРРА."
+    />
+
+    <link rel="canonical" href="https://terra-brand.ru/cases/loreak" />
+
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="LOREÁK Flowers — брендинг цветочного бренда / Студия ТЕРРА"
+    />
+    <meta
+      property="og:description"
+      content="Брендинг и айдентика «LOREÁK Flowers» — цветочного бренда. Логотип, визуальная система и фирменные носители."
+    />
+    <meta
+      property="og:image"
+      content="https://terra-brand.ru/images/loreak/hero.jpg"
+    />
+    <meta property="og:url" content="https://terra-brand.ru/cases/loreak" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Manrope:wght@400;500;600&family=Rubik:wght@400;500;700&family=Noto+Sans:wght@400;500&family=Marck+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==========================================================================
+   TOKENS — «LOREÁK Flowers»
+   Отдельная палитра/сетка для кейса. Шапка и футер ниже используют
+   токены студии ТЕРРА (--terra-*), сохранённые как есть.
+   Тёплая светлая палитра: --vx-obsidian держит бежевый/молочный фон,
+   --vx-ivory и --vx-amber — глубокий тёмно-зелёный (текст, акценты).
+   --vx-carbon отвечает за тёмно-зелёные поверхности (витрина логотипа),
+   --vx-cream — молочный оттенок для контрастного текста на тёмно-зелёной заливке.
+   Естественная, деликатная эстетика — под характер цветочного бренда «LOREÁK Flowers».
+   ========================================================================== */
+     @font-face {
+  font-family: "Benzin";
+  src: url("/fonts/benzin-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+      :root {
+        /* --- бренд «LOREÁK Flowers» --- */
+        --vx-obsidian: #f6f0e2;
+        --vx-carbon: #22342a;
+        --vx-gunmetal: #3d5744;
+        --vx-silver: #5c6d60;
+        --vx-ivory: #24382c;
+        --vx-amber: #33503e;
+        --vx-cream: #faf6ea;
+
+        --vx-font-display: "Benzin", "Rubik", sans-serif;
+        --vx-font-sans: "Manrope", sans-serif;
+        --vx-font-script: "Marck Script", cursive;
+
+        --vx-container: 1440px;
+        --vx-edge: clamp(24px, 5vw, 72px);
+
+        --vx-ease-out: cubic-bezier(0.16, 0.84, 0.44, 1);
+        --vx-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* --- студия ТЕРРА (для шапки/футера) --- */
+        --terra-black: #050507;
+        --terra-white: #f5f5f3;
+        --terra-grey-mid: #8b8b90;
+        --terra-grey-line: rgba(245, 245, 243, 0.14);
+        --terra-grad: linear-gradient(
+          90deg,
+          #273eff 0%,
+          #6536ff 35%,
+          #a02cf1 68%,
+          #d226e8 100%
+        );
+        --terra-font-display: "Unbounded", sans-serif;
+        --terra-font-body: "Manrope", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--vx-obsidian);
+      }
+
+      body {
+        background: var(--vx-obsidian);
+        color: var(--vx-ivory);
+        font-family: var(--vx-font-sans);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font-family: inherit;
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+      }
+      ::selection {
+        background: var(--vx-amber);
+        color: var(--vx-obsidian);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.001s !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001s !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--vx-amber);
+        outline-offset: 4px;
+      }
+
+      .edge {
+        padding-left: var(--vx-edge);
+        padding-right: var(--vx-edge);
+      }
+
+      .vx-inner {
+        max-width: var(--vx-container);
+        margin: 0 auto;
+        padding: 120px var(--vx-edge);
+      }
+
+      @media (max-width: 720px) {
+        .vx-inner {
+          padding: 80px var(--vx-edge);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.9s var(--vx-ease-out),
+          transform 0.9s var(--vx-ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .eyebrow-vx {
+        font-family: "Benzin", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--vx-amber);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .eyebrow-vx::before {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--vx-amber);
+      }
+
+      /* ==========================================================================
+   TERRA HEADER
+   Структура и поведение перенесены из do-korki-5.html (.terra-nav / .terra-nav-links /
+   .terra-nav-cta / .terra-nav-toggle) без изменений логики. Прозрачная шапка
+   расположена поверх фонового изображения hero. Цвет текста — тёмно-зелёный,
+   с наведением через тёмно-зелёную заливку (см. требования по контрастности «LOREÁK Flowers»).
+   ========================================================================== */
+      .terra-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 80;
+        background: transparent;
+      }
+
+      .terra-nav {
+        position: relative;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--terra-space-md, 32px) var(--vx-edge) 0;
+      }
+
+      .terra-wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        color: var(--vx-ivory);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .terra-wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
+
+      .terra-nav-links {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .terra-nav-links a {
+  position: relative;
+  padding: 4px 0;
+  color: var(--vx-ivory);
+  opacity: 0.82;
+  transition:
+    opacity 0.3s var(--vx-ease-soft),
+    color 0.3s var(--vx-ease-soft);
+}
+
+.terra-nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--vx-obsidian);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--vx-ease-soft);
+}
+
+.terra-nav-links a:hover {
+  opacity: 1;
+  color: var(--vx-obsidian);
+}
+
+.terra-nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.terra-nav-links a[aria-current="page"] {
+  opacity: 1;
+  color: var(--vx-obsidian);
+}
+
+.terra-nav-links a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+      .terra-nav-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        padding: 0 28px !important;
+        margin: 0 !important;
+        border: 1px solid var(--vx-ivory);
+        color: var(--vx-ivory);
+        background: transparent;
+        white-space: nowrap;
+        opacity: 1 !important;
+        transition:
+          border-color 0.3s var(--vx-ease-soft),
+          color 0.3s var(--vx-ease-soft),
+          background-color 0.3s var(--vx-ease-soft);
+      }
+      .terra-nav-cta::after {
+        display: none;
+      }
+      .terra-nav-cta:hover {
+  border-color: var(--vx-obsidian);
+  color: var(--vx-obsidian);
+  background: transparent;
+}
+      .terra-nav-toggle {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .terra-nav {
+          padding-top: 24px;
+        }
+
+        .terra-nav-links {
+          position: fixed;
+          inset: 0;
+          z-index: 100;
+          background: var(--vx-obsidian);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: var(--space-lg, 64px);
+          font-size: 16px;
+          transform: translateY(-100%);
+          transition: transform 0.5s var(--vx-ease-out);
+        }
+        .terra-nav-links.is-open {
+          transform: none;
+        }
+
+        .terra-nav-toggle {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          z-index: 110;
+          position: relative;
+          padding: 6px;
+        }
+        .terra-nav-toggle span {
+          width: 20px;
+          height: 1px;
+          background: var(--vx-ivory);
+          transition:
+            transform 0.3s,
+            opacity 0.3s;
+        }
+        .terra-nav-toggle.is-open span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+        .terra-nav-toggle.is-open span:nth-child(2) {
+          opacity: 0;
+        }
+        .terra-nav-toggle.is-open span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .terra-nav-cta {
+          display: none;
+        }
+        .terra-nav-links .terra-nav-cta {
+          display: inline-flex;
+          border-color: var(--vx-ivory);
+        }
+      }
+
+      /* ==========================================================================
+   01 — HERO
+   ========================================================================== */
+      .vx-hero {
+        position: relative;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .vx-hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .vx-hero-bg picture {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .vx-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .vx-hero-body {
+        position: relative;
+        z-index: 5;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(112px, 16vh, 156px) var(--vx-edge)
+          clamp(64px, 10vh, 96px);
+      }
+
+      .vx-hero-meta {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: clamp(18px, 3vw, 40px);
+        font-family: var(--terra-font-body);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--vx-silver);
+      }
+      .vx-hero-meta span {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 7px;
+        white-space: nowrap;
+      }
+      .vx-hero-meta span b {
+        font-family: var(--terra-font-body);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--vx-ivory);
+      }
+
+      /* Спокойный scroll-индикатор ТЕРРА, перенесён из do-korki-5.html,
+   цвет адаптирован под светлый фон кейса */
+      .vx-scroll-hint {
+        position: absolute;
+        bottom: clamp(24px, 4vh, 48px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--vx-font-sans);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--vx-ivory);
+        opacity: 0.72;
+      }
+      .vx-scroll-hint .line {
+        width: 1px;
+        height: 34px;
+        background: linear-gradient(rgba(16, 16, 16, 0.55), transparent);
+        animation: vx-scroll-run 2.2s ease-in-out infinite;
+      }
+      @keyframes vx-scroll-run {
+        0% {
+          transform: scaleY(0);
+          transform-origin: top;
+          opacity: 0;
+        }
+        40% {
+          transform: scaleY(1);
+          transform-origin: top;
+          opacity: 1;
+        }
+        60% {
+          transform: scaleY(1);
+          transform-origin: bottom;
+          opacity: 1;
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .vx-hero-body {
+          padding-top: 76px;
+          padding-bottom: 64px;
+        }
+
+        .vx-hero-meta {
+          gap: 7px 22px;
+          font-size: 10px;
+        }
+
+        .vx-scroll-hint {
+          bottom: 20px;
+        }
+      }
+
+      .vx-hero-title {
+        font-family: var(--vx-font-display);
+        font-weight: 700;
+        font-size: clamp(32px, 5.4vw, 76px);
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        text-align: center;
+        max-width: 18ch;
+        margin: 0 auto 32px;
+        color: var(--vx-ivory);
+      }
+
+      .vx-hero-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        margin-top: 36px;
+        height: 46px;
+        padding: 0 32px;
+        border: 1px solid var(--vx-ivory);
+        background: transparent;
+        color: var(--vx-ivory);
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 600;
+        white-space: nowrap;
+        transition:
+          background-color 0.35s var(--vx-ease-soft),
+          color 0.35s var(--vx-ease-soft),
+          border-color 0.35s var(--vx-ease-soft);
+      }
+      .vx-hero-cta:hover {
+        background: var(--vx-ivory);
+        border-color: var(--vx-ivory);
+        color: var(--vx-cream);
+      }
+
+      @media (max-width: 720px) {
+        .vx-hero-title {
+          margin-bottom: 24px;
+        }
+        .vx-hero-cta {
+          margin-top: 24px;
+          height: 44px;
+          padding: 0 26px;
+        }
+      }
+
+      /* Shared section title */
+      .vx-intro-title {
+        font-family: var(--vx-font-display);
+        font-weight: 700;
+        font-size: clamp(32px, 4.4vw, 58px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        color: var(--vx-ivory);
+      }
+
+      /* ==========================================================================
+   02 — О ПРОЕКТЕ
+   ========================================================================== */
+      .vx-about {
+        background: var(--vx-obsidian);
+      }
+
+      .vx-about-title {
+        max-width: 22ch;
+      }
+
+      .vx-about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(40px, 7vw, 112px);
+        margin-top: clamp(56px, 7vw, 96px);
+      }
+
+      .vx-about-item h3 {
+  font-family: "Benzin", sans-serif;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vx-amber);
+}
+
+      .vx-about-item p {
+        max-width: 54ch;
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--vx-silver);
+      }
+
+      @media (max-width: 720px) {
+        .vx-about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ==========================================================================
+   03 — ЛОГОТИП
+   ========================================================================== */
+      .vx-logo-section {
+        border-top: 1px solid rgba(16, 16, 16, 0.12);
+      }
+
+      .vx-logo-showcase {
+        margin-top: 56px;
+        padding: clamp(48px, 8vw, 110px) clamp(20px, 4vw, 60px);
+        background: var(--vx-obsidian);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vx-logo-showcase img {
+        width: min(100%, 620px);
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vx-logo-variants {
+        margin-top: 1px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0px;
+        background: rgba(16, 16, 16, 0.12);
+      }
+
+      .vx-logo-variant {
+        aspect-ratio: 4/3;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .vx-logo-variant span {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 28px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        color: var(--vx-silver);
+      }
+      .vx-logo-variant.positive {
+        background: #1e2e24;
+      }
+      .vx-logo-variant.positive span {
+        color: var(--vx-obsidian);
+        opacity: 0.85;
+      }
+      .vx-logo-variant.positive img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .vx-logo-variant.negative {
+        background: var(--vx-obsidian);
+      }
+      .vx-logo-variant.negative span {
+        color: var(--vx-ivory);
+        opacity: 0.75;
+      }
+      .vx-logo-variant.negative img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+        filter: brightness(0);
+      }
+
+      .vx-logo-variant.dark {
+        background: var(--vx-carbon);
+      }
+      .vx-logo-variant.dark span {
+        color: var(--vx-obsidian);
+      }
+      .vx-logo-variant.dark img {
+        width: 72%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 720px) {
+        .vx-logo-variants {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ==========================================================================
+   04 — ВИЗУАЛИЗАЦИИ
+   ========================================================================== */
+      .vx-visuals {
+        background: var(--vx-obsidian);
+      }
+      .vx-visuals-stack {
+        margin-top: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      .vx-visual-item {
+        width: 100%;
+        overflow: hidden;
+      }
+      .vx-visual-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 720px) {
+        .vx-visuals .vx-inner {
+          padding-bottom: 24px;
+        }
+      }
+
+      /* ==========================================================================
+   05 — FINAL VISUAL
+   ========================================================================== */
+      .vx-final {
+        position: relative;
+        min-height: clamp(420px, 72svh, 720px);
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        background: var(--vx-obsidian);
+      }
+      .vx-final-media {
+        position: absolute;
+        inset: 0;
+      }
+      .vx-final-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.82;
+      }
+     .vx-final-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.28) 55%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+}
+      .vx-final-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 var(--vx-edge) 90px;
+        color: var(--vx-ivory);
+      }
+      @media (max-width: 720px) {
+        .vx-final-content {
+          padding-bottom: 45px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .vx-final-content {
+          transform: translateY(35px);
+        }
+      }
+      @media (max-width: 720px) {
+        .vx-final-media img {
+          object-position: 18% center;
+        }
+      }
+      .vx-final-content .line {
+        font-family: "Benzin", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: clamp(30px, 4.8vw, 58px);
+        line-height: 1.25;
+        max-width: 16ch;
+       color: #ffffff;
+      }
+
+      /* ==========================================================================
+   TERRA CTA — «ЕСТЬ ЗАДАЧА?»
+   Скопировано из do-korki-5.html без изменений. Структура, типографика
+   и поведение сохранены буквально.
+   ========================================================================== */
+      .terra-cta {
+        position: relative;
+        overflow: hidden;
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+      }
+      .terra-cta::before {
+        content: "";
+        position: absolute;
+        width: 75vw;
+        height: 75vw;
+        right: -28vw;
+        top: -34vw;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(101, 54, 255, 0.25),
+          rgba(210, 38, 232, 0.1) 35%,
+          transparent 65%
+        );
+        filter: blur(40px);
+        pointer-events: none;
+      }
+      .terra-cta-inner {
+        position: relative;
+        z-index: 1;
+        max-width: var(--vx-container);
+        margin: 0 auto;
+        padding: var(--vx-edge);
+        min-height: 70svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .terra-cta-eyebrow {
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .terra-cta-eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: var(--terra-grad);
+      }
+      .terra-cta-title {
+        font-family: var(--terra-font-display);
+        font-size: clamp(42px, 7.3vw, 104px);
+        font-weight: 500;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        max-width: 12ch;
+        margin-top: 72px;
+      }
+      .terra-cta-title .grad-text {
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .terra-cta-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        padding-top: 30px;
+      }
+      .terra-cta-note {
+        font-family: var(--terra-font-body);
+        font-size: 14px;
+        line-height: 1.65;
+        color: var(--terra-grey-mid);
+        max-width: 36ch;
+      }
+      .terra-btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--terra-font-body);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 16px 26px;
+        border: 1px solid var(--terra-grey-line);
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        transition:
+          border-color 0.4s var(--vx-ease-soft),
+          color 0.4s var(--vx-ease-soft);
+      }
+      .terra-btn-cta span {
+        position: relative;
+        z-index: 2;
+      }
+      .terra-btn-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--terra-grad);
+        transform: translateX(-101%);
+        transition: transform 0.5s var(--vx-ease-out);
+        z-index: 1;
+      }
+      .terra-btn-cta:hover {
+        border-color: transparent;
+      }
+      .terra-btn-cta:hover::before {
+        transform: none;
+      }
+
+      @media (max-width: 860px) {
+        .terra-cta-inner {
+          min-height: 60svh;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-cta-inner {
+          min-height: auto;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+        .terra-cta-title {
+          margin-top: 28px;
+        }
+        .terra-cta-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-top: 88px;
+        }
+      }
+
+      /* ==========================================================================
+   TERRA FOOTER (перенесено из do-korki-5.html без изменения логики)
+   ========================================================================== */
+      .terra-footer {
+        background: var(--terra-black);
+        color: var(--terra-white);
+        border-top: 1px solid var(--terra-grey-line);
+        font-family: var(--terra-font-body);
+      }
+      .terra-footer .section-inner {
+        max-width: var(--vx-container);
+        margin: 0 auto;
+        padding: 80px var(--vx-edge);
+      }
+      .terra-footer .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 64px;
+        margin-bottom: 80px;
+      }
+      .terra-footer .wordmark {
+        font-family: var(--terra-font-display);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 0.06em;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 32px;
+      }
+      .terra-footer .wordmark .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--terra-grad);
+      }
+      .terra-footer .footer-tagline {
+        font-family: var(--terra-font-display);
+        font-size: clamp(22px, 2.6vw, 30px);
+        line-height: 1.2;
+        max-width: 16ch;
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-col-label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--terra-grey-mid);
+        margin-bottom: 16px;
+      }
+      .terra-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .terra-footer .footer-links a {
+        font-size: 14px;
+        color: var(--terra-grey-mid);
+        transition: color 0.3s;
+      }
+      .terra-footer .footer-links a:hover {
+        color: var(--terra-white);
+      }
+      .terra-footer .footer-giant {
+        font-family: var(--terra-font-display);
+        font-weight: 700;
+        font-size: clamp(60px, 13vw, 200px);
+        line-height: 0.82;
+        letter-spacing: -0.02em;
+        background: var(--terra-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 32px;
+      }
+      .terra-footer .footer-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 32px;
+        border-top: 1px solid var(--terra-grey-line);
+        font-size: 11px;
+        color: var(--terra-grey-mid);
+        letter-spacing: 0.06em;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .terra-footer .footer-top {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= TERRA HEADER ================= -->
+    <header class="terra-header" id="top">
+      <nav class="terra-nav" aria-label="Основная навигация">
+        <a href="/" class="terra-wordmark">
+          <span class="dot"></span>
+          СТУДИЯ ТЕРРА
+        </a>
+
+        <button
+          class="terra-nav-toggle"
+          id="navToggle"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="terra-nav-links" id="navLinks">
+          <a href="/"> ГЛАВНАЯ </a>
+
+          <a href="/cases" aria-current="page"> ПРОЕКТЫ </a>
+
+          <a href="/#services"> УСЛУГИ </a>
+
+          <a href="/#about"> О НАС </a>
+
+          <a href="#contacts"> КОНТАКТЫ </a>
+
+          <a href="/#contact" class="terra-nav-cta"> ОБСУДИТЬ ПРОЕКТ </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ================= LOREÁK Flowers: КЕЙС ================= -->
+
+    <!-- HERO -->
+    <section class="vx-hero">
+      <div class="vx-hero-bg">
+        <picture>
+          <source
+            media="(max-width: 720px)"
+            srcset="/images/loreak/hero-mobile.jpg"
+          />
+          <img src="/images/loreak/hero.jpg" alt="" />
+        </picture>
+      </div>
+
+      <div class="vx-hero-body edge">
+
+        <div class="vx-hero-meta reveal">
+          <span>
+            Категория
+            <b>Брендинг / Айдентика</b>
+          </span>
+          <span>
+            Проект
+            <b>Цветочный бренд</b>
+          </span>
+          <span>
+            Год
+            <b>2026</b>
+          </span>
+        </div>
+
+      
+      <div class="vx-scroll-hint" aria-hidden="true">
+        <span>Вниз</span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="vx-about">
+      <div class="vx-inner">
+        <h2 class="vx-intro-title vx-about-title reveal">
+          СТРАТЕГИЯ БЕЗ ЛИШНЕГО.
+        </h2>
+
+        <div class="vx-about-grid">
+          <div class="vx-about-item reveal">
+            <h3>ЗАДАЧА</h3>
+            <p>
+              Создать айдентику для цветочного бренда LOREÁK Flowers,
+              которая передаёт естественную красоту, деликатность и
+              индивидуальный подход к каждой композиции. Важно было
+              сформировать узнаваемый и эстетичный образ, способный
+              одинаково органично работать в оформлении магазина, упаковке,
+              полиграфии и digital-коммуникации.
+            </p>
+          </div>
+
+          <div class="vx-about-item reveal">
+            <h3>РЕАЛИЗАЦИЯ</h3>
+            <p>
+              В основу визуальной системы легло сочетание утончённой
+              типографики, пластичных деталей и глубокой природной палитры.
+              Тёмно-зелёный цвет подчёркивает связь с живыми материалами, а
+              тёплый бежевый фон создаёт ощущение спокойствия и мягкости.
+              Айдентика получилась сдержанной и выразительной, сохраняя
+              узнаваемость на упаковке, карточках, лентах, вывеске и
+              digital-носителях.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO -->
+    <section class="vx-logo-section">
+      <div class="vx-inner">
+        <div class="eyebrow-vx reveal">ЛОГОТИП · ЦВЕТОВАЯ ПАЛИТРА</div>
+
+        <h2 class="vx-intro-title reveal">СИСТЕМА ДОВЕРИЯ</h2>
+
+        <div class="vx-logo-showcase reveal">
+          <img
+            src="/images/loreak/logo-primary.png"
+            alt="Основная версия логотипа «LOREÁK Flowers»"
+          />
+        </div>
+
+        <div class="vx-logo-variants">
+          <div class="vx-logo-variant positive reveal">
+            <img src="/images/loreak/logo-positive.png" alt="Позитив" />
+            <span>Позитив</span>
+          </div>
+
+          <div class="vx-logo-variant negative reveal">
+            <img src="/images/loreak/logo-negative.png" alt="Негатив" />
+            <span>Негатив</span>
+          </div>
+
+          <div class="vx-logo-variant dark reveal">
+            <img
+              src="/images/loreak/logo-mark.png"
+              alt="Компактный знак на тёмной поверхности"
+            />
+            <span>Компактный знак</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUALIZATIONS -->
+    <section class="vx-visuals">
+      <div class="vx-inner">
+        <div class="eyebrow-vx reveal">ВИЗУАЛИЗАЦИИ</div>
+
+        <h2 class="vx-intro-title reveal">БРЕНД В ДЕЛОВОЙ СРЕДЕ</h2>
+
+        <div class="vx-visuals-stack">
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/loreak/mockup-01.jpg"
+              alt="Визуализация бренда «LOREÁK Flowers»"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/loreak/mockup-02.jpg"
+              alt="Визуализация фирменных носителей «LOREÁK Flowers»"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/loreak/mockup-03.jpg"
+              alt="Визуализация среды «LOREÁK Flowers»"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="vx-visual-item reveal">
+            <img
+              src="/images/loreak/mockup-04.jpg"
+              alt="Визуализация фирменного стиля «LOREÁK Flowers»"
+              loading="lazy"
+            />
+          </div>
+          <div class="vx-visual-item reveal">
+  <img
+    src="/images/loreak/mockup-05.jpg"
+    alt="Визуализация фирменного стиля «LOREÁK Flowers»"
+    loading="lazy"
+  />
+</div>
+
+<div class="vx-visual-item reveal">
+  <img
+    src="/images/loreak/mockup-06.jpg"
+    alt="Визуализация фирменного стиля «LOREÁK Flowers»"
+    loading="lazy"
+  />
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL VISUAL -->
+    <section class="vx-final">
+      <div class="vx-final-media">
+        <!-- REPLACE WITH PROJECT MOCKUP -->
+        <img
+          src="/images/loreak/final.jpg"
+          alt="Финальная сцена: знак «LOREÁK Flowers»"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="vx-final-content reveal">
+        <p class="line">СТРАТЕГИЯ. НАДЁЖНОСТЬ. РОСТ.</p>
+      </div>
+    </section>
+
+    <!-- TERRA CTA -->
+    <section class="terra-cta" id="contact">
+      <div class="terra-cta-inner">
+        <div>
+          <p class="terra-cta-eyebrow reveal">Новый проект</p>
+
+          <h2 class="terra-cta-title reveal">
+            ЕСТЬ ЗАДАЧА?<br />
+            <span class="grad-text">ДАВАЙТЕ ОБСУДИМ ПРОЕКТ</span>
+          </h2>
+        </div>
+
+        <div class="terra-cta-bottom reveal">
+          <p class="terra-cta-note">
+            Расскажите о задаче — предложим подходящий формат работы и соберём
+            сильное визуальное решение.
+          </p>
+
+          <a class="terra-btn-cta" href="/#contact">
+          <span>Обсудить проект &#8599;&#xfe0e;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TERRA FOOTER -->
+    <footer class="terra-footer" id="contacts">
+      <div class="section-inner">
+        <div class="footer-top reveal">
+          <div>
+            <a href="/" class="wordmark">
+              <span class="dot"></span>
+              СТУДИЯ ТЕРРА
+            </a>
+            <p class="footer-tagline">
+              Дизайн, который<br />
+              усиливает бизнес.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-label">Навигация</div>
+            <div class="footer-links">
+              <a href="/">Главная</a>
+              <a href="/cases">Кейсы</a>
+              <a href="/#services">Услуги</a>
+              <a href="/#about">О нас</a>
+              <a href="#contacts">Контакты</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-label">Связаться</div>
+            <div class="footer-links">
+              <a href="https://t.me/terra_brand" target="_blank" rel="noopener"
+                >Telegram</a
+              >
+              <a href="https://wa.me/79937717751" target="_blank" rel="noopener"
+                >WhatsApp</a
+              >
+              <a
+                href="https://max.ru/u/f9LHodD0cOKw__RGm4Unsb2sMAdMwcBcPqZ1MB-CubTBVIqZC6Ecxf0uPGo"
+                target="_blank"
+                rel="noopener"
+                >Max</a
+              >
+              <a href="mailto:hello@terra-brand.ru">Email</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-giant reveal">ТЕРРА</div>
+
+        <div class="footer-meta">
+          <span>DESIGN STUDIO — WORLDWIDE</span>
+          <span
+            >ИП Тлехурай Сусанна Асланчериевна · ИНН 231217731235 · ОГРНИП
+            323237500327615</span
+          >
+          <span>© 2026 TERRA Studio</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        // Scroll reveal
+        var revealEls = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+          );
+
+          revealEls.forEach(function (el) {
+            io.observe(el);
+          });
+        } else {
+          revealEls.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        }
+
+        // Мобильное меню (burger) — логика перенесена из do-korki-5.html без изменений
+        var toggle = document.getElementById("navToggle");
+        var links = document.getElementById("navLinks");
+
+        if (toggle && links) {
+          toggle.addEventListener("click", function () {
+            var open = links.classList.toggle("is-open");
+            toggle.classList.toggle("is-open", open);
+            toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            document.body.style.overflow = open ? "hidden" : "";
+          });
+
+          links.querySelectorAll("a").forEach(function (a) {
+            a.addEventListener("click", function () {
+              links.classList.remove("is-open");
+              toggle.classList.remove("is-open");
+              toggle.setAttribute("aria-expanded", "false");
+              document.body.style.overflow = "";
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
