@@ -258,9 +258,26 @@
           color 0.3s var(--vx-ease-soft),
           background-color 0.3s var(--vx-ease-soft);
       }
-      .terra-nav-links a:hover {
+     .terra-nav-links a:hover {
   opacity: 1;
   color: #F3EFE7;
+}
+
+.terra-nav-links a:not(.terra-nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -6px;
+  height: 1px;
+  background: #F3EFE7;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s var(--vx-ease-soft);
+}
+
+.terra-nav-links a:not(.terra-nav-cta):hover::after {
+  transform: scaleX(1);
 }
 
 .terra-nav-links a[aria-current="page"] {
@@ -270,22 +287,7 @@
 }
 
 .terra-nav-links a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: -6px;
-  height: 1px;
-  background: #F3EFE7;
-}
-.terra-nav-links a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: -6px;
-  height: 1px;
-  background: var(--vx-ivory);
+  transform: scaleX(1);
 }
 
       .terra-nav-cta {
