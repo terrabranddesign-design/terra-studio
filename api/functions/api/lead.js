@@ -1,7 +1,14 @@
-export async function onRequestPost(context) {
-  try {
-    const { request, env } = context;
+export async function onRequest(context) {
+  const { request, env } = context;
 
+  if (request.method !== 'POST') {
+    return Response.json(
+      { error: 'Method not allowed' },
+      { status: 405 }
+    );
+  }
+
+  try {
     const {
       name,
       company,
@@ -27,7 +34,7 @@ export async function onRequestPost(context) {
       'Задача:',
       description || '—',
       '',
-      `Источник: https://terra-brand.ru`
+      'Источник: https://terra-brand.ru'
     ].join('\n');
 
     const params = new URLSearchParams({
@@ -51,7 +58,10 @@ export async function onRequestPost(context) {
       console.error('Trello error:', trelloData);
 
       return Response.json(
-        { error: 'Trello request failed' },
+        {
+          error: 'Trello request failed',
+          details: trelloData
+        },
         { status: 500 }
       );
     }
@@ -68,9 +78,11 @@ export async function onRequestPost(context) {
     console.error('Server error:', error);
 
     return Response.json(
-      { error: 'Server error' },
+      {
+        error: 'Server error',
+        details: error.message
+      },
       { status: 500 }
     );
   }
 }
-
