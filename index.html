@@ -1840,7 +1840,7 @@ if(form){
         btn.textContent = 'Отправляем...';
       }
 
-      var response = await fetch('/api/lead', {
+     var response = await fetch('https://terra-lead-api.terra-brand-design.workers.dev/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
