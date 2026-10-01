@@ -1,0 +1,36 @@
+name: Publish to Beget
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: beget-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v6
+
+      - name: Upload website
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: terrabpr.beget.tech
+          username: terrabpr_github
+          password: ${{ secrets.BEGET_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            api/**
+            functions/**
