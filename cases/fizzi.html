@@ -175,7 +175,7 @@
         font-weight: 400;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: var(--vx-amber);
+        color: #777777;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -185,7 +185,7 @@
         content: "";
         width: 20px;
         height: 1px;
-        background: var(--vx-amber);
+        background: #777777;
       }
 
       /* ==========================================================================
@@ -218,7 +218,7 @@
         font-weight: 500;
         font-size: 15px;
         letter-spacing: 0.06em;
-        color: var(--vx-ivory);
+        color: #ffffff;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -244,7 +244,7 @@
       .terra-nav-links a {
         position: relative;
         padding-bottom: 4px;
-        color: var(--vx-ivory);
+        color: #ffffff;
         opacity: 0.72;
         transition:
           opacity 0.3s var(--vx-ease-soft),
@@ -279,8 +279,8 @@
         justify-content: center;
         height: 42px;
         padding: 0 28px !important;
-        border: 1px solid rgba(23, 22, 15, 0.35);
-        color: var(--vx-ivory);
+        border: 1px solid #ffffff;
+        color: #ffffff;
         white-space: nowrap;
         opacity: 1 !important;
         transition:
@@ -354,6 +354,13 @@
           display: inline-flex;
           border-color: rgba(23, 22, 15, 0.35);
         }
+        .terra-nav-links a:not([aria-current="page"]):not(:hover) {
+  color: #17160f;
+}
+
+.terra-nav-toggle.is-open span {
+  background: #17160f;
+}
       }
 
       /* ==========================================================================
@@ -530,7 +537,7 @@
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--vx-amber);
+  color: #777777;
 }
 
       .vx-about-item p {
@@ -556,7 +563,7 @@
       .vx-logo-showcase {
         margin-top: 56px;
         padding: clamp(48px, 8vw, 110px) clamp(20px, 4vw, 60px);
-        background: #f7f4ee;
+        background: #adadad;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -594,7 +601,7 @@
         color: var(--vx-silver);
       }
       .vx-logo-variant.positive {
-        background: #ffffff;
+        background: #2a2c2a;
       }
       .vx-logo-variant.positive span {
         color: var(--vx-obsidian);
@@ -607,7 +614,7 @@
       }
 
       .vx-logo-variant.negative {
-        background: #1b1a16;
+        background: #ffffff;
       }
       .vx-logo-variant.negative span {
         color: var(--vx-ivory);
@@ -621,10 +628,10 @@
       }
 
       .vx-logo-variant.dark {
-        background: #ded7ca;
+        background: #d9fb48;
       }
       .vx-logo-variant.dark span {
-        color: var(--vx-obsidian);
+        color: #2a2c2a;
       }
       .vx-logo-variant.dark img {
         width: 72%;
@@ -1052,7 +1059,7 @@
     <section class="vx-about">
       <div class="vx-inner">
         <h2 class="vx-intro-title vx-about-title reveal">
-          ТОЧНОСТЬ В КАЖДОЙ ДЕТАЛИ
+          СВЕЖЕСТЬ, КОТОРАЯ ЗАРЯЖАЕТ.
         </h2>
 
         <div class="vx-about-grid">
@@ -1089,7 +1096,7 @@
       <div class="vx-inner">
         <div class="eyebrow-vx reveal">ЛОГОТИП · ЦВЕТОВАЯ ПАЛИТРА</div>
 
-        <h2 class="vx-intro-title reveal">МАСТЕРСТВО, КОТОРОЕ ВИДНО</h2>
+        <h2 class="vx-intro-title reveal">ЭНЕРГИЯ В КАЖДОЙ ФОРМЕ</h2>
 
         <div class="vx-logo-showcase reveal">
           <img
@@ -1101,12 +1108,12 @@
         <div class="vx-logo-variants">
           <div class="vx-logo-variant positive reveal">
             <img src="/images/fizzi/logo-positive.png" alt="Позитив" />
-            <span>#ffffff</span>
+            <span>#2a2c2a</span>
           </div>
 
           <div class="vx-logo-variant negative reveal">
             <img src="/images/fizzi/logo-negative.png" alt="Негатив" />
-            <span>#181916</span>
+            <span>#ffffff</span>
           </div>
 
           <div class="vx-logo-variant dark reveal">
@@ -1114,7 +1121,7 @@
               src="/images/fizzi/logo-mark.png"
               alt="Компактный знак на тёмной поверхности"
             />
-            <span>#ded7cb</span>
+            <span>#d9fb48</span>
           </div>
         </div>
       </div>
@@ -1125,7 +1132,7 @@
       <div class="vx-inner">
         <div class="eyebrow-vx reveal">ВИЗУАЛИЗАЦИИ</div>
 
-        <h2 class="vx-intro-title reveal">АЙДЕНТИКА В РАБОЧЕЙ СРЕДЕ</h2>
+        <h2 class="vx-intro-title reveal">FIZZI В ГОРОДСКОМ РИТМЕ</h2>
 
         <div class="vx-visuals-stack">
           <div class="vx-visual-item reveal">
@@ -1190,7 +1197,7 @@
       </div>
 
       <div class="vx-final-content reveal">
-        <p class="line">СОЗДАНО С ВНИМАНИЕМ К ДЕТАЛЯМ</p>
+        <p class="line">ПОЙМАЙ ВКУС МОМЕНТА.</p>
       </div>
     </section>
 
